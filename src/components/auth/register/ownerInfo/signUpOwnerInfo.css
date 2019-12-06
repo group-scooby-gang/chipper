@@ -1,9 +1,4 @@
 .ownerInfoForm {
     display: flex;
     flex-direction: column;
-    width: 20%;
-}
-
-.ownerInfoForm input {
-    border: 1px solid gainsboro;
 }
