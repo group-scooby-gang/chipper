@@ -6,6 +6,7 @@ const app = express()
 
 //controllers
 
+const auth = require("./authController")
 
 massive(process.env.CONNECTION_STRING)
 .then(dbInstance => {
@@ -24,5 +25,8 @@ app.use(session({
 }))
 
 app.use(express.json)
+
+//auth
+app.post("/Chipper/Register", auth.registerUser)
 
 app.listen(6942, () => console.log("Port 6924"))
