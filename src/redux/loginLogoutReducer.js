@@ -38,14 +38,14 @@ export default function reducer(state = initialState, action) {
   switch (type) {
     case `${REGISTER_USER}`:
       return {
-        userId: payload.data.userId,
+        userName: payload.data.userName,
         firstName: payload.data.firstName,
         lastName: payload.data.lastName
       };
     case `${LOGIN_USER}`:
       console.log(payload);
       return {
-        userId: payload.data.userId,
+        userName: payload.data.userName,
         firstName: payload.data.firstName,
         lastName: payload.data.lastName
       };
