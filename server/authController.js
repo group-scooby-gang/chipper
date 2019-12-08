@@ -7,7 +7,7 @@ const registerUser = async (req, res) => {
     if(checkUser.length === 0){
         const salt = bcrypt.genSaltSync(10);
         const hashed = bcrypt.hashSync(salt, password);
-        const user =  await db.register(username, firstname, lastname, password, email, profileimg, phone, address)
+        const user =  await db.register(username, firstname, lastname, hashed, email, profileimg, phone, address)
         req.session.user = {
             username,
             firstname,
