@@ -5,9 +5,9 @@
 const applyWalker = async (req, res) => {
     const db = req.app.get("db")
     const id = req.session.user.id
-    const {experience, category, streetadd, city, state, zip, apt, fifteen, thirty, fortyfive, sixty} = req.body
+    const {experience, category, fifteen, thirty, fortyfive, sixty} = req.body
     const appStatus = false;
-    const application = await db.applyWalker(id, experience, category, streetadd, city, state, zip, apt, appStatus, fifteen, thirty, fortyfive, sixty)
+    const application = await db.applyWalker(id, experience, category, appStatus, fifteen, thirty, fortyfive, sixty)
     res.status(200).json("Application Submitted")
 }
 
