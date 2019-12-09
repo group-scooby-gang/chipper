@@ -8,6 +8,7 @@ const initialState = {
   password: '',
   phone: 0,
   address: '',
+  zip: 0,
   profileImg: 'https://i.pinimg.com/originals/0c/92/0d/0c920d58b210a74a75868df885160a5f.jpg'
 };
 
@@ -29,10 +30,20 @@ export const resetFields = () => {
   }
 }
 
-export function registerUser(userInfo) {
+export function registerUser(username, firstName, lastName, password, email, profileImg, phone, address, zip) {
   return {
     type: REGISTER_USER,
-    payload: axios.post('/Chipper/Register/User', userInfo)
+    payload: axios.post('/Chipper/Register', {
+      username: username,
+      firstname: firstName,
+      lastname: lastName,
+      password: password,
+      email: email,
+      profileimg: profileImg,
+      phone: phone,
+      address: address,
+      zip: zip
+    })
   };
 }
 
@@ -58,14 +69,8 @@ export default function reducer(state = initialState, action) {
       }
     case `${REGISTER_USER}_FULFILLED`:
       return {
-        username: payload.data.userName,
-        firstname: payload.data.firstName,
-        lastname: payload.data.lastName,
-        password: payload.data.password,
-        email: payload.data.email,
-        profileimg: payload.data.profileImg,
-        phone: payload.data.phone,
-        address: payload.data.address
+        ...state,
+        payload: payload.data
       };
     case `${LOGOUT_USER}`:
       return initialState;

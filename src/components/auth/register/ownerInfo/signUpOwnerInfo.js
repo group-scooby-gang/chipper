@@ -19,7 +19,7 @@ class RegisterOwnerInfo extends Component {
 
   handleRegister = async(e) => {
     e.preventDefault();
-    const {userName, firstName, lastName, email, password, phone, address} = this.props;
+    const {userName, firstName, lastName, email, password, phone, address, zip} = this.props;
     await this.props.registerUser(
       userName,
       firstName,
@@ -27,7 +27,8 @@ class RegisterOwnerInfo extends Component {
       password,
       email,
       phone,
-      address
+      address,
+      zip
     ).then(() => {
       this.props.history.push('/register/pet/name')
     }).catch(() => {
@@ -50,6 +51,8 @@ class RegisterOwnerInfo extends Component {
           <input onChange={this.handleChange} type="password" placeholder="password" name='password' />
           <input onChange={this.handleChange} type="text" placeholder="phone" name='phone' />
           <input onChange={this.handleChange} type="text" placeholder="address" name='address' />
+          <input onChange={this.handleChange} type="text" placeholder="zip" name='zip' />
+          <input onChange={this.handleChange} type="text" placeholder="img" name='profileImg' />
         </form>
           <button onClick={this.handleRegister}>Add Pup</button>
           {
@@ -72,7 +75,8 @@ const mapStateToProps = state => {
     email: state.userReducer.email,
     password: state.userReducer.password,
     phone: state.userReducer.phone,
-    address: state.userReducer.address
+    address: state.userReducer.address,
+    zip: state.userReducer.zip
   }
 }
 
