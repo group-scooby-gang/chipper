@@ -15,11 +15,12 @@ class WalkerDashboard extends Component {
 
     handleClickSchedule = () => {
         this.setState({ dogsNeedWalking: 'closed'})
-        // this.props.history.push('walker/schedule')
+        this.props.history.push('/walker/schedule')
     }
 
     handleClickPendingJobs = () => {
         this.setState({ dogsNeedWalking: 'closed'})
+        this.props.history.push('/walker/schedule')
     }
 
     render() {
@@ -41,7 +42,8 @@ class WalkerDashboard extends Component {
                 ?
                     <div>
                         <h5>Dogs Need Walking</h5>
-                        <div>Name - Owner(distance away)</div>
+                        <input type="radio" name="name" value='dog_name'/> Name - Owner(distance away) <br/>
+                        <input type="radio" name="name" value='dog_name2'/> Name - Owner(distance away) <br/>
                     </div>
                 :
                     null
