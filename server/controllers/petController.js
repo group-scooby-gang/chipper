@@ -13,6 +13,7 @@ const deletePet = async (req, res) => {
     res.status(200).json("Pet removed")
 }
 
+
 const editPet = async (req, res) => {
     const db = req.app.get("db")
     const pet_id = +req.params.pet_id
@@ -21,8 +22,16 @@ const editPet = async (req, res) => {
     res.status(200).json("Pet edited")
 }
 
+const ownersPets = async (req, res) => {
+    const db = req.app.get("db")
+    const id = req.session.user.id
+    const pets = await db.getOwnersPets(id)
+    res.status(200).json(pets)
+}
+
 module.exports = {
     addPet,
     deletePet,
-    editPet
+    editPet,
+    ownersPets
 }

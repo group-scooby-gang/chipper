@@ -36,6 +36,7 @@ app.post("/Chipper/Login", auth.loginUser)
 app.post("/Chipper/Pet/Add", pet.addPet)
 app.delete("/Chipper/Pet/Remove/:pet_id", pet.deletePet)
 app.put("/Chipper/Pet/Edit/:pet_id", pet.editPet)
+app.get("/Chipper/MyPets", pet.ownersPets)
 
 //walker
 app.get("/Chipper/Walker/Application/:application_id", walker.applicationDetails)
