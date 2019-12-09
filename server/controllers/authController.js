@@ -1,14 +1,17 @@
 const bcrypt = require("bcryptjs");
 
 const registerUser = async (req, res) => {
-    const {username, firstname, lastname, password, email, profileimg, phone, address, zip} = req.body;
+    const {username, firstname, lastname, password, email, profileimg, phone, address, zip, city, state, apt} = req.body;
     const db = req.app.get("db")
+    if(apt === null){
+        apt = "no"
+    }
     const checkUser = await db.checkUser([username])
     if(checkUser.length === 0){
         const salt = bcrypt.genSaltSync(10);
         const hashed = bcrypt.hashSync(password, salt);
         const isAdmin = false;
-        const user =  await db.register([username, firstname, lastname, hashed, email, profileimg, phone, address, zip, isAdmin])
+        const user =  await db.register([username, firstname, lastname, hashed, email, profileimg, phone, address, apt, city, state, zip, isAdmin])
         req.session.user = {
             username,
             firstname,
@@ -16,6 +19,9 @@ const registerUser = async (req, res) => {
             email,
             phone,
             address,
+            apt,
+            city, 
+            state,
             zip,
             isAdmin
         }
