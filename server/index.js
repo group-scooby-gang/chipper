@@ -24,9 +24,10 @@ app.use(session({
     secret: "Where are you"
 }))
 
-app.use(express.json)
+app.use(express.json())
 
 //auth
 app.post("/Chipper/Register", auth.registerUser)
+app.post("/Chipper/Login", auth.loginUser)
 
-app.listen(6942, () => console.log("Port 6924"))
+app.listen(6942, () => console.log("Port 6942"))
