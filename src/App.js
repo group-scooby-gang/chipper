@@ -2,11 +2,13 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Link } from 'react-router-dom';
 import routes from './routes';
+import Sms from './components/sms/Sms';
 
 function App() {
 	return (
 		<BrowserRouter>
 			<div>
+				<Sms />
 				<Link to='/login'>
 					<button> Login </button>
 				</Link>
