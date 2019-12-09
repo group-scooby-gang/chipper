@@ -38,27 +38,27 @@ app.use((req, res, next) => {
 
 //auth
 app.post("/Chipper/Register", auth.registerUser)
-
-//auth
-app.post("/Chipper/Register", auth.registerUser)
 app.post("/Chipper/Login", auth.loginUser)
 
 //pet
 app.post("/Chipper/Pet/Add", pet.addPet)
 app.delete("/Chipper/Pet/Remove/:pet_id", pet.deletePet)
 app.put("/Chipper/Pet/Edit/:pet_id", pet.editPet)
+app.get("/Chipper/MyPets", pet.ownersPets)
 
 //walker
 app.get("/Chipper/Walker/Application/:application_id", walker.applicationDetails)
 app.get("/Chipper/Walker/Applications/Pending", walker.allApplications)
 app.get("/Chipper/Walker/Applications/Approved", walker.allAccepted)
-app.post("/Chipper/Walker/Applications/Submitted", walker.applyWalker)
+app.post("/Chipper/Walker/Applications/Submitted", walker.applyWalker) //where all apps are put
 app.delete("/Chipper/Walker/Application/Deny/:application_id", walker.denyWalker)
 app.put("/Chipper/Walker/Application/Approve/:application_id", walker.acceptWalker)
 
+
+
 app.listen(SERVER_PORT, () => console.log(`Server is listening on entry port ${SERVER_PORT}`))
 
-//twilio
+// //twilio
 // app.post("/sms", (req, res) => {
 //     console.log(req.body)
 //     client.messages.create({
