@@ -56,7 +56,7 @@ export function registerUser(username, firstName, lastName, password, email, pro
 export function logoutUser() {
   return {
     type: LOGOUT_USER,
-    payload: axios.post('/auth/user/logout')
+    payload: axios.post('')
   };
 }
 
@@ -72,13 +72,22 @@ export default function reducer(state = initialState, action) {
     case RESET_FIELDS:
       return {
         ...state
-      }
+      };
     case `${REGISTER_USER}_FULFILLED`:
       return {
         ...state,
         payload: payload.data
       };
-    case `${LOGOUT_USER}`:
+    // case `${LOGIN_USER}_PENDING`:
+    //   return {
+    //     ...state
+    //   }
+    // case `${LOGIN_USER}_FULFILLED`:
+    // 	return {
+    // 		username: payload.data.username,
+    // 		password: payload.data.password
+    // 	};
+    case `${LOGOUT_USER}_FULFILLED`:
       return initialState;
     default:
       return state;

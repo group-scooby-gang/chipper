@@ -5,11 +5,13 @@ import promise from 'redux-promise-middleware';
 import userReducer from './userReducer';
 import petReducer from './petReducer';
 import walkerReducer from './walkerReducer';
+import twilioReducer from './twillioReducer';
 
 const rootReducer = combineReducers({ 
     userReducer,
     petReducer,
-    walkerReducer
+    walkerReducer,
+    TR: twilioReducer
 });
 
 export default createStore(rootReducer, applyMiddleware(promise));

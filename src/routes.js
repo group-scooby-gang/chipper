@@ -12,6 +12,7 @@ import PetRegisterReview from './components/auth/register/petRegistrationInfo/pe
 import RegisterWalkerInfo from './components/auth/register/walkerInfo/walkerInfo1/walkerInfo';
 import RegisterWalkerInfoStep2 from './components/auth/register/walkerInfo/walkerInfo2/walkerInfo2';
 import RegisterWalkerReview from './components/auth/register/walkerInfo/walkerReview/walkerReview';
+import Login from './components/login/login';
 import WalkerDashboard from './components/dashboard/walker/walkerDashboard';
 import WalkerSchedule from './components/schedule/walker/walkerSchedule';
 
@@ -27,6 +28,7 @@ export default (
         <Route component={RegisterWalkerInfo} exact path='/register/walker/info' />
         <Route component={RegisterWalkerInfoStep2} path='/register/walker/info2' />
         <Route component={RegisterWalkerReview} path='/register/walker/review' />
+        <Route component={Login} path='/login' />
         <Route component={WalkerDashboard} path='/walker/dashboard' />
         <Route component={WalkerSchedule} path='/walker/schedule' />
     </Switch>
