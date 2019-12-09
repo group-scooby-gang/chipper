@@ -14,6 +14,7 @@ import RegisterWalkerInfoStep2 from './components/auth/register/walkerInfo/walke
 import RegisterWalkerAddress from './components/auth/register/walkerInfo/walkerAddress/walkerAddress';
 import RegisterWalkerZip from './components/auth/register/walkerInfo/walkerZipCode/walkerZipCode';
 import RegisterWalkerReview from './components/auth/register/walkerInfo/walkerReview/walkerReview';
+import WalkerDashboard from './components/dashboard/walker/walkerDashboard';
 
 export default (
     <Switch>
@@ -29,5 +30,6 @@ export default (
         <Route component={RegisterWalkerAddress} path='/register/walker/address' />
         <Route component={RegisterWalkerZip} path='/register/walker/zip' />
         <Route component={RegisterWalkerReview} path='/register/walker/review' />
+        <Route component={WalkerDashboard} path='/walker/dashboard' />
     </Switch>
 )
