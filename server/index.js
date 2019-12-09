@@ -34,6 +34,8 @@ app.use(
 );
 
 app.use(express.json());
+<<<<<<< HEAD
+=======
 
 // Sets traffic rules for headers
 app.use((req, res, next) => {
@@ -44,11 +46,15 @@ app.use((req, res, next) => {
 		);
 	next();
 });
+>>>>>>> master
 
 //auth
 app.post('/Chipper/Register', auth.registerUser);
 app.post('/Chipper/Login', auth.loginUser);
 
+<<<<<<< HEAD
+app.listen(6942, () => console.log('Port 6942'));
+=======
 //auth
 app.post('/Chipper/Register', auth.registerUser);
 app.post('/Chipper/Login', auth.loginUser);
@@ -96,3 +102,4 @@ app.post('/sms', (req, res) => {
 			res.json({ success: false });
 		});
 });
+>>>>>>> master
