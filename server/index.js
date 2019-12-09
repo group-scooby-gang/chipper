@@ -4,11 +4,7 @@ const app = express()
 const session = require("express-session")
 const massive = require("massive")
 const {TWILIO_PHONE_NUMBER, ACCOUNT_SID, AUTH_TOKEN, SERVER_PORT} = process.env;
-const client = require('twilio')(ACCOUNT_SID, AUTH_TOKEN);
-
-//controllers
-const auth = require("./authController")
-// const twil = require("./twilioController")
+// const client = require('twilio')(ACCOUNT_SID, AUTH_TOKEN);
 
 //controllers
 const auth = require("./controllers/authController")
@@ -42,41 +38,39 @@ app.use((req, res, next) => {
 
 //auth
 app.post("/Chipper/Register", auth.registerUser)
-
-app.listen(SERVER_PORT, () => console.log(`Server is listening on entry port ${SERVER_PORT}`))
-
-//twilio
-app.post("/sms", (req, res) => {
-    console.log(req.body)
-    client.messages.create({
-        from: TWILIO_PHONE_NUMBER,
-        to: req.body.number,
-        body: `Hello ${req.body.name}. I found your service on Chipper. ${req.body.message}. Please contact me at: ${req.body.userNumber} when available.`
-    })
-        .then(() => {
-            res.json({ success: true });
-        })
-        .catch(err => {
-            console.log(err);
-            res.json({ success: false });
-        });
-  });
-
-//auth
-app.post("/Chipper/Register", auth.registerUser)
 app.post("/Chipper/Login", auth.loginUser)
 
 //pet
 app.post("/Chipper/Pet/Add", pet.addPet)
 app.delete("/Chipper/Pet/Remove/:pet_id", pet.deletePet)
 app.put("/Chipper/Pet/Edit/:pet_id", pet.editPet)
+app.get("/Chipper/MyPets", pet.ownersPets)
 
 //walker
 app.get("/Chipper/Walker/Application/:application_id", walker.applicationDetails)
 app.get("/Chipper/Walker/Applications/Pending", walker.allApplications)
 app.get("/Chipper/Walker/Applications/Approved", walker.allAccepted)
-app.post("/Chipper/Walker/Applications/Submitted", walker.applyWalker)
+app.post("/Chipper/Walker/Applications/Submitted", walker.applyWalker) //where all apps are put
 app.delete("/Chipper/Walker/Application/Deny/:application_id", walker.denyWalker)
 app.put("/Chipper/Walker/Application/Approve/:application_id", walker.acceptWalker)
 
-app.listen(6942, () => console.log("Port 6942"))
+
+
+app.listen(SERVER_PORT, () => console.log(`Server is listening on entry port ${SERVER_PORT}`))
+
+// //twilio
+// app.post("/sms", (req, res) => {
+//     console.log(req.body)
+//     client.messages.create({
+//         from: TWILIO_PHONE_NUMBER,
+//         to: req.body.number,
+//         body: `Hello ${req.body.name}. I found your service on Chipper. ${req.body.message}. Please contact me at: ${req.body.userNumber} when available.`
+//     })
+//         .then(() => {
+//             res.json({ success: true });
+//         })
+//         .catch(err => {
+//             console.log(err);
+//             res.json({ success: false });
+//         });
+//   });
