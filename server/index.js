@@ -4,7 +4,7 @@ const app = express()
 const session = require("express-session")
 const massive = require("massive")
 const {TWILIO_PHONE_NUMBER, ACCOUNT_SID, AUTH_TOKEN, SERVER_PORT} = process.env;
-// const client = require('twilio')(ACCOUNT_SID, AUTH_TOKEN);
+const client = require('twilio')(ACCOUNT_SID, AUTH_TOKEN);
 
 //controllers
 const auth = require("./controllers/authController")
@@ -58,19 +58,19 @@ app.put("/Chipper/Walker/Application/Approve/:application_id", walker.acceptWalk
 
 app.listen(SERVER_PORT, () => console.log(`Server is listening on entry port ${SERVER_PORT}`))
 
-// //twilio
-// app.post("/sms", (req, res) => {
-//     console.log(req.body)
-//     client.messages.create({
-//         from: TWILIO_PHONE_NUMBER,
-//         to: req.body.number,
-//         body: `Hello ${req.body.name}. I found your service on Chipper. ${req.body.message}. Please contact me at: ${req.body.userNumber} when available.`
-//     })
-//         .then(() => {
-//             res.json({ success: true });
-//         })
-//         .catch(err => {
-//             console.log(err);
-//             res.json({ success: false });
-//         });
-//   });
+//twilio
+app.post("/sms", (req, res) => {
+    console.log(req.body)
+    client.messages.create({
+        from: TWILIO_PHONE_NUMBER,
+        to: req.body.number,
+        body: `Hello ${req.body.name}. I found your service on Chipper. ${req.body.message}. Please contact me at: ${req.body.userNumber} when available.`
+    })
+        .then(() => {
+            res.json({ success: true });
+        })
+        .catch(err => {
+            console.log(err);
+            res.json({ success: false });
+        });
+  });

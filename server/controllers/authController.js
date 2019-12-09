@@ -3,9 +3,6 @@ const bcrypt = require("bcryptjs");
 const registerUser = async (req, res) => {
     const {username, firstname, lastname, password, email, profileimg, phone, address, zip, city, state, apt} = req.body;
     const db = req.app.get("db")
-    if(apt === null){
-        apt = "no"
-    }
     const checkUser = await db.checkUser([username])
     if(checkUser.length === 0){
         const salt = bcrypt.genSaltSync(10);
