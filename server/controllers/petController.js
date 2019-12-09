@@ -1,8 +1,8 @@
 const addPet = async (req, res) => {
-    const {name, breed, age} = req.body;
+    const {name, breed, age, img} = req.body;
     const id  = req.session.user.id
     const db = req.app.get("db")
-    const addPet = await db.addPet(id, name, breed, age)
+    await db.addPet(id, name, breed, age, img)
     res.status(200).json("Pet added")
 }
 

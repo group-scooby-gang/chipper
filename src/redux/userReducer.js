@@ -8,6 +8,9 @@ const initialState = {
   password: '',
   phone: 0,
   address: '',
+  city: '',
+  state: '',
+  apt: 0,
   zip: 0,
   profileImg: 'https://i.pinimg.com/originals/0c/92/0d/0c920d58b210a74a75868df885160a5f.jpg'
 };
@@ -30,7 +33,7 @@ export const resetFields = () => {
   }
 }
 
-export function registerUser(username, firstName, lastName, password, email, profileImg, phone, address, zip) {
+export function registerUser(username, firstName, lastName, password, email, profileImg, phone, address, apt, city, state, zip) {
   return {
     type: REGISTER_USER,
     payload: axios.post('/Chipper/Register', {
@@ -42,6 +45,9 @@ export function registerUser(username, firstName, lastName, password, email, pro
       profileimg: profileImg,
       phone: phone,
       address: address,
+      apt: apt,
+      city: city,
+      state: state,
       zip: zip
     })
   };

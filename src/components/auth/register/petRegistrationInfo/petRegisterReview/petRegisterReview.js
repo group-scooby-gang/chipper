@@ -11,8 +11,8 @@ class PetRegisterReview extends Component {
 
     handleRegisterPet = async(e) => {
         e.preventDefault();
-        const {name, breed, age} = this.props;
-        await this.props.registerPet(name, breed, age)
+        const {name, breed, age, img} = this.props;
+        await this.props.registerPet(name, breed, age, img)
             .then(() => {
                 this.props.resetFields();
                 this.props.history.push('/dashboard/owner');

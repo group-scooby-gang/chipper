@@ -25,10 +25,15 @@ export const resetFields = () => {
     }
 }
 
-export const registerPet = (petInfo) => {
+export const registerPet = (name, breed, age, img) => {
     return {
         type: REGISTER_PET,
-        payload: axios.post('/Chipper/Register/Pet', petInfo)
+        payload: axios.post('/Chipper/Pet/Add', {
+            name: name,
+            breed: breed,
+            age: age,
+            img: img
+        })
     }
 }
 
@@ -51,10 +56,9 @@ export default function petReducer(state = initialState, action) {
             };
         case `${REGISTER_PET}_FULFILLED`:
             return {
+                ...state,
                 loading: false,
-                name: payload.data.name,
-                breed: payload.data.breed,
-                age: payload.data.age
+                payload: payload.data
             };
         default:
             return state;

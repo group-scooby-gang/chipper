@@ -9,7 +9,7 @@ import PetRegisterName from './components/auth/register/petRegistrationInfo/petR
 import PetRegisterBreed from './components/auth/register/petRegistrationInfo/petRegisterBreed/petRegisterBreed';
 import PetRegisterAge from './components/auth/register/petRegistrationInfo/petRegisterAge/petRegisterAge';
 import PetRegisterReview from './components/auth/register/petRegistrationInfo/petRegisterReview/petRegisterReview';
-import RegisterWalkerInfo from './components/auth/register/walkerInfo/walkerInfo';
+import RegisterWalkerInfo from './components/auth/register/walkerInfo/walkerInfo1/walkerInfo';
 import RegisterWalkerInfoStep2 from './components/auth/register/walkerInfo/walkerInfo2/walkerInfo2';
 import RegisterWalkerAddress from './components/auth/register/walkerInfo/walkerAddress/walkerAddress';
 import RegisterWalkerZip from './components/auth/register/walkerInfo/walkerZipCode/walkerZipCode';

@@ -14,7 +14,7 @@ class RegisterWalkerInfoStep2 extends Component {
     }
 
     nextButton = () => {
-        this.props.history.push('/register/walker/address');
+        this.props.history.push('/register/walker/review');
     }
 
     render() {
@@ -23,10 +23,25 @@ class RegisterWalkerInfoStep2 extends Component {
                 <div onClick={this.goBack}><i class="fas fa-angle-left"></i></div>
                 <img src="https://image.shutterstock.com/image-vector/man-walking-many-dogs-different-260nw-505695991.jpg" alt="dog_walker"/>
                 <div>Step 2</div>
-                <form>
-                    <input onChange={this.handleChange} placeholder='email' type="text" name='email'/>
-                    <input onChange={this.handleChange} placeholder='(123) 456-7890' type="text" name='phone'/>
-                </form>
+                <div>
+                    <p>Prices</p>
+                    <div>
+                        <h6>15 min.</h6>
+                        $<input onChange={this.handleChange} type="number" name="fifteen" />
+                    </div>
+                    <div>
+                        <h6>30 min.</h6>
+                        $<input onChange={this.handleChange} type="number" name="thirty" />
+                    </div>
+                    <div>
+                        <h6>45 min.</h6>
+                        $<input onChange={this.handleChange} type="number" name="fourtyfive"/>
+                    </div>
+                    <div>
+                        <h6>60 min.</h6>
+                        $<input onChange={this.handleChange} type="number" name='sixty'/>
+                    </div>
+                </div>
                 <button onClick={this.nextButton}>Next</button>
             </div>
         )

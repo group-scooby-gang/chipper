@@ -1,14 +1,12 @@
 import axios from 'axios';
 
 const initialState = {
-    firstname: '',
-    lastname: '',
-    username: '',
-    password: '',
-    email: '',
-    phone: 0,
-    address: '',
-    zip: 0,
+    category: 'walker',
+    bio: '',
+    fifteen: 0,
+    thirty: 0,
+    fortyfive: 0,
+    sixty: 0,
     loading: false
 }
 
@@ -29,10 +27,17 @@ export const resetFields = () => {
     }
 }
 
-export const registerWalker = (walkerInfo) => {
+export const registerWalker = (bio, category, fifteen, thirty, fortyfive, sixty) => {
     return {
         type: REGISTER_WALKER,
-        payload: axios.post('/Chipper/Register/Walker', walkerInfo)
+        payload: axios.post('/Chipper/Walker/Applications/Submitted', {
+            experience: bio,
+            category: category,
+            fifteen: fifteen,
+            thirty: thirty,
+            fortyfive: fortyfive,
+            sixty: sixty
+        })
     }
 }
 
@@ -55,15 +60,9 @@ export default function walkerReducer(state = initialState, action) {
             };
         case `${REGISTER_WALKER}_FULFILLED`:
             return {
+                ...state,
                 loading: false,
-                firstname: payload.data.firstname,
-                lastname: payload.data.lastname,
-                username: payload.data.username,
-                password: payload.data.password,
-                email: payload.data.email,
-                phone: payload.data.phone,
-                address: payload.data.address,
-                zip: payload.data.zip
+                payload: payload.data
             }
         default:
             return state;
