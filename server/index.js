@@ -46,8 +46,14 @@ app.use((req, res, next) => {
 });
 
 //auth
+
+app.post("/Chipper/Register", auth.registerUser)
+
+
 app.post('/Chipper/Register', auth.registerUser);
 app.post('/Chipper/Login', auth.loginUser);
+
+app.listen(6942, () => console.log('Port 6942'));
 
 //auth
 app.post('/Chipper/Register', auth.registerUser);
@@ -78,6 +84,11 @@ app.put(
 app.listen(SERVER_PORT, () =>
 	console.log(`Server is listening on entry port ${SERVER_PORT}`)
 );
+
+
+app.listen(SERVER_PORT, () => console.log(`Server is listening on entry port ${SERVER_PORT}`))
+
+//twilio
 
 //twilio
 app.post('/sms', (req, res) => {
