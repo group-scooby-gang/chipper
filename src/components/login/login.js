@@ -17,21 +17,21 @@ class login extends Component {
 	};
 	handleSubmit = (e) => {
 		e.preventDefault();
-		axios.post('/Chipper/Login', {
-			username: this.state.username,
-			password: this.state.password
-		})
-		.then(() => {
-			axios.get('/Chipper/Check/Walker')
-				.then((res) => {
+		axios
+			.post('/Chipper/Login', {
+				username: this.state.username,
+				password: this.state.password
+			})
+			.then(() => {
+				axios.get('/Chipper/Check/Walker').then((res) => {
 					console.log(res);
 					if (res.data.isWalker === false) {
 						this.props.history.push('/owner/dashboard');
 					} else {
 						this.props.history.push('/walker/dashboard');
 					}
-				})
-		})
+				});
+			});
 	};
 
 	render() {

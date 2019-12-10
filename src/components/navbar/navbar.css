@@ -1,0 +1,44 @@
+.nav {
+	display: flex;
+	background-color: grey;
+	height: 5vh;
+	align-items: center;
+	width: 100%;
+	justify-content: flex-start;
+}
+.nav i {
+	margin-left: 10px;
+}
+.nav-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.hamburger {
+	padding: 5px;
+	margin-left: 10px;
+}
+
+.ham {
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	padding: 5%;
+
+	background-color: grey;
+	width: 30vw;
+	justify-content: space-around;
+	height: 20vh;
+	color: white;
+	text-decoration: none;
+}
+
+.ham button {
+	color: white;
+	background-color: grey;
+	border: none;
+	height: 5vh;
+	width: 10vw;
+	font-size: 1em;
+	margin-left: 18%;
+}
