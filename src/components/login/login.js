@@ -31,8 +31,8 @@ class login extends Component {
 					} else {
 						this.props.history.push('/walker/dashboard');
 					}
-				})
-		})
+				});
+			});
 	};
 
 	render() {

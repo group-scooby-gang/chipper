@@ -73,21 +73,24 @@ app.put(
 	walker.acceptWalker
 );
 
-app.listen(SERVER_PORT, () => console.log(`Server is listening on entry port ${SERVER_PORT}`))
+app.listen(SERVER_PORT, () =>
+	console.log(`Server is listening on entry port ${SERVER_PORT}`)
+);
 
 //twilio
-app.post("/sms", (req, res) => {
-    console.log(req.body)
-    client.messages.create({
-        from: TWILIO_PHONE_NUMBER,
-        to: req.body.number,
-        body: `Hello ${req.body.name}. I found your service on Chipper. ${req.body.message}. Please contact me at: ${req.body.userNumber} when available.`
-    })
-        .then(() => {
-            res.json({ success: true });
-        })
-        .catch(err => {
-            console.log(err);
-            res.json({ success: false });
-        });
-  });
+app.post('/sms', (req, res) => {
+	console.log(req.body);
+	client.messages
+		.create({
+			from: TWILIO_PHONE_NUMBER,
+			to: req.body.number,
+			body: `Hello ${req.body.name}. I found your service on Chipper. ${req.body.message}. Please contact me at: ${req.body.userNumber} when available.`
+		})
+		.then(() => {
+			res.json({ success: true });
+		})
+		.catch((err) => {
+			console.log(err);
+			res.json({ success: false });
+		});
+});
