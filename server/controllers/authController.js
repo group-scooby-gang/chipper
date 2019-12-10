@@ -50,7 +50,7 @@ const loginUser  = async (req, res) => {
             isWalker: false
         }
         res.status(200).json(req.session.user)
-        console.log(req.session.user)
+        // console.log(req.session.user)
     } else {
         res.status(403).json("Invalid Login")
     }
@@ -60,16 +60,24 @@ const isWalker = async (req, res) => {
     const db = req.app.get("db")
     const id = req.session.user.id;
     const check = await db.checkIfWalker(id);
-    if(check){
+    if(check.length > 0){
         req.session.user.isWalker = true
-    } else {  
+    } else {
+        req.session.user.isWalker = false
     }
 
-    console.log(req.session.user)
+    console.log(req.session.user);
+    res.status(200).json(req.session.user);
+}
+
+const logoutUser = async(req, res) => {
+    req.session.destroy()
+    res.status(200).json("Logged Out")
 }
 
 module.exports = {
     registerUser,
     loginUser,
-    isWalker
+    isWalker,
+    logoutUser
 }

@@ -1,0 +1,41 @@
+.walkerDashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.next_walk_section {
+    border: 1px solid rgb(167, 167, 167);
+    width: 70%;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 2%;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 2.5px 5px 0px;
+}
+
+.next_walk_section div {
+    align-self: center;
+}
+
+.button_section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 20vh;
+    width: 70%;
+}
+
+.button_section button {
+    height: 5vh;
+    width: 75%;
+    border-radius: 2%;
+}
+
+.button_section button:hover {
+    border: 1px solid grey;
+    cursor: pointer;
+}

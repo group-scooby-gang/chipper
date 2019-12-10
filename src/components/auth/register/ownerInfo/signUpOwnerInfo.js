@@ -1,25 +1,36 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import './signUpOwnerInfo.css';
+import {connect} from 'react-redux';
 
 class RegisterOwnerInfo extends Component {
+
+  goBack = () => {
+    this.props.history.goBack();
+  }
+
+  next = () => {
+    this.props.history.push('/register/pet/name')
+  }
+
+
   render() {
     return (
       <div>
-        <h1>Dog Owner</h1>
-        <form className='ownerInfoForm'>
-          <input type="text" placeholder="first name" />
-          <input type="text" placeholder="last name" />
-          <input type="text" placeholder="email" />
-          <input type="text" placeholder="username" />
-          <input type="password" placeholder="password" />
-        </form>
-        <Link>
-          <button>Add Pup</button>
-        </Link>
+        <div><i onClick={this.goBack} class="fas fa-angle-left"></i></div>
+        <img src="https://media.istockphoto.com/vectors/man-and-his-best-friend-dog-cuddle-hug-backside-view-cute-cartoon-vector-id1018691406?k=6&m=1018691406&s=612x612&w=0&h=W_rDzQk3a1n4PaS8xJwa396YLmMsv1FMqyEs1Bfponw=" alt="dog_owner"/>
+          <button onClick={this.next}>Add Pup</button>
+          
       </div>
     );
   }
 }
 
-export default RegisterOwnerInfo;
+const mapStateToProps = state => {
+  return {
+    
+  }
+}
+
+export default connect(mapStateToProps, {
+  
+})(RegisterOwnerInfo);
