@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import './signUpUserType.css';
 import { updateState, resetFields, registerUser } from '../../../../redux/userReducer';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class UserType extends Component {
   state = {
@@ -32,7 +33,12 @@ class UserType extends Component {
       zip
     ).then(() => {
       this.props.resetFields()
-      this.props.history.push('/register/owner/info')
+      axios.post('/Chipper/Login', {
+        username: this.props.userName,
+        password: this.props.password
+      }).then(() => {
+        this.props.history.push('/register/owner/info')
+      })
     }).catch(() => {
       this.setState({ error: true });
     })
