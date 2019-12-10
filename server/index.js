@@ -48,6 +48,8 @@ app.use((req, res, next) => {
 //auth
 app.post('/Chipper/Register', auth.registerUser);
 app.post('/Chipper/Login', auth.loginUser);
+app.get('/Chipper/Check/Walker', auth.isWalker);
+app.post('/Chipper/Logout', auth.logoutUser);
 
 //pet
 app.post('/Chipper/Pet/Add', pet.addPet);

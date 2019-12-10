@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './walkerDashboard.css';
 import { } from './../../../redux/walkerReducer';
+import {logoutUser} from './../../../redux/userReducer';
 import { connect } from 'react-redux';
 
 class WalkerDashboard extends Component {
@@ -27,6 +28,7 @@ class WalkerDashboard extends Component {
         const { username } = this.props;
         return (
             <div className='walkerDashboard'>
+                <button onClick={() => this.props.logoutUser().then(() => this.props.history.push('/'))}>Logout</button>
                 <div>{username}</div>
                 <div className='next_walk_section'>
                     <h3>Next Walk:</h3>
@@ -60,5 +62,5 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, {
-
+    logoutUser
 })(WalkerDashboard);

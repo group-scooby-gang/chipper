@@ -56,7 +56,7 @@ export function registerUser(username, firstName, lastName, password, email, pro
 export function logoutUser() {
   return {
     type: LOGOUT_USER,
-    payload: axios.post('')
+    payload: axios.post('/Chipper/Logout')
   };
 }
 
