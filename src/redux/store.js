@@ -1,8 +1,17 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import userReducer from './userReducer';
-import twilioReducer from './twillioReducer';
 import promise from 'redux-promise-middleware';
 
-const rootReducer = combineReducers({ userReducer, TR: twilioReducer });
+//reducers
+import userReducer from './userReducer';
+import petReducer from './petReducer';
+import walkerReducer from './walkerReducer';
+import twilioReducer from './twillioReducer';
+
+const rootReducer = combineReducers({ 
+    userReducer,
+    petReducer,
+    walkerReducer,
+    TR: twilioReducer
+});
 
 export default createStore(rootReducer, applyMiddleware(promise));

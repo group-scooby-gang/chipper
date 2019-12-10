@@ -48,6 +48,8 @@ app.use((req, res, next) => {
 //auth
 app.post('/Chipper/Register', auth.registerUser);
 app.post('/Chipper/Login', auth.loginUser);
+app.get('/Chipper/Check/Walker', auth.isWalker);
+app.post('/Chipper/Logout', auth.logoutUser);
 
 //pet
 app.post('/Chipper/Pet/Add', pet.addPet);
@@ -62,25 +64,25 @@ app.post('/Chipper/Walker/Applications/Submitted', walker.applyWalker);
 app.delete('/Chipper/Walker/Application/Deny/:application_id', walker.denyWalker);
 app.put('/Chipper/Walker/Application/Approve/:application_id', walker.acceptWalker);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 app.listen(SERVER_PORT, () => console.log(`Server is listening on entry port ${SERVER_PORT}`))
 
 //twilio
-
-//twilio
-app.post('/sms', (req, res) => {
-	console.log(req.body);
-	client.messages
-		.create({
-			from: TWILIO_PHONE_NUMBER,
-			to: req.body.number,
-			body: `Hello ${req.body.name}. I found your service on Chipper. ${req.body.message}. Please contact me at: ${req.body.userNumber} when available.`
-		})
-		.then(() => {
-			res.json({ success: true });
-		})
-		.catch((err) => {
-			console.log(err);
-			res.json({ success: false });
-		});
-});
+app.post("/sms", (req, res) => {
+    console.log(req.body)
+    client.messages.create({
+        from: TWILIO_PHONE_NUMBER,
+        to: req.body.number,
+        body: `Hello ${req.body.name}. I found your service on Chipper. ${req.body.message}. Please contact me at: ${req.body.userNumber} when available.`
+    })
+        .then(() => {
+            res.json({ success: true });
+        })
+        .catch(err => {
+            console.log(err);
+            res.json({ success: false });
+        });
+  });
