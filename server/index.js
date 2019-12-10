@@ -46,17 +46,11 @@ app.use((req, res, next) => {
 });
 
 //auth
-<<<<<<< HEAD
 app.post("/Chipper/Register", auth.registerUser)
 
-=======
 app.post('/Chipper/Register', auth.registerUser);
 app.post('/Chipper/Login', auth.loginUser);
 
-<<<<<<< HEAD
-app.listen(6942, () => console.log('Port 6942'));
-=======
->>>>>>> master
 //auth
 app.post('/Chipper/Register', auth.registerUser);
 app.post('/Chipper/Login', auth.loginUser);
@@ -83,11 +77,6 @@ app.put(
 	walker.acceptWalker
 );
 
-app.listen(SERVER_PORT, () =>
-	console.log(`Server is listening on entry port ${SERVER_PORT}`)
-);
-
-<<<<<<< HEAD
 app.listen(SERVER_PORT, () => console.log(`Server is listening on entry port ${SERVER_PORT}`))
 
 //twilio
@@ -106,7 +95,7 @@ app.post("/sms", (req, res) => {
             res.json({ success: false });
         });
   });
-=======
+
 //twilio
 app.post('/sms', (req, res) => {
 	console.log(req.body);
@@ -124,5 +113,3 @@ app.post('/sms', (req, res) => {
 			res.json({ success: false });
 		});
 });
->>>>>>> master
->>>>>>> master
