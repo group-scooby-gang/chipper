@@ -46,16 +46,6 @@ app.use((req, res, next) => {
 });
 
 //auth
-
-app.post("/Chipper/Register", auth.registerUser)
-
-
-app.post('/Chipper/Register', auth.registerUser);
-app.post('/Chipper/Login', auth.loginUser);
-
-app.listen(6942, () => console.log('Port 6942'));
-
-//auth
 app.post('/Chipper/Register', auth.registerUser);
 app.post('/Chipper/Login', auth.loginUser);
 
@@ -65,29 +55,13 @@ app.delete('/Chipper/Pet/Remove/:pet_id', pet.deletePet);
 app.put('/Chipper/Pet/Edit/:pet_id', pet.editPet);
 
 //walker
-app.get(
-	'/Chipper/Walker/Application/:application_id',
-	walker.applicationDetails
-);
+app.get('/Chipper/Walker/Application/:application_id', walker.applicationDetails);
 app.get('/Chipper/Walker/Applications/Pending', walker.allApplications);
 app.get('/Chipper/Walker/Applications/Approved', walker.allAccepted);
 app.post('/Chipper/Walker/Applications/Submitted', walker.applyWalker);
-app.delete(
-	'/Chipper/Walker/Application/Deny/:application_id',
-	walker.denyWalker
-);
-app.put(
-	'/Chipper/Walker/Application/Approve/:application_id',
-	walker.acceptWalker
-);
+app.delete('/Chipper/Walker/Application/Deny/:application_id', walker.denyWalker);
+app.put('/Chipper/Walker/Application/Approve/:application_id', walker.acceptWalker);
 
-app.listen(SERVER_PORT, () =>
-	console.log(`Server is listening on entry port ${SERVER_PORT}`)
-);
-
-app.listen(SERVER_PORT, () =>
-  console.log(`Server is listening on entry port ${SERVER_PORT}`)
-);
 
 app.listen(SERVER_PORT, () => console.log(`Server is listening on entry port ${SERVER_PORT}`))
 
