@@ -1,0 +1,52 @@
+.walker_schedule {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pending_walks_section {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+
+.pending_walks_section h4 {
+    margin-bottom: 0;
+}
+
+.pending_walks_list {
+    border: 1px solid lightgray;
+    width: 100%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.picture_and_name {
+    display: flex;
+}
+
+.pending_walks_list p {
+    align-self: center;
+}
+
+.pending_buttons {
+    align-self: center;
+}
+
+.scheduled_walks_section {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+
+.scheduled_walks_section h4 {
+    margin-bottom: 0;
+}
+
+.scheduled_walks_list {
+    border: 1px solid lightgray;
+    width: 100%;
+    align-self: center;
+}

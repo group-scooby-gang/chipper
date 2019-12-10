@@ -48,6 +48,8 @@ app.use((req, res, next) => {
 //auth
 app.post('/Chipper/Register', auth.registerUser);
 app.post('/Chipper/Login', auth.loginUser);
+app.get('/Chipper/Check/Walker', auth.isWalker);
+app.post('/Chipper/Logout', auth.logoutUser);
 
 //pet
 app.post('/Chipper/Pet/Add', pet.addPet);
@@ -75,7 +77,6 @@ app.listen(SERVER_PORT, () =>
 	console.log(`Server is listening on entry port ${SERVER_PORT}`)
 );
 
-
 //twilio
 app.post('/sms', (req, res) => {
 	console.log(req.body);
@@ -93,4 +94,3 @@ app.post('/sms', (req, res) => {
 			res.json({ success: false });
 		});
 });
-
