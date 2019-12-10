@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './walkerDashboard.css';
 import { } from './../../../redux/walkerReducer';
-import {logoutUser} from './../../../redux/userReducer';
+import { logoutUser } from './../../../redux/userReducer';
 import { connect } from 'react-redux';
 
 class WalkerDashboard extends Component {
@@ -15,17 +15,18 @@ class WalkerDashboard extends Component {
     }
 
     handleClickSchedule = () => {
-        this.setState({ dogsNeedWalking: 'closed'})
+        this.setState({ dogsNeedWalking: 'closed' })
         this.props.history.push('/walker/schedule')
     }
 
     handleClickPendingJobs = () => {
-        this.setState({ dogsNeedWalking: 'closed'})
+        this.setState({ dogsNeedWalking: 'closed' })
         this.props.history.push('/walker/schedule')
     }
 
     render() {
-        const { username } = this.props;
+        console.log(this.props.user);
+        const { username } = this.props.user;
         return (
             <div className='walkerDashboard'>
                 <button onClick={() => this.props.logoutUser().then(() => this.props.history.push('/'))}>Logout</button>
@@ -41,15 +42,23 @@ class WalkerDashboard extends Component {
                 </div>
                 {
                     this.state.dogsNeedWalking === 'open'
-                ?
-                    <div>
-                        <h5>Dogs Need Walking</h5>
-                        <input type="radio" name="name" value='dog_name'/> Name - Owner(distance away) <br/>
-                        <input type="radio" name="name" value='dog_name2'/> Name - Owner(distance away) <br/>
-                    </div>
-                :
-                    null
+                        ?
+                        <div className='dogs_need_walking'>
+                            <h4>Dogs Need Walking</h4>
+                            <div>
+                                <input type="radio" name="name" value='dog_name' /> Name - Owner(distance away) <br />
+                                <input type="radio" name="name" value='dog_name2' /> Name - Owner(distance away) <br />
+                            </div>
+                            <button>Walk</button>
+                        </div>
+                        :
+                        null
                 }
+                <footer>
+                    <h2>Home</h2>
+                    <h3>|</h3>
+                    <h2>Schedule</h2>
+                </footer>
             </div>
         )
     }
@@ -57,7 +66,8 @@ class WalkerDashboard extends Component {
 
 const mapStateToProps = state => {
     return {
-        username: state.walkerReducer.username
+        username: state.walkerReducer.username,
+        user: state.userReducer.user
     }
 }
 

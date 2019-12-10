@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import { loginUser } from '../../redux/userReducer';
+import { updateState } from '../../redux/userReducer';
 import './login.css';
 import axios from 'axios';
 
@@ -21,7 +21,8 @@ class login extends Component {
 			username: this.state.username,
 			password: this.state.password
 		})
-		.then(() => {
+		.then((res) => {
+			this.props.updateState({ user: res.data})
 			axios.get('/Chipper/Check/Walker')
 				.then((res) => {
 					console.log(res);
@@ -86,8 +87,11 @@ class login extends Component {
 const mapStateToProps = (reduxState) => {
 	return {
 		username: reduxState.userReducer.username,
-		password: reduxState.userReducer.password
+		password: reduxState.userReducer.password,
+		user: reduxState.userReducer.user
 	};
 };
 
-export default connect(mapStateToProps)(login);
+export default connect(mapStateToProps, {
+	updateState
+})(login);
