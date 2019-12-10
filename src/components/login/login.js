@@ -8,7 +8,8 @@ import axios from 'axios';
 class login extends Component {
 	state = {
 		username: '',
-		password: ''
+		password: '',
+		user: []
 	};
 
 	handleInput = (e) => {
@@ -16,11 +17,21 @@ class login extends Component {
 	};
 	handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(this.state);
 		axios.post('/Chipper/Login', {
 			username: this.state.username,
 			password: this.state.password
-		});
+		})
+		.then(() => {
+			axios.get('/Chipper/Check/Walker')
+				.then((res) => {
+					console.log(res);
+					if (res.data.isWalker === false) {
+						this.props.history.push('/owner/dashboard');
+					} else {
+						this.props.history.push('/walker/dashboard');
+					}
+				})
+		})
 	};
 
 	render() {
