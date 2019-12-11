@@ -44,11 +44,19 @@ const applicationDetails = async (req, res) => {
     res.status(200).json(applicationDets)
 }
 
+const getWalkerSchedule = async (req, res) => {
+    const db = req.app.get("db")
+    const id = req.session.user.id;
+    const schedule = await db.WalkerSchedule(id)
+    res.status(200).json(schedule)
+}
+
 module.exports = {
     applyWalker,
     denyWalker,
     acceptWalker,
     allApplications,
     allAccepted,
-    applicationDetails
+    applicationDetails,
+    getWalkerSchedule
 }

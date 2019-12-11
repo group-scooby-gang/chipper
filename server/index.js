@@ -15,6 +15,8 @@ const client = require('twilio')(ACCOUNT_SID, AUTH_TOKEN);
 const auth = require('./controllers/authController');
 const pet = require('./controllers/petController');
 const walker = require('./controllers/walkerController');
+const job = require("./controllers/jobsController")
+const owner = require("./controllers/ownerController")
 
 massive(process.env.CONNECTION_STRING)
 	.then((dbInstance) => {
@@ -57,21 +59,24 @@ app.delete('/Chipper/Pet/Remove/:pet_id', pet.deletePet);
 app.put('/Chipper/Pet/Edit/:pet_id', pet.editPet);
 
 //walker
-app.get(
-	'/Chipper/Walker/Application/:application_id',
-	walker.applicationDetails
-);
+app.get('/Chipper/Walker/Application/:application_id', walker.applicationDetails);
 app.get('/Chipper/Walker/Applications/Pending', walker.allApplications);
 app.get('/Chipper/Walker/Applications/Approved', walker.allAccepted);
 app.post('/Chipper/Walker/Applications/Submitted', walker.applyWalker);
-app.delete(
-	'/Chipper/Walker/Application/Deny/:application_id',
-	walker.denyWalker
-);
-app.put(
-	'/Chipper/Walker/Application/Approve/:application_id',
-	walker.acceptWalker
-);
+app.delete('/Chipper/Walker/Application/Deny/:application_id', walker.denyWalker);
+app.put('/Chipper/Walker/Application/Approve/:application_id', walker.acceptWalker);
+app.get("/Chipper/Walker/NextJobs", walker.getWalkerSchedule)
+
+//jobs
+app.post("/Chipper/Jobs/Hire", job.addJob) //Where jobs are posted into db and put as false (aka pending)
+app.put("/Chipper/Jobs/Accept/:job_id", job.acceptJob) //Where walkers accept jobs
+app.delete("/Chipper/Jobs/Decline/:job_id", job.declineJob) //Where walkers decline jobs
+app.get("/Chipper/Jobs/Pending", job.walkerPendingJobs) //Where walkers can see their pending hires
+
+
+//owner
+app.get("/Chipper/Owner/Schedule", owner.ownerSchedule)
+app.get("/Chipper/Owner/Pets", pet.ownersPets)
 
 app.listen(SERVER_PORT, () =>
 	console.log(`Server is listening on entry port ${SERVER_PORT}`)
