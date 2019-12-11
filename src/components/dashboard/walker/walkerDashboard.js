@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './walkerDashboard.css';
-import { getWalkerSchedule, getPets } from './../../../redux/walkerReducer';
+import { getWalkerSchedule } from './../../../redux/walkerReducer';
 import { logoutUser } from './../../../redux/userReducer';
 import { connect } from 'react-redux';
 
@@ -31,14 +31,9 @@ class WalkerDashboard extends Component {
     getNextWalk = async () => {
         const { id } = this.props.user;
         await this.props.getWalkerSchedule(id);
-        // await this.props.getPets(this.props.schedule[0].owner_id)
     }
 
     render() {
-        console.log(this.props.schedule)
-        console.log(this.props.schedule[0])
-        // console.log(this.props.pets)
-        console.log(this.props.user.id);
         const month = this.props.schedule[0] ? this.props.schedule[0].month : null;
         const date = this.props.schedule[0] ? this.props.schedule[0].date : null;
         const year = this.props.schedule[0] ? this.props.schedule[0].year : null;
@@ -104,6 +99,5 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
     logoutUser,
-    getWalkerSchedule,
-    getPets
+    getWalkerSchedule
 })(WalkerDashboard);
