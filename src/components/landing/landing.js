@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useRef} from 'react'
+import {TweenMax, Power3} from "gsap"
 import "./landing.css"
 
 class landing extends React.Component {
@@ -12,7 +13,7 @@ class landing extends React.Component {
             sitter: "sitterIntroClosed"
         }
     }
-
+ 
     handleOwner = () => {
         if(this.state.owner === "ownerIntroClosed"){
             this.setState({owner: "ownerIntroOpen"})
