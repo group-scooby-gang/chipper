@@ -27,7 +27,6 @@
     "redux": "^4.0.4",
     "redux-promise": "^0.6.0",
     "redux-promise-middleware": "^6.1.2",
-    "serialize-javascript": "^2.1.2",
     "twilio": "^3.38.0"
   },
   "scripts": {
