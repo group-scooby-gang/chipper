@@ -1,0 +1,36 @@
+.pet_review_page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.back_button {
+    margin: 2.5% 0% 0% 2.5%;
+    align-self: flex-start;
+}
+
+.back_button:hover {
+    cursor: pointer;
+}
+
+.pet_review_page img {
+    width: 40%;
+    margin: 2% 0 0 0;
+}
+
+.pet_review_page h5 {
+    margin-bottom: 0.25%;
+}
+
+.pet_review_page button {
+    width: 30%;
+    height: 5vh;
+    margin: 1% 0 1% 0;
+}
+
+.pet_review_page button:hover {
+    cursor: pointer;
+    border: 1px solid grey;
+    color: rgba(0, 0, 0, 0.24);
+}

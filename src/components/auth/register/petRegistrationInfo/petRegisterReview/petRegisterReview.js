@@ -22,8 +22,8 @@ class PetRegisterReview extends Component {
     render() {
         const {name, breed, age, img} = this.props;
         return (
-            <div>
-                <div onClick={this.goBack}><i class="fas fa-angle-left"></i></div>
+            <div className='pet_review_page'>
+                <div className='back_button' onClick={this.goBack}><i class="fas fa-angle-left"></i></div>
                 <h1>Pet Info</h1>
                 <img src={img} alt="owner_dog_picture"/>
                 <h5>Name:</h5>

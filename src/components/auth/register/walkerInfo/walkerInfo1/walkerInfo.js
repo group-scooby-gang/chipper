@@ -23,9 +23,9 @@ class RegisterWalkerInfo extends Component {
 
     render() {
         return (
-            <div>
-                <div><i onClick={this.goBack} class="fas fa-angle-left"></i></div>
-                <img src="https://image.shutterstock.com/image-vector/man-walking-many-dogs-different-260nw-505695991.jpg" alt="dog_walker"/>
+            <div className='walker_info_page'>
+                <div className='back_button' onClick={this.goBack}><i class="fas fa-angle-left"></i></div>
+                <img src="https://st.depositphotos.com/1695366/1398/v/950/depositphotos_13980479-stock-illustration-cartoon-dog-walker.jpg" alt="dog_walker"/>
                 <h1>Dog Walker</h1>
                 <textarea onChange={this.handleChange} name="bio" placeholder='Short bio of who you are.' cols="30" rows="10"></textarea>
                 <button onClick={this.nextButton}>Next</button>

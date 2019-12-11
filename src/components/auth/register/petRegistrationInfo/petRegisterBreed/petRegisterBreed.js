@@ -21,8 +21,8 @@ class PetRegisterBreed extends Component {
   render() {
     const { name } = this.props;
     return (
-      <div>
-          <div onClick={this.goBack}><i class="fas fa-angle-left"></i></div>
+      <div className='pet_breed_page'>
+          <div className='back_button' onClick={this.goBack}><i class="fas fa-angle-left"></i></div>
         <img
           src="https://i.pinimg.com/474x/06/8c/1f/068c1f4c21930fadb89f90de70426d54--queen-cersei-ned-stark.jpg"
           alt="dog_picture"

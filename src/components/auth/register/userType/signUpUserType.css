@@ -1,4 +1,59 @@
+.register_user_page {
+    display: flex;
+    flex-direction: column;
+}
+
+h1  {
+    align-self: center;
+    color: #d2b338;
+}
+
+img {
+    align-self: center;
+    margin: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: space-around;
+    width: 80%;
+    height: 45vh;
+    border: 1px solid #d2b338;
+    margin: 2.5% 0 0% 0;
+    background-color: #d2b338;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 2.5px 5px 0px;
+    padding: 1% 0 1% 0;
+}
+
+form input {
+    width: 75%;
+    height: 3vh;
+    border: 1px solid gray;
+    padding-left: 1.5%;
+    border-radius: 2.5px;
+    align-self: center;
+}
+
 .button_section {
     display: flex;
     flex-direction: column;
+    align-self: center;
+    height: 10vh;
+}
+
+.owner_button {
+    height: 10%;
+    width: 50%;
+}
+
+button:hover {
+    cursor: pointer;
+    border: 1px solid gray;
+}
+
+p {
+    align-self: center;
+    margin-bottom: 5%;
 }
