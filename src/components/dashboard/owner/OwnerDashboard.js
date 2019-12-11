@@ -6,52 +6,43 @@ import './OwnerDashboard.css';
 
 class OwnerDashoard extends Component {
 	render() {
+		// const jobs = this.state.jobs.map((schedule, jobsId) => (
+		// 	<li key={JobsId}>{jobs.time}</li>
+		// ));
 		return (
-			<div class='main-container'>
-				<button
-					onClick={() =>
-						this.props.logoutUser().then(() => this.props.history.push('/'))
-					}>
-					Logout
-				</button>
+			<>
+				<div class='main-container'>
+					<button
+						onClick={() =>
+							this.props.logoutUser().then(() => this.props.history.push('/'))
+						}>
+						Logout
+					</button>
 
-				<h1>Owner Dashboard</h1>
+					<h1>Owner Dashboard</h1>
 
-				<div class='schedule-container'>
-					Schedule Container
-					<h3>Next Walk</h3>
-					<p>12/6/19 6:00am Walker: Aegon</p>
-				</div>
+					<div className='schedule-container'>{/* <ul>{schedule}</ul> */}</div>
 
-				<div class='button_cont' align='center'>
 					<Link to='/owner/schedule'>
-						<button
-							class='schedule-button'
-							name='Schedule'
-							onClick={this.handleSubmit}>
-							My Schedule
+						<button name='Schedule' onClick={this.handleSubmit}>
+							View Schedule
 						</button>
 					</Link>
-					<Link to='/walker/now'>
+					{/* <Link to='/walker/now'>
 						<button
-							class='now-button'
+							class='now'
 							name='Walker Now'
 							onClick={this.handleSubmit}>
 							Walk Now
 						</button>
-					</Link>
+					</Link> */}
 					<Link to='/walker/later'>
-						<button
-							class='later-button'
-							name='Walker Later'
-							onClick={this.handleSubmit}>
-							Walk Later
+						<button name='Walker Later' onClick={this.handleSubmit}>
+							Schedule Walk
 						</button>
 					</Link>
 				</div>
-
-				<footer></footer>
-			</div>
+			</>
 		);
 	}
 }

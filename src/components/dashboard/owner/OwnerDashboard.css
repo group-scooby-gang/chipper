@@ -1,9 +1,18 @@
 .main-container {
 	display: flex;
 	flex-direction: column;
+	margin: 3em;
 }
 
 .schedule-container {
-	border: solid 1px black;
+	box-shadow: 3px 2px 3px rgb(208, 208, 208);
+	border: solid 1px rgb(227, 227, 227);
 	padding: 2em;
+	height: 60px;
+	width: 200px;
+}
+]
+
+
+button {
 }
