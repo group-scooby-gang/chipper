@@ -3,12 +3,17 @@ import { Link } from 'react-router-dom';
 import { logoutUser } from '../../../redux/userReducer';
 import { connect } from 'react-redux';
 import './OwnerDashboard.css';
+import { viewSchedule } from '../../../redux/ownerReducer';
 
 class OwnerDashoard extends Component {
+	componentDidMount() {
+		this.props.viewSchedule();
+	}
+
 	render() {
-		// const jobs = this.state.jobs.map((schedule, jobsId) => (
-		// 	<li key={JobsId}>{jobs.time}</li>
-		// ));
+		const viewSchedule = this.props.jobs.map((val, index) => (
+			<li key={index}>{val.notes}</li>
+		));
 		return (
 			<>
 				<div class='main-container'>
@@ -21,7 +26,9 @@ class OwnerDashoard extends Component {
 
 					<h1>Owner Dashboard</h1>
 
-					<div className='schedule-container'>{/* <ul>{schedule}</ul> */}</div>
+					<div className='schedule-container'>
+						<ul>{viewSchedule}</ul>
+					</div>
 
 					<Link to='/owner/schedule'>
 						<button name='Schedule' onClick={this.handleSubmit}>
@@ -47,4 +54,10 @@ class OwnerDashoard extends Component {
 	}
 }
 
-export default connect(null, { logoutUser })(OwnerDashoard);
+const mapStateToProps = (state) => ({
+	jobs: state.ownerReducer.jobs
+});
+
+export default connect(mapStateToProps, { viewSchedule, logoutUser })(
+	OwnerDashoard
+);
