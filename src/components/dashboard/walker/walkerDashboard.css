@@ -1,7 +1,8 @@
 .walkerDashboard {
+    height: 95.2vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -42,6 +43,7 @@
 .button_section button:hover {
     border: 1px solid grey;
     cursor: pointer;
+    color: rgba(0, 0, 0, 0.527);
 }
 
 .dogs_need_walking{

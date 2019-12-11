@@ -30,8 +30,8 @@ class RegisterWalkerReview extends Component {
         const {userName, firstName, lastName, email, phone, address, city, state, zip} = this.props;
         const {category, bio, fifteen, thirty, fortyfive, sixty} = this.props
         return (
-            <div>
-                <div><i onClick={this.goBack} class="fas fa-angle-left"></i></div>
+            <div className='walker_review_page'>
+                <div className='back_button'><i onClick={this.goBack} class="fas fa-angle-left"></i></div>
                 <img src="https://vippets.net/wp-content/uploads/2019/05/dog-walker-legs-and-dogs-1080x675.jpg" alt="dog_walker"/>
                 <h1>Review Info</h1>
                 <h5>Username:</h5>

@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import routes from './routes';
-import Sms from './components/sms/Sms';
+// import Sms from './components/sms/Sms';
 import Navbar from './components/navbar/navbar';
 
 function App() {
