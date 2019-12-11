@@ -11,8 +11,18 @@ class OwnerDashoard extends Component {
 	}
 
 	render() {
+		// const month = this.props.jobs.month;
+
+		console.log(this.props.jobs);
 		const viewSchedule = this.props.jobs.map((val, index) => (
-			<li key={index}>{val.notes}</li>
+			<div className='view-schedule-Container'>
+				<div key={index}>
+					<h4>Next walk</h4>
+					<div>{val.month}/</div>
+					<div>{val.date}/</div>
+					<div>{val.time}</div>
+				</div>
+			</div>
 		));
 		return (
 			<>
@@ -27,7 +37,7 @@ class OwnerDashoard extends Component {
 					<h1>Owner Dashboard</h1>
 
 					<div className='schedule-container'>
-						<ul>{viewSchedule}</ul>
+						<div>{viewSchedule}</div>
 					</div>
 
 					<Link to='/owner/schedule'>

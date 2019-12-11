@@ -7,7 +7,8 @@ const initialState = {
 	date: '',
 	year: '',
 	time: '',
-	jobs: []
+	jobs: [],
+	loading: false
 };
 
 const UPDATE_STATE = 'UPDATE_STATE';
@@ -36,12 +37,15 @@ export default function ownerReducer(state = initialState, action) {
 				...state,
 				...payload
 			};
+		case `${VIEW_SCHEDULE}_PENDING`:
+			return { ...state, loading: true };
 
-		case VIEW_SCHEDULE:
+		case `${VIEW_SCHEDULE}_FULFILLED`:
 			console.log(payload.data);
 			return {
 				...state,
-				jobs: payload.data
+				jobs: payload.data,
+				loading: false
 			};
 		default:
 			return state;
