@@ -1,8 +1,25 @@
-.ownerInfoForm {
+.owner_info_page {
     display: flex;
     flex-direction: column;
 }
 
-.ownerInfoForm input {
-    width: 30%;
+.back_button {
+    margin: 2.5% 0% 2.5% 2.5%;
+}
+
+img {
+    align-self: center;
+}
+
+.owner_info_page button {
+    align-self: center;
+    width: 50%;
+    height: 5vh;
+    margin-top: 2.5%;
+    border-radius: 5px;
+}
+
+.owner_info_page button:hover {
+    cursor: pointer;
+    border: 1px solid grey;
 }

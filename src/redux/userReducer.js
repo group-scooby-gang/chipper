@@ -12,7 +12,8 @@ const initialState = {
   state: '',
   apt: 0,
   zip: 0,
-  profileImg: 'https://i.pinimg.com/originals/0c/92/0d/0c920d58b210a74a75868df885160a5f.jpg'
+  profileImg: 'https://i.pinimg.com/originals/0c/92/0d/0c920d58b210a74a75868df885160a5f.jpg',
+  user: {}
 };
 
 const UPDATE_STATE = 'UPDATE_STATE';
