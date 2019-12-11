@@ -21,12 +21,12 @@ class PetRegisterAge extends Component {
     render() {
         const {name, breed} = this.props
         return (
-            <div>
-                <div onClick={this.goBack}><i class="fas fa-angle-left"></i></div>
+            <div className='pet_age_page'>
+                <div className='back_button' onClick={this.goBack}><i class="fas fa-angle-left"></i></div>
                 <img src="https://img.srgcdn.com/e//ME5oYU8ySnM0bFJoUE83MlBJTTguanBn.jpg" alt="dog_picture"/>
                 <div>How old is your {breed}, {name}?</div>
                 <input onChange={this.handleChange} placeholder='age' type="text"/>
-                <button onClick={this.next}>Add Pup</button>
+                <button onClick={this.next}>Next</button>
                 <div>*Status Bar*</div>
             </div>
         )

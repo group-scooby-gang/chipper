@@ -19,26 +19,26 @@ class RegisterWalkerInfoStep2 extends Component {
 
     render() {
         return (
-            <div>
-                <div onClick={this.goBack}><i class="fas fa-angle-left"></i></div>
-                <img src="https://image.shutterstock.com/image-vector/man-walking-many-dogs-different-260nw-505695991.jpg" alt="dog_walker"/>
+            <div className='walker_info_page_2'>
+                <div className='back_button' onClick={this.goBack}><i class="fas fa-angle-left"></i></div>
+                <img src="https://webstockreview.net/images/pet-clipart-dog-walker-7.png" alt="dog_walker"/>
                 <div>Step 2</div>
                 <div>
                     <p>Prices</p>
-                    <div>
-                        <h6>15 min.</h6>
+                    <div className='pricing_section'>
+                        <h5>15 min:</h5>
                         $<input onChange={this.handleChange} type="number" name="fifteen" />
                     </div>
-                    <div>
-                        <h6>30 min.</h6>
+                    <div className='pricing_section'>
+                        <h5>30 min:</h5>
                         $<input onChange={this.handleChange} type="number" name="thirty" />
                     </div>
-                    <div>
-                        <h6>45 min.</h6>
+                    <div className='pricing_section'>
+                        <h5>45 min:</h5>
                         $<input onChange={this.handleChange} type="number" name="fourtyfive"/>
                     </div>
-                    <div>
-                        <h6>60 min.</h6>
+                    <div className='pricing_section'>
+                        <h5>60 min:</h5>
                         $<input onChange={this.handleChange} type="number" name='sixty'/>
                     </div>
                 </div>
