@@ -2,3 +2,4 @@ SELECT J.job_id, J.pet_id, J.price, J.jobaccepted, J.notes, J.month, J.date, J.y
 FROM jobs J 
 INNER JOIN pets AS P ON P.pet_id = J.pet_id 
 WHERE J.walker_id = $1
+ORDER BY J.year ASC, J.month ASC, J.date ASC, J.time ASC
