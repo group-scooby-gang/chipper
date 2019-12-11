@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import './walkerSchedule.css';
-
+//this component is for approved walkers
 class WalkerSchedule extends Component {
     render() {
         return (
