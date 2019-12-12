@@ -16,11 +16,12 @@ import Login from './components/login/login';
 import WalkerDashboard from './components/dashboard/walker/walkerDashboard';
 import WalkerSchedule from './components/schedule/walker/walkerSchedule';
 import OwnerDashboard from './components/dashboard/owner/OwnerDashboard';
+import Landing from "./components/landing/landing"
 import NewWalkWho from './components/schedule/owner/scheduleNewWalk/who/scheduleNewWalkWho';
 
 export default (
 	<Switch>
-		<Route component={App} exact path='/' />
+		<Route component={Landing} exact path='/' />
 		<Route component={UserType} path='/register/usertype' />
 		<Route component={RegisterOwnerInfo} path='/register/owner/info' />
 		<Route component={PetRegisterName} path='/register/pet/name' />

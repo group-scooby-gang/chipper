@@ -1,0 +1,100 @@
+h1{
+	color: #d2b338;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 2.5em;
+}
+
+.about {
+    border: 1px solid rgba(155, 155, 155, 0.8);
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.about h3{
+    font-size: 1.5em;
+    margin-left: 125px;
+}
+
+.about p {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.ownerIntroClosed p{
+    display: none;
+}
+
+.ownerIntroOpen p {
+    display: block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.ownerIntroClosed h2, .ownerIntroOpen h2 {
+    margin-left: 150px;
+}
+
+.ownerIntroOpen, .ownerIntroClosed{
+    margin-top: 10px;
+    border: 1px solid rgba(155, 155, 155, 0.8);
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.ownerIntroClosed button, .ownerIntroOpen button {
+    margin-left: 165px;
+    margin-bottom: 5px;
+}
+
+
+.walkerIntroClosed p{
+    display: none;
+}
+
+.walkerIntroOpen p {
+    display: block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.walkerIntroClosed h2, .walkerIntroOpen h2 {
+    margin-left: 150px;
+}
+
+.walkerIntroOpen, .walkerIntroClosed{
+    margin-top: 10px;
+    border: 1px solid rgba(155, 155, 155, 0.8);
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.walkerIntroClosed button, .walkerIntroOpen button {
+    margin-left: 165px;
+    margin-bottom: 5px;
+}
+
+.sitterIntroClosed p{
+    display: none;
+}
+
+.sitterIntroOpen p {
+    display: block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.sitterIntroClosed h2, .sitterIntroOpen h2 {
+    margin-left: 150px;
+}
+
+.sitterIntroOpen, .sitterIntroClosed{
+    margin-top: 10px;
+    border: 1px solid rgba(155, 155, 155, 0.8);
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.sitterIntroClosed button, .sitterIntroOpen button {
+    margin-left: 165px;
+    margin-bottom: 5px;
+}
