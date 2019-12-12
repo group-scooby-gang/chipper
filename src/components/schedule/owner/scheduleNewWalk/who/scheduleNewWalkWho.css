@@ -1,0 +1,43 @@
+.who_page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.back_button {
+    margin: 2.5% 0% 2.5% 2.5%;
+}
+
+.pet_section {
+    border: 1px solid grey;
+    background-color: grey;
+    width: 70%;
+    padding: 2%;
+    margin-bottom: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pet_selectors {
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    padding: 2%;
+    border: 1px solid #d2b338;
+    background-color: #d2b338;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 2.5px 5px 0px;
+}
+
+.who_page button {
+    height: 5vh;
+    width: 50%;
+    border-radius: 2px;
+}
+
+.who_page button:hover {
+    cursor: pointer;
+    border: 1px solid rgba(117, 117, 117, 0.616);
+    color: rgba(0, 0, 0, 0.623);
+}
