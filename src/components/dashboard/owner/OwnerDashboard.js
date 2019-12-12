@@ -9,43 +9,40 @@ class OwnerDashoard extends Component {
 	componentDidMount() {
 		this.props.viewSchedule();
 	}
+	viewSchedule = async () => {
+		const { i } = this.props.jobs[0];
+		await this.props.schedule(i);
+		console.log(this.props.schedule);
+	};
 
 	render() {
-		// const month = this.props.jobs.month;
+		let month = this.props.jobs[0] && this.props.jobs[0].month;
+		let date = this.props.jobs[0] && this.props.jobs[0].date;
+		let year = this.props.jobs[0] && this.props.jobs[0].year;
+		let time = this.props.jobs[0] && this.props.jobs[0].time;
 
-		console.log(this.props.jobs);
-		const viewSchedule = this.props.jobs.map((val, index) => (
-			<div className='view-schedule-Container'>
-				<div key={index}>
-					<h4>Next walk</h4>
-					<div>{val.month}/</div>
-					<div>{val.date}/</div>
-					<div>{val.time}</div>
-				</div>
-			</div>
-		));
 		return (
 			<>
 				<div class='main-container'>
-					<button
-						onClick={() =>
-							this.props.logoutUser().then(() => this.props.history.push('/'))
-						}>
-						Logout
-					</button>
-
 					<h1>Owner Dashboard</h1>
-
+					<h1></h1>
 					<div className='schedule-container'>
-						<div>{viewSchedule}</div>
+						<p className='your_companion '>Your companions next walk..</p>
+						<div>
+							{month}/{date}/{year} at {time}
+						</div>
 					</div>
 
-					<Link to='/owner/schedule'>
-						<button name='Schedule' onClick={this.handleSubmit}>
-							View Schedule
-						</button>
-					</Link>
-					{/* <Link to='/walker/now'>
+					<div className='buttons-container'>
+						<Link to='/owner/schedule'>
+							<button
+								className='buttons'
+								name='Schedule'
+								onClick={this.handleSubmit}>
+								View Schedule
+							</button>
+						</Link>
+						{/* <Link to='/walker/now'>
 						<button
 							class='now'
 							name='Walker Now'
@@ -53,11 +50,15 @@ class OwnerDashoard extends Component {
 							Walk Now
 						</button>
 					</Link> */}
-					<Link to='/walker/later'>
-						<button name='Walker Later' onClick={this.handleSubmit}>
-							Schedule Walk
-						</button>
-					</Link>
+						<Link to='/walker/later'>
+							<button
+								className='buttons'
+								name='Walker Later'
+								onClick={this.handleSubmit}>
+								Schedule Walk
+							</button>
+						</Link>
+					</div>
 				</div>
 			</>
 		);

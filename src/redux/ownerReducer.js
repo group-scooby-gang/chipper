@@ -6,6 +6,7 @@ const initialState = {
 	notes: '',
 	date: '',
 	year: '',
+	month: '',
 	time: '',
 	jobs: [],
 	loading: false
