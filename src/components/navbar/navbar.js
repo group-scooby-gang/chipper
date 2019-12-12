@@ -38,6 +38,7 @@ class navbar extends Component {
 								login
 							</button>
 						</Link>
+
 						<Link to='/'>
 							<button onClick={this.handleClick}>home</button>
 						</Link>

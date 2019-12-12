@@ -1,7 +1,7 @@
 .nav {
 	display: flex;
-	background-color: grey;
-	height: 5vh;
+	background-color: rgb(184, 182, 182);
+	height: 6vh;
 	align-items: center;
 	width: 100%;
 	justify-content: flex-start;
@@ -25,7 +25,7 @@
 	flex-direction: column;
 	padding: 5%;
 
-	background-color: grey;
+	background-color: rgb(184, 182, 182);
 	width: 30vw;
 	justify-content: space-around;
 	height: 20vh;
@@ -35,7 +35,7 @@
 
 .ham button {
 	color: white;
-	background-color: grey;
+	background-color: rgb(184, 182, 182);
 	border: none;
 	height: 5vh;
 	width: 10vw;
