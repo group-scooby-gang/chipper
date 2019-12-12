@@ -18,6 +18,7 @@ import WalkerSchedule from './components/schedule/walker/walkerSchedule';
 import OwnerDashboard from './components/dashboard/owner/OwnerDashboard';
 import Landing from "./components/landing/landing"
 import NewWalkWho from './components/schedule/owner/scheduleNewWalk/who/scheduleNewWalkWho';
+import Profile from "./components/profile/Profile"
 
 export default (
 	<Switch>
@@ -36,5 +37,6 @@ export default (
 		<Route component={WalkerSchedule} path='/walker/schedule' />
 		<Route component={OwnerDashboard} path='/owner/dashboard' />
 		<Route component={NewWalkWho} path='/owner/schedule/new/pet_select' />
+		<Route component={Profile} path='/Profile'/>
 	</Switch>
 );

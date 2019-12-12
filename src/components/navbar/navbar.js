@@ -41,6 +41,9 @@ class navbar extends Component {
 						<Link to='/'>
 							<button onClick={this.handleClick}>home</button>
 						</Link>
+						<Link to="/Profile">
+							<button>Profile</button>
+						</Link>
 					</div>
 				) : null}{' '}
 			</>
