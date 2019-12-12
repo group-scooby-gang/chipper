@@ -8,6 +8,7 @@ export default class Calendar extends React.Component {
         today: moment(),
         showMonthPopup: false,
         showYearPopup: false,
+        //move three below to reducer so that will be able to pass to db
         selectedDay: null,
         selectedYear: null,
         selectedMonth: null
@@ -245,16 +246,21 @@ export default class Calendar extends React.Component {
                                 <this.MonthNav />
                                 {" "}
                                 <this.YearNav />
-                            </td>
-                            <td colSpan="2" className="nav-month">
                                 <i className="prev fa fa-fw fa-chevron-left"
                                     onClick={(e)=> {this.prevMonth()}}>
                                 </i>
                                 <i className="prev fa fa-fw fa-chevron-right"
                                     onClick={(e)=> {this.nextMonth()}}>
                                 </i>
-
                             </td>
+                            {/* <td colSpan="2" className="nav-month">
+                                <i className="prev fa fa-fw fa-chevron-left"
+                                    onClick={(e)=> {this.prevMonth()}}>
+                                </i>
+                                <i className="prev fa fa-fw fa-chevron-right"
+                                    onClick={(e)=> {this.nextMonth()}}>
+                                </i>
+                            </td> */}
                         </tr>
                     </thead>
                     <tbody>

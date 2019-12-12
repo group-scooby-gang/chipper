@@ -18,6 +18,11 @@ import WalkerSchedule from './components/schedule/walker/walkerSchedule';
 import OwnerDashboard from './components/dashboard/owner/OwnerDashboard';
 import Landing from "./components/landing/landing"
 import NewWalkWho from './components/schedule/owner/scheduleNewWalk/who/scheduleNewWalkWho';
+import WalkerSelect from './components/schedule/owner/scheduleNewWalk/walkerSelect/scheduleNewWalkWalker';
+import WalkDateSelect from './components/schedule/owner/scheduleNewWalk/date/newWalkDate';
+import WalkTime from './components/schedule/owner/scheduleNewWalk/time/newWalkTime';
+import ExtraNotes from './components/schedule/owner/scheduleNewWalk/extraNotes/newWalkExtraNotes';
+import WalkReview from './components/schedule/owner/scheduleNewWalk/review/newWalkReview';
 import Profile from "./components/profile/Profile"
 
 export default (
@@ -37,6 +42,11 @@ export default (
 		<Route component={WalkerSchedule} path='/walker/schedule' />
 		<Route component={OwnerDashboard} path='/owner/dashboard' />
 		<Route component={NewWalkWho} path='/owner/schedule/new/pet_select' />
-		<Route component={Profile} path='/Profile'/>
+		<Route component={WalkerSelect} path='/owner/schedule/new/walker_select' />
+		<Route component={WalkDateSelect} path='/owner/schedule/new/select_date' />
+		<Route component={WalkTime} path='/owner/schedule/new/select_time' />
+		<Route component={ExtraNotes} path='/owner/schedule/new/extra_notes' />
+		<Route component={WalkReview} path='/owner/schedule/new/review' />
+		<Route component={Profile} path="/Profile" />
 	</Switch>
 );
