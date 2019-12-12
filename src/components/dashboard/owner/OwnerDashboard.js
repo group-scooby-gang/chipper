@@ -50,7 +50,7 @@ class OwnerDashoard extends Component {
 							Walk Now
 						</button>
 					</Link> */}
-						<Link to='/walker/later'>
+						<Link to='/owner/schedule/new/pet_select'>
 							<button
 								className='buttons'
 								name='Walker Later'

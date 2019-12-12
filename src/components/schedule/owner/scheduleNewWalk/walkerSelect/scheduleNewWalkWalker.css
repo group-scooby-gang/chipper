@@ -1,0 +1,56 @@
+.selected_walker_page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.top_three_walkers_section {
+    border: 1px solid grey;
+    width: 75%;
+    padding: 2%;
+    box-shadow: rgba(0, 0, 0, 0.418) 0px 2px 5px 0px;
+}
+
+.walker:hover {
+    cursor: pointer;
+}
+
+.price_section {
+    display: flex;
+    width: 95%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.search_section {
+    border: 1px solid grey;
+    width: 75%;
+    margin: 1% 0 1% 0;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.search_section div {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.search_section div input {
+    height: 2.5vh;
+}
+
+.search_section button {
+    width: 25%;
+    height: 3vh;
+    border-radius: 4px;
+    align-self: center;
+}
+
+.search_section button:hover {
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.418);
+    color: rgba(0, 0, 0, 0.637);
+}
