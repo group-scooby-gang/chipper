@@ -53,8 +53,8 @@ const getWalkerSchedule = async (req, res) => {
 
 const searchWalker = async (req, res) => {
     const db = req.app.get('db')
-    const {state, city} = req.body;
-    const searchedWalker = await db.WalkerSearch([state, city])
+    const {state, city} = req.query;
+    const searchedWalker = await db.WalkerSearch(state, city)
     res.status(200).json(searchedWalker)
 }
 

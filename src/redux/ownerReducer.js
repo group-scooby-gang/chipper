@@ -61,7 +61,7 @@ export const getWalkers = () => {
 export const searchWalkers = (state, city) => {
 	return {
 		type: SEARCH_WALKERS,
-		payload: axios.get('/Chipper/Walker/Search', (state, city))
+		payload: axios.get(`/Chipper/Walker/Search?state=${state}&city=${city}`)
 	}
 }
 

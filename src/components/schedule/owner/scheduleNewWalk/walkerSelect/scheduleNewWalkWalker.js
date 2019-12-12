@@ -6,8 +6,8 @@ import {connect} from 'react-redux';
 class WalkerSelect extends Component {
     state = {
         searchContainer: 'close',
-        state: '',
-        city: ''
+        state: null,
+        city: null
     }
 
     componentDidMount() {
@@ -34,10 +34,11 @@ class WalkerSelect extends Component {
         this.setState({[e.target.name]: e.target.value})
     }
 
-    searchWalker = () => {
+    searchWalker = async() => {
+        console.log("hit")
+        this.props.updateState({ searchWalker: [] })
         const {state, city} = this.state;
-        console.log(this.state)
-        this.props.searchWalkers(state, city);
+        await this.props.searchWalkers(state, city);
         this.setState({ searchContainer: 'open' })
     }
 
@@ -62,11 +63,25 @@ class WalkerSelect extends Component {
 
         const mappedSearchWalkers = this.props.searchedWalker.map(val => {
             console.log(val)
+            return (
+                <div className='walker' onClick={() => this.selectWalker(val.user_id)}>
+                    <h3>{val.firstname} {val.lastname}</h3>
+                    <p>{val.experience}</p>
+                    <div>Price:</div>
+                    <div className='price_section'>
+                        <p>15min: ${val._15minprice}</p>
+                        <p>30min: ${val._30minprice}</p>
+                        <p>45min: ${val._45minprice}</p>
+                        <p>60min: ${val._60minprice}</p>
+                    </div>
+                </div>
+            )
         })
         return (
             <div className='selected_walker_page'>
                 <h1>Select A Walker</h1>
                 <div className='top_three_walkers_section'>
+                    <h2>Top Walkers</h2>
                     {mappedWalkers}
                 </div>
                 <div className='search_section'>
@@ -86,10 +101,8 @@ class WalkerSelect extends Component {
                 {
                     this.state.searchContainer === 'open'
                         ?
-                        <div>
-                            <h4>Mapped Walker</h4>
-                            <h4>Mapped Walker</h4>
-                            <h4>Mapped Walker</h4>
+                        <div className='searched_walkers_results_section'>
+                            {mappedSearchWalkers}
                         </div>
                         :
                         null
