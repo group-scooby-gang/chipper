@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import './newWalkDate.css'
 import Calendar from '../../../../calendar/Calendar';
-
+// calendar is the child of newWalkDate
 class WalkDateSelect extends Component {
+
+    onDayClick = (e, day) => {
+        alert(day);
+    }
 
     next = () => {
         this.props.history.push('/owner/schedule/new/select_time');
@@ -18,7 +22,7 @@ class WalkDateSelect extends Component {
         return (
             <div className='date_page'>
                 <h1>Date</h1>
-                <Calendar />
+                <Calendar onDayClick={(e, day) => this.onDayClick(e, day)} />
                 <div className='time_section'>
                     <h3>Time:</h3>
                     <div>
