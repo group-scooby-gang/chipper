@@ -15,17 +15,21 @@ class NewWalkWho extends Component {
         return (
             <div className='who_page'>
                 <div className='back_button' onClick={this.goBack}><i class="fas fa-angle-left"></i></div>
+                <h2>Who</h2>
                 <div className='pet_section'>
-                    <h2>Who</h2>
                     <div className='pet_selectors'>
-                        <input type="radio" name='name' value='dog' /> map of owner dogs <br/>
-                        <input type="radio" name='name' value='dog2' /> map of owner dogs <br/>
+                        <div>
+                            <input type="radio" name='name' value='set the value to the mapped dog' /> map of owner dogs <br />
+                        </div>
+                        <div>
+                            <input type="radio" name='name' value='set the value to the mapped dog' /> map of owner dogs <br />
+                        </div>
                     </div>
                 </div>
-                    <button onClick={this.next}>Next</button>
+                <button onClick={this.next}>Next</button>
             </div>
         )
     }
 }
-            
+
 export default NewWalkWho;

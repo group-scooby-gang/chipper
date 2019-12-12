@@ -9,14 +9,12 @@ const initialState = {
     sixty: 0,
     loading: false,
     schedule: [],
-    pets: {}
 }
 
 const UPDATE_STATE = 'UPDATE_STATE';
 const RESET_FIELDS = 'RESET_FIELDS';
 const REGISTER_WALKER = 'REGISTER_WALKER';
 const GET_SCHEDULE = 'GET_SCHEDULE';
-const GET_PETS = 'GET_PETS';
 
 export const updateState = e => {
     return {
@@ -49,13 +47,6 @@ export const getWalkerSchedule = () => {
     return {
         type: GET_SCHEDULE,
         payload: axios.get('/Chipper/Walker/NextJobs')
-    }
-}
-
-export const getPets = (owner_id) => {
-    return {
-        type: GET_PETS,
-        payload: axios.get('/Chipper/Owner/Pets', owner_id)
     }
 }
 
@@ -93,17 +84,6 @@ export default function walkerReducer(state = initialState, action) {
                 loading: false,
                 schedule: payload.data
             };
-        case `${GET_PETS}_PENDING`:
-            return {
-                ...state,
-                loading: true
-            };
-        case `${GET_PETS}_FULFILLED`:
-            return {
-                ...state,
-                loading: false,
-                pets: payload.data
-            }
         default:
             return state;
     }
