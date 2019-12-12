@@ -20,12 +20,14 @@ class WalkerDashboard extends Component {
 
     handleClickSchedule = () => {
         this.setState({ dogsNeedWalking: 'closed' })
-        this.props.history.push('/walker/schedule')
+        //the function below will route us to the scheduled walks page for the walker
+        // this.props.history.push('/walker/schedule')
     }
 
     handleClickPendingJobs = () => {
         this.setState({ dogsNeedWalking: 'closed' })
-        this.props.history.push('/walker/schedule')
+        //the function below will route us to the scheduled walks page for the walker
+        // this.props.history.push('/walker/schedule')
     }
 
     getNextWalk = async () => {

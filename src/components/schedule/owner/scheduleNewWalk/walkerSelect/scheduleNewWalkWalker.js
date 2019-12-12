@@ -6,12 +6,20 @@ class WalkerSelect extends Component {
         searchContainer: 'close'
     }
 
-    handleChange = e => {
-        this.props.updateState({[e.target.name]: e.target.value})
-    }
+    // handleChange = e => {
+    //     this.props.updateState({[e.target.name]: e.target.value})
+    // }
 
     handleSeach = () => {
         this.setState({ searchContainer: 'open'})
+    }
+
+    back = () => {
+        this.props.history.goBack();
+    }
+
+    next = () => {
+        this.props.history.push('/owner/schedule/new/select_date')
     }
 
     render() {
@@ -103,6 +111,8 @@ class WalkerSelect extends Component {
                 :
                 null
                 }
+                <button onClick={this.next}>Next</button>
+                <button onClick={this.back}>Back</button>
             </div>
         )
     }
