@@ -22,6 +22,7 @@ const RESET_FIELDS = 'RESET_FIELDS';
 const VIEW_SCHEDULE = 'VIEW_SCHEDULE';
 const GET_PETS = 'GET_PETS';
 const GET_WALKERS = 'GET_WALKERS';
+const SEARCH_WALKERS = 'SEARCH_WALKERS';
 
 export const updateState = (e) => {
 	return {
@@ -54,6 +55,13 @@ export const getWalkers = () => {
 	return {
 		type: GET_WALKERS,
 		payload: axios.get('/Chipper/Walker/Applications/Approved')
+	}
+}
+
+export const searchWalkers = (state, city) => {
+	return {
+		type: SEARCH_WALKERS,
+		payload: axios.get('/Chipper/Walker/Search', (state, city))
 	}
 }
 
@@ -101,6 +109,17 @@ export default function ownerReducer(state = initialState, action) {
 				loading: false,
 				walkers: payload.data
 			};
+		case `${SEARCH_WALKERS}_PENDING`:
+			return {
+				...state,
+				loading: true
+			};
+		case `${SEARCH_WALKERS}_FULFILLED`:
+			return {
+				...state,
+				loading: false,
+				searchedWalker: payload.data
+			}
 		default:
 			return state;
 	}

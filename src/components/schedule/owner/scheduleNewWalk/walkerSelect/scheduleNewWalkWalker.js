@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import './scheduleNewWalkWalker.css';
-import {updateState, getWalkers} from '../../../../../redux/ownerReducer';
+import {updateState, getWalkers, searchWalkers} from '../../../../../redux/ownerReducer';
 import {connect} from 'react-redux';
 
 class WalkerSelect extends Component {
     state = {
-        searchContainer: 'close'
+        searchContainer: 'close',
+        state: '',
+        city: ''
     }
 
     componentDidMount() {
         this.getWalkers()
-    }
-
-    handleSeach = () => {
-        this.setState({ searchContainer: 'open' })
     }
 
     back = () => {
@@ -32,8 +30,20 @@ class WalkerSelect extends Component {
         this.props.updateState({ selectedWalker: val});
     }
 
+    handleChange = e => {
+        this.setState({[e.target.name]: e.target.value})
+    }
+
+    searchWalker = () => {
+        const {state, city} = this.state;
+        console.log(this.state)
+        this.props.searchWalkers(state, city);
+        this.setState({ searchContainer: 'open' })
+    }
+
     render() {
         console.log(this.props.selectedWalker);
+        console.log(this.props.searchedWalker);
         const mappedWalkers = this.props.walkers.map(val => {
             return(
                 <div className='walker' onClick={() => this.selectWalker(val.user_id)}>
@@ -48,6 +58,10 @@ class WalkerSelect extends Component {
                     </div>
                 </div>
             )
+        })
+
+        const mappedSearchWalkers = this.props.searchedWalker.map(val => {
+            console.log(val)
         })
         return (
             <div className='selected_walker_page'>
@@ -67,7 +81,7 @@ class WalkerSelect extends Component {
                         </div>
                     </div>
                     {/* function to search for walkers based on state and city inputs */}
-                    <button onClick={this.handleSeach}>Search</button>
+                    <button onClick={this.searchWalker}>Search</button>
                 </div>
                 {
                     this.state.searchContainer === 'open'
@@ -97,5 +111,6 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
     updateState,
-    getWalkers
+    getWalkers,
+    searchWalkers
 })(WalkerSelect);
