@@ -84,6 +84,8 @@ class WalkerDashboard extends Component {
                     <h2>Home</h2>
                     <h3>|</h3>
                     <h2>Schedule</h2>
+                    <h3>|</h3>
+                    <h2>Logout</h2>
                 </footer>
             </div>
         )
