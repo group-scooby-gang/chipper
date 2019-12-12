@@ -22,7 +22,7 @@ class navbar extends Component {
 					<nav class='nav'>
 						<i
 							className='hamburger'
-							class='fas fa-paw'
+							class='fas fa-paw fa-2x'
 							onClick={this.handleClick}></i>
 					</nav>
 				</div>
