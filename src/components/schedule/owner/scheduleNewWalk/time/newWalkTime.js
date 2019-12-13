@@ -18,19 +18,17 @@ class WalkTime extends Component {
     }
 
     handleChange = e => {
-        this.props.updateState({ [e.target.name]: e.target.value })
+        this.props.updateState({ [e.target.name]: parseInt(e.target.value) })
     }
 
     render() {
-        console.log(this.props.selectedPetName);
-        console.log(this.props.selectedPetimg)
         const { _15minprice, _30minprice, _45minprice, _60minprice } = this.props;
         return (
             <div className='time_selection_page'>
                     <h1>Time</h1>
                 <div className='selection_container'>
                     <input onChange={this.handleChange} type="radio" name='payment' value={_15minprice} /> 15 min. (${_15minprice})<br />
-                    <input onChange={this.handleChange} type="radio" name='payment' value={_30minprice} checked /> 30 min. (${_30minprice}) Default<br />
+                    <input onChange={this.handleChange} type="radio" name='payment' value={_30minprice} /> 30 min. (${_30minprice})<br />
                     <input onChange={this.handleChange} type="radio" name='payment' value={_45minprice} /> 45 min. (${_45minprice})<br />
                     <input onChange={this.handleChange} type="radio" name='payment' value={_60minprice} /> 60 min. (${_60minprice})<br />
                 </div>
@@ -50,8 +48,7 @@ const mapStateToProps = state => {
         _30minprice: state.ownerReducer._30minprice,
         _45minprice: state.ownerReducer._45minprice,
         _60minprice: state.ownerReducer._60minprice,
-        selectedPetName: state.ownerReducer.selectedPetName,
-        selectedPetImg: state.ownerReducer.selectedPetImg
+        time: state.ownerReducer.time
     }
 }
 

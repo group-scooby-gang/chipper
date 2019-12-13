@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import './newWalkReview.css';
-import { } from '../../../../../redux/ownerReducer';
+import { addNewJob } from '../../../../../redux/ownerReducer';
 import { connect } from 'react-redux';
 
 class WalkReview extends Component {
 
     handleSetWalk = () => {
-        //api function here to add the walk to the db
-        //then route back to the owner schedule page
+        const {selectedPet, payment, extraNotes, selectedWalker, month, day, year, time} = this.props;
+        this.props.addNewJob(selectedPet, payment, extraNotes, selectedWalker, month, day, year, time);
         this.props.history.push('/owner/schedule')
     }
 
@@ -16,12 +16,7 @@ class WalkReview extends Component {
     }
 
     render() {
-        console.log(this.props.selectedPetName);
-        console.log(this.props.selectedPetimg);
-        console.log(this.props.time);
-        const { selectedPetName, selectedPetImg, selectedWalkerName, selectedWalkerImg, month, day, year, time, extraNotes } = this.props;
-        const duration = null
-        
+        const { selectedPetName, selectedPetImg, selectedWalkerName, selectedWalkerImg, month, day, year, time, extraNotes, payment } = this.props;
         return (
             <div className='review_new_walk_page'>
                 <h1>Review</h1>
@@ -36,13 +31,17 @@ class WalkReview extends Component {
                     </div>
                 </div>
                 <div className='details_container'>
-                    <div>
+                    {/* <div>
                         <h3>Time</h3>
                         <div>{duration} minute walk.</div>
-                    </div>
+                    </div> */}
                     <div>
                         <h3>Date</h3>
                         <div>{month}/{day}/{year} at {time}</div>
+                    </div>
+                    <div>
+                        <h3>Total</h3>
+                        <div>${payment}</div>
                     </div>
                     <div>
                         <div>
@@ -65,6 +64,8 @@ const mapStateToProps = state => {
         selectedPetImg: state.ownerReducer.selectedPetImg,
         selectedWalkerName: state.ownerReducer.selectedWalkerName,
         selectedWalkerImg: state.ownerReducer.selectedWalkerImg,
+        selectedPet: state.ownerReducer.selectedPet,
+        selectedWalker: state.ownerReducer.selectedWalker,
         day: state.ownerReducer.day,
         year: state.ownerReducer.year,
         month: state.ownerReducer.month,
@@ -75,5 +76,5 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, {
-
+    addNewJob
 })(WalkReview);

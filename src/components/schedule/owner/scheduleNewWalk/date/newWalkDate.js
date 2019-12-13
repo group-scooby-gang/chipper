@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import './newWalkDate.css'
+// import Calendar from '../../../../calendar/Calendar'
 import { updateState } from '../../../../../redux/ownerReducer';
 import { connect } from 'react-redux';
 
 class WalkDateSelect extends Component {
     state = {
         hour: '',
-        minute: ''
+        minute: '',
+        setTime: null
     }
 
-    next = () => {
+    next = async() => {
+        this.handleSetTime();
         this.props.history.push('/owner/schedule/new/select_time');
     }
 
@@ -20,23 +23,26 @@ class WalkDateSelect extends Component {
     handleChange = e => {
         this.props.updateState({ [e.target.name]: e.target.value })
     }
-
-    handleSetTime = () => {
-        this.props.updateState({ time: this.state.hour + '' + this.state.minute})
-    }
-
+    
     handleTimeChange = e => {
         this.setState({ [e.target.name]: e.target.value})
     }
 
+    turnIntoTime = () => {
+        this.setState({ setTime: this.state.hour + this.state.minute})
+    }
+
+    handleSetTime = () => {
+        this.props.updateState({ time: parseInt(this.state.setTime)})
+    }
+
+
     render() {
-        console.log(this.props.time);
-        console.log(this.state.hour);
-        console.log(this.state.minute);
         return (
             <div className='date_page'>
                 <h1>Date</h1>
                 <div className='date_select_section'>
+                    {/* <Calendar /> */}
                     <select onChange={this.handleChange} name="month">
                         <option value="0">Month</option>
                         <option value="1">January</option>
@@ -90,11 +96,13 @@ class WalkDateSelect extends Component {
                 </div>
                 <div className='time_section'>
                     <h3>Time:</h3>
+                    <p>Set in military time. (0600 = 6:00am.)</p>
                     <div>
-                        <input onChange={this.handleTimeChange} type="number" name="hour" placeholder='hour' />
+                        <input onChange={this.handleTimeChange} type="number" name="hour" placeholder='hour (00)' />
                         <div>:</div>
-                        <input onChange={this.handleTimeChange} type="number" name="minute" placeholder='minute' />
+                        <input onChange={this.handleTimeChange} type="number" name="minute" placeholder='minute (00)' />
                     </div>
+                    <button onClick={this.turnIntoTime}>set time</button>
                 </div>
                 <button onClick={this.next}>Next</button>
                 <button onClick={this.back}>Back</button>
@@ -106,9 +114,7 @@ class WalkDateSelect extends Component {
 const mapStateToProps = state => {
     return {
         time: state.ownerReducer.time,
-        month: state.calendarReducer.selectedMonth,
-        day: state.calendarReducer.selectedDay,
-        year: state.calendarReducer.selectedYear
+        selectedWalker: state.ownerReducer.selectedWalker
     }
 }
 

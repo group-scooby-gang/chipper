@@ -18,8 +18,7 @@ class ExtraNotes extends Component {
     }
 
     render() {
-        console.log(this.props.selectedPetName);
-        console.log(this.props.selectedPetimg)
+        console.log(this.props.payment);
         return(
             <div className='extra_notes_page'>
                 <h1>Extra Notes</h1>
@@ -34,8 +33,7 @@ class ExtraNotes extends Component {
 const mapStateToProps = state => {
     return {
         notes: state.ownerReducer.notes,
-        selectedPetName: state.ownerReducer.selectedPetName,
-        selectedPetImg: state.ownerReducer.selectedPetImg
+        payment: state.ownerReducer.payment
     }
 }
 

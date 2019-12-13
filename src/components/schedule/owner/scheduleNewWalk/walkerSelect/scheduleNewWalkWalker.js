@@ -46,12 +46,11 @@ class WalkerSelect extends Component {
     }
 
     render() {
-        console.log(this.props.selectedPetName);
-        console.log(this.props.selectedPetimg)
         const mappedWalkers = this.props.walkers.map(val => {
             return(
-                <div className='walker' onClick={() => this.selectWalker(val.user_id)}>
-                    <h3>name</h3>
+                <div className='walker' onClick={() => this.selectWalker(val)}>
+                    <img src={val.profileimg} alt="profile_pic"/>
+                    <h3>{val.firstname} {val.lastname}</h3>
                     <p>{val.experience}</p>
                     <div>Price:</div>
                     <div className='price_section'>
@@ -121,8 +120,7 @@ const mapStateToProps = state => {
         walkers: state.ownerReducer.walkers,
         selectedWalker: state.ownerReducer.selectedWalker,
         searchedWalker: state.ownerReducer.searchedWalker,
-        selectedPetName: state.ownerReducer.selectedPetName,
-        selectedPetImg: state.ownerReducer.selectedPetImg
+        selectedPet: state.ownerReducer.selectedPet
     }
 }
 
