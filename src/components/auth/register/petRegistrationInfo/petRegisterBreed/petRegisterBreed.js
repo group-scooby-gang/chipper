@@ -30,7 +30,7 @@ class PetRegisterBreed extends Component {
 				/>
 				<div className='what_is_breed'>What is {name}'s breed?</div>
 				<input
-					className='breed_input'
+					className='breed_input '
 					onChange={this.handleChange}
 					placeholder='breed'
 					type='text'
@@ -41,7 +41,7 @@ class PetRegisterBreed extends Component {
 
 				<div className='progress_container'>
 					<div class='progress_bar'>
-						<span class='progress_bar_fill_66'></span>
+						<span class='progress_bar_fill_50'></span>
 					</div>
 				</div>
 			</div>

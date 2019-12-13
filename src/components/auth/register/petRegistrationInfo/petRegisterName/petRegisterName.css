@@ -3,13 +3,12 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	/* width: 100%;
-	height: 100%; */
 }
 
 .whats_dogs_name {
-	font-family: 'Catamaran', sans-serif;
-	font-size: 1.5em;
+	font-family: 'Lilita One', cursive;
+	font-size: 1.4em;
+	margin-top: 15%;
 }
 
 .pet_name_page img {

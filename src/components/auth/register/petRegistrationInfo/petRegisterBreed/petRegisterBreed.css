@@ -20,21 +20,24 @@
 }
 
 .what_is_breed {
-	font-family: 'Catamaran', sans-serif;
-	font-size: 2em;
+	font-family: 'Lilita One', cursive;
+	font-size: 1.4em;
 	color: #d2b338;
-	margin-top: 5%;
+	margin-top: 13%;
+	text-align: center;
 }
 
 .breed_input {
-	width: 48%;
-	height: 5vh;
+	width: 47%;
+	height: 4.7vh;
 	margin: 0 0 1% 0;
 	margin-top: 5%;
 	padding-left: 1%;
 	border-radius: 5px;
 	border-color: transparent;
 	background-color: rgba(232, 232, 232, 0.776);
+	padding-left: 2%;
+	font-size: 0.9em;
 }
 
 .next_button {
@@ -67,8 +70,8 @@
 	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-.progress_bar_fill_66 {
-	width: 66.666%;
+.progress_bar_fill_50 {
+	width: 50%;
 	display: block;
 	height: 22px;
 	background-color: #659cef;

@@ -33,7 +33,11 @@ class PetRegisterAge extends Component {
 				</div>
 				<input onChange={this.handleChange} placeholder='age' type='text' />
 				<button onClick={this.next}>Next</button>
-				<div>*Status Bar*</div>
+				<div className='progress_container'>
+					<div class='progress_bar'>
+						<span class='progress_bar_fill_75'></span>
+					</div>
+				</div>
 			</div>
 		);
 	}
