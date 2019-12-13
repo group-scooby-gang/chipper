@@ -41,13 +41,15 @@
 .button_section {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	/* justify-content: space-around; */
 	align-items: center;
-	height: 20vh;
+	height: 13%;
 	width: 70%;
+	border: solid 1px red;
+	margin-bottom: 5%;
 }
 
-.button_section_button {
+/* .button_section_button {
 	text-transform: uppercase;
 	align-content: center;
 	outline: 0;
@@ -72,7 +74,7 @@
 	box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
 	transition: all 0.4s ease 0s;
 	cursor: pointer;
-}
+} */
 
 .dogs_need_walking {
 	display: flex;
@@ -87,18 +89,18 @@
 	margin-bottom: 4%;
 }
 
-.button_section_schedule {
+/* .button_section_schedule {
 	align-self: center;
-	width: 50%;
+	width: 30;
 	height: 5vh;
 	margin-top: 0%;
 	border-radius: 5px;
 	font-family: 'Catamaran', sans-serif;
 	font-size: 1em;
 	background-color: #d2b338;
-}
+} */
 
-.button_section_pending {
+/* .button_section_pending {
 	align-self: center;
 	width: 50%;
 	height: 5vh;
@@ -106,9 +108,9 @@
 	font-family: 'Catamaran', sans-serif;
 	font-size: 1em;
 	background-color: #d2b338;
-}
+} */
 
-.button_section_pending:visited {
+/* .button_section_pending:visited {
 	background-color: #d2b338;
 }
 
@@ -120,7 +122,7 @@
 .button_section_pending:hover {
 	border: 1px solid grey;
 	cursor: pointer;
-}
+} */
 
 footer {
 	border: 1px solid rgb(168, 168, 168);
