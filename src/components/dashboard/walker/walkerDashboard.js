@@ -57,7 +57,7 @@ class WalkerDashboard extends Component {
 				<div className='next_walk_section'>
 					<h3>Next Walk:</h3>
 					<div className='next_walk_job'>
-						<img src={img} alt='pet_img' />
+						<img src={img} alt='pet_img' className='walker_dash_pet_img' />
 						<div>
 							<div>
 								Date: {month}/{date}/{year} Time: {time}
@@ -72,8 +72,16 @@ class WalkerDashboard extends Component {
 				</div>
 				<div className='button_section'>
 					{/* <button onClick={this.handleClickWalks}>Dogs Need Walking</button> */}
-					<button onClick={this.handleClickSchedule}>Full Schedule</button>
-					<button onClick={this.handleClickPendingJobs}>Pending Jobs</button>
+					<button
+						className='button_section_schedule'
+						onClick={this.handleClickSchedule}>
+						full schedule
+					</button>
+					<button
+						className='button_section_pending'
+						onClick={this.handleClickPendingJobs}>
+						pending jobs
+					</button>
 				</div>
 				{/* {
                     this.state.dogsNeedWalking === 'open'
