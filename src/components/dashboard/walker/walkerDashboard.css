@@ -1,84 +1,142 @@
 .walkerDashboard {
-    height: 95.2vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+	height: 93vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .next_walk_section {
-    border: 1px solid rgb(167, 167, 167);
-    width: 70%;
-    padding: 2%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin-bottom: 2%;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 2.5px 5px 0px;
+	border: 1px solid rgb(167, 167, 167);
+	width: 80%;
+	padding: 3%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	margin-top: 8%;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 2.5px 5px 0px;
+	font-size: 0.9em;
+	font-family: 'Oswald', sans-serif;
 }
 
 .next_walk_section h3 {
-    margin: 0 0 0 3%;
+	margin: 0 0 0 1%;
+	color: #d2b338;
+	font-size: 1em;
+}
+
+.walker_dash_pet_img {
+	height: 40%;
+	width: 40%;
+	padding-right: 4%;
 }
 
 .next_walk_job {
-    align-self: center;
-    display: flex;
-    justify-content: space-between;
-    width: 60%;
+	align-self: center;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
 }
 
 .button_section {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    height: 20vh;
-    width: 70%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	height: 20vh;
+	width: 70%;
 }
 
-.button_section button {
-    height: 5vh;
-    width: 75%;
-    border-radius: 5px;
+.button_section_button {
+	text-transform: uppercase;
+	align-content: center;
+	outline: 0;
+	background: #d2b338;
+	width: 100%;
+	border: 0;
+	padding: 15px;
+	color: #ffffff;
+	font-size: 14px;
+	-webkit-transition: all 0.3 ease;
+	transition: all 0.3 ease;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-bottom: 20%;
 }
 
-.button_section button:hover {
-    border: 1px solid grey;
-    cursor: pointer;
-    color: rgba(0, 0, 0, 0.527);
+.button_section_button:hover {
+	background: #d2b338aa;
+	letter-spacing: 1px;
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+	box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
+	transition: all 0.4s ease 0s;
+	cursor: pointer;
 }
 
-.dogs_need_walking{
-    display: flex;
-    flex-direction: column;
+.dogs_need_walking {
+	display: flex;
+	flex-direction: column;
 }
 
 .dogs_need_walking h4 {
-    align-self: center;
+	align-self: center;
 }
 
 .dogs_need_walking input {
-    margin-bottom: 4%;
+	margin-bottom: 4%;
 }
 
-.dogs_need_walking button {
-    width: 50%;
-    height: 3vh;
-    border-radius: 5px;
-    align-self: center;
-    margin: 5% 0 10% 0;
+.button_section_schedule {
+	align-self: center;
+	width: 50%;
+	height: 5vh;
+	margin-top: 0%;
+	border-radius: 5px;
+	font-family: 'Catamaran', sans-serif;
+	font-size: 1em;
+	background-color: #d2b338;
 }
 
-.dogs_need_walking button:hover {
-    border: 1px solid grey;
-    cursor: pointer;
+.button_section_pending {
+	align-self: center;
+	width: 50%;
+	height: 5vh;
+	border-radius: 5px;
+	font-family: 'Catamaran', sans-serif;
+	font-size: 1em;
+	background-color: #d2b338;
+}
+
+.button_section_pending:visited {
+	background-color: #d2b338;
+}
+
+.button_section_schedule:hover {
+	border: 1px solid grey;
+	cursor: pointer;
+}
+
+.button_section_pending:hover {
+	border: 1px solid grey;
+	cursor: pointer;
 }
 
 footer {
-    border: 1px solid rgb(168, 168, 168);
-    background-color: rgb(168, 168, 168);
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
+	border: 1px solid rgb(168, 168, 168);
+	background-color: rgb(168, 168, 168);
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+	align-items: center;
+	overflow: hidden;
+	position: fixed;
+	bottom: 0;
+}
+
+i,
+a:visited,
+i:hover,
+i:active {
+	color: black;
 }
