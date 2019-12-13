@@ -5,68 +5,77 @@ import { logoutUser } from './../../../redux/userReducer';
 import { connect } from 'react-redux';
 
 class WalkerDashboard extends Component {
-    state = {
-        error: false,
-        dogsNeedWalking: 'closed'
-    }
+	state = {
+		error: false,
+		dogsNeedWalking: 'closed'
+	};
 
-    componentDidMount() {
-        this.getNextWalk()
-    }
+	componentDidMount() {
+		this.getNextWalk();
+	}
 
-    handleClickWalks = () => {
-        this.setState({ dogsNeedWalking: 'open' })
-    }
+	handleClickWalks = () => {
+		this.setState({ dogsNeedWalking: 'open' });
+	};
 
-    handleClickSchedule = () => {
-        this.setState({ dogsNeedWalking: 'closed' })
-        //the function below will route us to the scheduled walks page for the walker
-        // this.props.history.push('/walker/schedule')
-    }
+	handleClickSchedule = () => {
+		this.setState({ dogsNeedWalking: 'closed' });
+		//the function below will route us to the scheduled walks page for the walker
+		// this.props.history.push('/walker/schedule')
+	};
 
-    handleClickPendingJobs = () => {
-        this.setState({ dogsNeedWalking: 'closed' })
-        //the function below will route us to the scheduled walks page for the walker
-        // this.props.history.push('/walker/schedule')
-    }
+	handleClickPendingJobs = () => {
+		this.setState({ dogsNeedWalking: 'closed' });
+		//the function below will route us to the scheduled walks page for the walker
+		// this.props.history.push('/walker/schedule')
+	};
 
-    getNextWalk = async () => {
-        const { id } = this.props.user;
-        await this.props.getWalkerSchedule(id);
-    }
+	getNextWalk = async () => {
+		const { id } = this.props.user;
+		await this.props.getWalkerSchedule(id);
+	};
 
-    render() {
-        const month = this.props.schedule[0] ? this.props.schedule[0].month : null;
-        const date = this.props.schedule[0] ? this.props.schedule[0].date : null;
-        const year = this.props.schedule[0] ? this.props.schedule[0].year : null;
-        const time = this.props.schedule[0] ? this.props.schedule[0].time : null;
-        const name = this.props.schedule[0] ? this.props.schedule[0].name : null;
-        const breed = this.props.schedule[0] ? this.props.schedule[0].breed : null;
-        const age = this.props.schedule[0] ? this.props.schedule[0].age : null;
-        const notes = this.props.schedule[0] ? this.props.schedule[0].notes : null;
-        const price = this.props.schedule[0] ? this.props.schedule[0].price : null;
-        const img = this.props.schedule[0] ? this.props.schedule[0].img : null;
-        return (
-            <div className='walkerDashboard'>
-                <button onClick={() => this.props.logoutUser().then(() => this.props.history.push('/'))}>Logout</button>
-                <div className='next_walk_section'>
-                    <h3>Next Walk:</h3>
-                    <div className='next_walk_job'>
-                        <img src={img} alt="pet_img" />
-                        <div>
-                            <div>Date: {month}/{date}/{year} Time: {time}</div>
-                            <div>Companion: {name} Breed: {breed} Age: {age}</div>
-                            <div>Notes: {notes}</div>
-                            <div>Total: ${price}</div>
-                        </div>
-                    </div>
-                </div>
-                <div className='button_section'>
-                    {/* <button onClick={this.handleClickWalks}>Dogs Need Walking</button> */}
-                    <button onClick={this.handleClickSchedule}>Full Schedule</button>
-                    <button onClick={this.handleClickPendingJobs}>Pending Jobs</button>
-                </div>
-                {/* {
+	render() {
+		const month = this.props.schedule[0] ? this.props.schedule[0].month : null;
+		const date = this.props.schedule[0] ? this.props.schedule[0].date : null;
+		const year = this.props.schedule[0] ? this.props.schedule[0].year : null;
+		const time = this.props.schedule[0] ? this.props.schedule[0].time : null;
+		const name = this.props.schedule[0] ? this.props.schedule[0].name : null;
+		const breed = this.props.schedule[0] ? this.props.schedule[0].breed : null;
+		const age = this.props.schedule[0] ? this.props.schedule[0].age : null;
+		const notes = this.props.schedule[0] ? this.props.schedule[0].notes : null;
+		const price = this.props.schedule[0] ? this.props.schedule[0].price : null;
+		const img = this.props.schedule[0] ? this.props.schedule[0].img : null;
+		return (
+			<div className='walkerDashboard'>
+				{/* <button
+					onClick={() =>
+						this.props.logoutUser().then(() => this.props.history.push('/'))
+					}>
+					Logout
+				</button> */}
+				<div className='next_walk_section'>
+					<h3>Next Walk:</h3>
+					<div className='next_walk_job'>
+						<img src={img} alt='pet_img' />
+						<div>
+							<div>
+								Date: {month}/{date}/{year} Time: {time}
+							</div>
+							<div>
+								Companion: {name} Breed: {breed} Age: {age}
+							</div>
+							<div>Notes: {notes}</div>
+							<div>Total: ${price}</div>
+						</div>
+					</div>
+				</div>
+				<div className='button_section'>
+					{/* <button onClick={this.handleClickWalks}>Dogs Need Walking</button> */}
+					<button onClick={this.handleClickSchedule}>Full Schedule</button>
+					<button onClick={this.handleClickPendingJobs}>Pending Jobs</button>
+				</div>
+				{/* {
                     this.state.dogsNeedWalking === 'open'
                         ?
                         <div className='dogs_need_walking'>
@@ -80,28 +89,33 @@ class WalkerDashboard extends Component {
                         :
                         null
                 } */}
-                <footer>
-                    <h2>Home</h2>
-                    <h3>|</h3>
-                    <h2>Schedule</h2>
-                    <h3>|</h3>
-                    <h2>Logout</h2>
-                </footer>
-            </div>
-        )
-    }
+				<footer>
+					<i className='home_footer' class='fas fa-home fa-2x' title='home'></i>
+					<h3>|</h3>
+					<i className='calendar_footer' class='far fa-calendar-alt fa-2x'></i>
+					<h3>|</h3>
+					<i
+						className='logout_footer'
+						class='fas fa-sign-out-alt fa-2x'
+						onClick={() =>
+							this.props.logoutUser().then(() => this.props.history.push('/'))
+						}></i>
+				</footer>
+			</div>
+		);
+	}
 }
 
-const mapStateToProps = state => {
-    return {
-        username: state.walkerReducer.username,
-        user: state.userReducer.user,
-        schedule: state.walkerReducer.schedule,
-        pets: state.walkerReducer.pets
-    }
-}
+const mapStateToProps = (state) => {
+	return {
+		username: state.walkerReducer.username,
+		user: state.userReducer.user,
+		schedule: state.walkerReducer.schedule,
+		pets: state.walkerReducer.pets
+	};
+};
 
 export default connect(mapStateToProps, {
-    logoutUser,
-    getWalkerSchedule
+	logoutUser,
+	getWalkerSchedule
 })(WalkerDashboard);

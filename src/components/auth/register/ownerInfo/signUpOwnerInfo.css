@@ -47,5 +47,6 @@ img {
 	height: 22px;
 	background-color: #659cef;
 	border-radius: 3px;
-	transition: width 500ms ease-in-out;
+	transition: 500ms ease-in-out;
+	transition-duration: 3s;
 }
