@@ -8,7 +8,7 @@ import {
 } from '../../../../redux/userReducer';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import {storage} from "./../../../../firebase-config"
+import {storage} from "./../../../../../firebase-config"
 
 class UserType extends Component {
 	state = {
