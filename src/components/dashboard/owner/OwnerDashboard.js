@@ -20,6 +20,7 @@ class OwnerDashoard extends Component {
 		let date = this.props.jobs[0] && this.props.jobs[0].date;
 		let year = this.props.jobs[0] && this.props.jobs[0].year;
 		let time = this.props.jobs[0] && this.props.jobs[0].time;
+		let walkstatus = this.props.jobs[0] && this.props.jobs[0].walkstatus;
 
 		return (
 			<>
@@ -28,8 +29,10 @@ class OwnerDashoard extends Component {
 					<div className='schedule-container'>
 						<p className='your_companion '>Your companions next walk..</p>
 						<div>
-							{month}/{date}/{year} at {time}
+							Date: {month}/{date}/{year}
 						</div>
+						<div>Time: {time}</div>
+						Status: {walkstatus}
 					</div>
 
 					<div className='buttons-container'>

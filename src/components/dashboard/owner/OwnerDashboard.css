@@ -4,18 +4,20 @@
 }
 
 .schedule-container {
+	display: flex;
+	flex-direction: column;
 	box-shadow: 3px 2px 3px rgb(208, 208, 208);
 	border: solid 1px rgb(227, 227, 227);
 	padding: 1em;
-	height: 6em;
+	height: 10em;
 	width: 15em;
+	font-family: 'Oswald', sans-serif;
+	font-size: 1em;
 }
 
-.view-schedule-Container {
-	font-family: 'Catamaran', sans-serif;
-}
 .your_companion {
-	font-family: 'Catamaran', sans-serif;
+	color: #d2b338;
+	font-size: 1.3em;
 }
 .buttons {
 	text-transform: uppercase;
@@ -58,7 +60,7 @@ footer {
 	justify-content: space-around;
 	width: 119%;
 	align-items: center;
-	margin-top: 38%;
+	margin-top: 17%;
 }
 
 i,
