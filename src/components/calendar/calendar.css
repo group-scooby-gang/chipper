@@ -67,6 +67,15 @@ tr {
     color: black;
 }
 
+.scheduled-day {
+    background-color:orange;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    border-radius: 2%;
+    color: black;
+}
+
 .month-popup {
     position: absolute;
     padding: 5px;
