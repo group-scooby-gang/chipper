@@ -23,6 +23,9 @@ import WalkDateSelect from './components/schedule/owner/scheduleNewWalk/date/new
 import WalkTime from './components/schedule/owner/scheduleNewWalk/time/newWalkTime';
 import ExtraNotes from './components/schedule/owner/scheduleNewWalk/extraNotes/newWalkExtraNotes';
 import WalkReview from './components/schedule/owner/scheduleNewWalk/review/newWalkReview';
+import Profile from "./components/profile/Profile"
+import DogProfile from "./components/profile/dogProfile/DogProfile"
+import WalkerProfile from "./components/profile/Walker/Walker"
 import ViewSchedule from './components/schedule/viewSchedule/ViewSchedule'
 
 export default (
@@ -47,6 +50,9 @@ export default (
 		<Route component={WalkTime} path='/owner/schedule/new/select_time' />
 		<Route component={ExtraNotes} path='/owner/schedule/new/extra_notes' />
 		<Route component={WalkReview} path='/owner/schedule/new/review' />
+		<Route component={DogProfile} path="/Profile/Dog/:pet_id" />
+		<Route component={Profile} path="/Profile/Owner" />
+		<Route component={WalkerProfile} path="/Profile/Walker"/>
 		<Route component={ViewSchedule} path='/scheduled' />
 	</Switch>
 );
