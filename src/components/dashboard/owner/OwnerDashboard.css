@@ -24,19 +24,19 @@
 	outline: 0;
 	background: #d2b338;
 	width: 100%;
-	padding: 16px;
-	color: #000000;
-	font-size: 16px;
+	border: 0;
+	padding: 15px;
+	color: #ffffff;
+	font-size: 14px;
 	-webkit-transition: all 0.3 ease;
 	transition: all 0.3 ease;
 	border-radius: 5px;
 	cursor: pointer;
-	margin-bottom: 0em;
-	margin-top: 2em;
+	margin-bottom: 10%;
 }
 
 .buttons:hover {
-	background: #434343;
+	background: #d2b338aa;
 	letter-spacing: 1px;
 	-webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
 	-moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
@@ -58,9 +58,7 @@ footer {
 	background-color: rgb(168, 168, 168);
 	display: flex;
 	justify-content: space-around;
-	/* width: 119%; */
 	align-items: center;
-	/* margin-top: 17%; */
 	overflow: hidden;
 	position: fixed;
 	bottom: 0;

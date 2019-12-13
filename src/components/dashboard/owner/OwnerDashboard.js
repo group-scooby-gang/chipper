@@ -42,23 +42,16 @@ class OwnerDashoard extends Component {
 								className='buttons'
 								name='Schedule'
 								onClick={this.handleSubmit}>
-								View Schedule
+								view schedule
 							</button>
 						</Link>
-						{/* <Link to='/walker/now'>
-						<button
-							class='now'
-							name='Walker Now'
-							onClick={this.handleSubmit}>
-							Walk Now
-						</button>
-					</Link> */}
+
 						<Link to='/walker/later'>
 							<button
 								className='buttons'
 								name='Walker Later'
 								onClick={this.handleSubmit}>
-								Schedule Walk
+								schedule walk
 							</button>
 						</Link>
 					</div>
