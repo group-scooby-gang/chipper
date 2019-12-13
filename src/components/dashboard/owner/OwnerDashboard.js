@@ -46,7 +46,7 @@ class OwnerDashoard extends Component {
 							</button>
 						</Link>
 
-						<Link to='/walker/later'>
+						<Link to='/owner/schedule/new/pet_select'>
 							<button
 								className='buttons'
 								name='Walker Later'

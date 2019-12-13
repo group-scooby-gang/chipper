@@ -35,7 +35,7 @@ class RegisterWalkerInfoStep2 extends Component {
                     </div>
                     <div className='pricing_section'>
                         <h5>45 min:</h5>
-                        $<input onChange={this.handleChange} type="number" name="fourtyfive"/>
+                        $<input onChange={this.handleChange} type="number" name="fortyfive"/>
                     </div>
                     <div className='pricing_section'>
                         <h5>60 min:</h5>
@@ -50,9 +50,10 @@ class RegisterWalkerInfoStep2 extends Component {
 
 const mapStateToProps = state => {
     return {
-        email: state.walkerReducer.email,
-        phone: state.walkerReducer.phone,
-        firstname: state.walkerReducer.firstname
+        fifteen: state.walkerReducer.fifteen,
+        thirty: state.walkerReducer.thirty,
+        fortyfive: state.walkerReducer.fortyfive,
+        sixty: state.walkerReducer.sixty
     }
 }
 

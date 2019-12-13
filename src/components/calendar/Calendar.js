@@ -1,8 +1,10 @@
 import React from 'react';
 import moment from 'moment';
 import './calendar.css';
+import {updateState} from '../../redux/calendarReducer';
+import { connect } from 'react-redux';
 
-export default class Calendar extends React.Component {
+class Calendar extends React.Component {
     state = {
         dateContext: moment(),
         today: moment(),
@@ -162,13 +164,17 @@ export default class Calendar extends React.Component {
         );
     }
 
-    onDayClick = (e, day) => {
-           this.setState({
-            selectedDay: day
+    onDayClick = (e, day, year, month) => {
+        this.setState({
+            selectedDay: day,
+            selectedYear: year,
+            selectedMonth: month,
         }, () => {
             console.log("SELECTED DAY: ", this.state.selectedDay);
-        })
-        this.props.onDayClick &&this.props.onDayClick(e, day);
+            console.log(this.year())
+            console.log(this.month())
+        });
+        this.props.onDayClick && this.props.onDayClick(e, day);
     }
 
     render() {
@@ -291,3 +297,14 @@ export default class Calendar extends React.Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        selectedMonth: state.calendarReducer.selectedMonth,
+        selectedDay: state.calendarReducer.selectedDay,
+        selectedYear: state.calendarReducer.selectedYear
+    };
+};
+
+export default connect(mapStateToProps, {
+    updateState
+})(Calendar);

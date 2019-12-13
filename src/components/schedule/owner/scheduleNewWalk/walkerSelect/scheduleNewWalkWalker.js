@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import './scheduleNewWalkWalker.css';
+import {updateState, getWalkers, searchWalkers} from '../../../../../redux/ownerReducer';
+import {connect} from 'react-redux';
 
 class WalkerSelect extends Component {
     state = {
-        searchContainer: 'close'
+        searchContainer: 'close',
+        state: null,
+        city: null
     }
 
-    // handleChange = e => {
-    //     this.props.updateState({[e.target.name]: e.target.value})
-    // }
-
-    handleSeach = () => {
-        this.setState({ searchContainer: 'open'})
+    componentDidMount() {
+        this.getWalkers()
     }
 
     back = () => {
@@ -22,94 +22,91 @@ class WalkerSelect extends Component {
         this.props.history.push('/owner/schedule/new/select_date')
     }
 
+    getWalkers = () => {
+        this.props.getWalkers()
+    }
+
+    selectWalker = (val) => {
+        this.props.updateState({ 
+            selectedWalker: val.user_id,
+            selectedWalkerName: val.firstname + val.lastname,
+            selectedWalkerImg: val.profileimg
+        });
+    }
+
+    handleChange = e => {
+        this.setState({[e.target.name]: e.target.value})
+    }
+
+    searchWalker = async() => {
+        this.props.updateState({ searchWalker: [] })
+        const {state, city} = this.state;
+        await this.props.searchWalkers(state, city);
+        this.setState({ searchContainer: 'open' })
+    }
+
     render() {
-        // const mappedCities = this.props.walkers.map(val => {
-        //     <select name="state">
-        //         <option value={val.city}>{val.city}</option>
-        //     </select>
-        // })
-        return (
-            <div>
-                <div>
-                    <h2>Mapped Walker</h2>
-                    <h2>Mapped Walker</h2>
-                    <h2>Mapped Walker</h2>
+        const mappedWalkers = this.props.walkers.map(val => {
+            return(
+                <div className='walker' onClick={() => this.selectWalker(val)}>
+                    <img src={val.profileimg} alt="profile_pic"/>
+                    <h3>{val.firstname} {val.lastname}</h3>
+                    <p>{val.experience}</p>
+                    <div>Price:</div>
+                    <div className='price_section'>
+                        <p>15min: ${val._15minprice}</p>
+                        <p>30min: ${val._30minprice}</p>
+                        <p>45min: ${val._45minprice}</p>
+                        <p>60min: ${val._60minprice}</p>
+                    </div>
                 </div>
-                <div>
-                    {/* <select name="state">
-                        <option value="State">State</option>
-                        <option value="Alabama"></option>
-                        <option value="Alaska"></option>
-                        <option value="Arkansas"></option>
-                        <option value="California"></option>
-                        <option value="Conneticut"></option>
-                        <option value="Florida"></option>
-                        <option value="Georgia"></option>
-                        <option value="North Dakota"></option>
-                        <option value="South Dakota"></option>
-                        <option value="Virginia"></option>
-                        <option value="Deleware"></option>
-                        <option value="Hawaii"></option>
-                        <option value="Texas"></option>
-                        <option value="Tennessee"></option>
-                        <option value="Louisiana"></option>
-                        <option value="Nevada"></option>
-                        <option value="Arizona"></option>
-                        <option value="Utah"></option>
-                        <option value="Idaho"></option>
-                        <option value="Wyoming"></option>
-                        <option value="Nebraska"></option>
-                        <option value="Kansas"></option>
-                        <option value="Colorado"></option>
-                        <option value="West Virginia"></option>
-                        <option value="South Carolina"></option>
-                        <option value="North Carolina"></option>
-                        <option value="Maryland"></option>
-                        <option value="Indiana"></option>
-                        <option value="Ohio"></option>
-                        <option value="Maine"></option>
-                        <option value="Vermont"></option>
-                        <option value="Kentucky"></option>
-                        <option value="Missouri"></option>
-                        <option value="Michigan"></option>
-                        <option value="Rhode Island"></option>
-                        <option value="Oregan"></option>
-                        <option value="Washington"></option>
-                        <option value="New Mexico"></option>
-                        <option value="Mississippi"></option>
-                        <option value="Pennsylvania"></option>
-                        <option value="Massachusetts"></option>
-                        <option value="New York"></option>
-                        <option value="New Jersey"></option>
-                        <option value="Illinois"></option>
-                        <option value="Montana"></option>
-                        <option value="Iowa"></option>
-                        <option value="New Hampshire"></option>
-                        <option value="Oklahoma"></option>
-                        <option value="Wisconsin"></option>
-                        <option value="Minnesota"></option>
-                    </select> */}
-                    <div>
-                        <h3>State:</h3>
-                        <input onChange={this.handleChange} type="text" name="state" placeholder='State' />
+            )
+        })
+
+        const mappedSearchWalkers = this.props.searchedWalker.map(val => {
+            return (
+                <div className='walker' onClick={() => this.selectWalker(val)}>
+                    <img src={val.profileimg} alt="profile_pic"/>
+                    <h3>{val.firstname} {val.lastname}</h3>
+                    <p>{val.experience}</p>
+                    <div>Price:</div>
+                    <div className='price_section'>
+                        <p>15min: ${val._15minprice}</p>
+                        <p>30min: ${val._30minprice}</p>
+                        <p>45min: ${val._45minprice}</p>
+                        <p>60min: ${val._60minprice}</p>
                     </div>
+                </div>
+            )
+        })
+        return (
+            <div className='selected_walker_page'>
+                <h1>Select A Walker</h1>
+                <div className='top_three_walkers_section'>
+                    <h2>Top Walkers</h2>
+                    {mappedWalkers}
+                </div>
+                <div className='search_section'>
                     <div>
-                        <h3>City:</h3>
-                        <input onChange={this.handleChange} type="text" name="city" placeholder='City' />
+                        <div>
+                            <h3>State:</h3>
+                            <input onChange={this.handleChange} type="text" name="state" placeholder='State' />
+                        </div>
+                        <div>
+                            <h3>City:</h3>
+                            <input onChange={this.handleChange} type="text" name="city" placeholder='City' />
+                        </div>
                     </div>
-                    {/* function to search for walkers based on state and city inputs */}
-                    <button onClick={this.handleSeach}>Search</button>
+                    <button onClick={this.searchWalker}>Search</button>
                 </div>
                 {
-                this.state.searchContainer === 'open'
-                ?
-                <div>
-                    <h4>Mapped Walker</h4>
-                    <h4>Mapped Walker</h4>
-                    <h4>Mapped Walker</h4>
-                </div>
-                :
-                null
+                    this.state.searchContainer === 'open'
+                        ?
+                        <div className='searched_walkers_results_section'>
+                            {mappedSearchWalkers}
+                        </div>
+                        :
+                        null
                 }
                 <button onClick={this.next}>Next</button>
                 <button onClick={this.back}>Back</button>
@@ -118,4 +115,17 @@ class WalkerSelect extends Component {
     }
 }
 
-export default WalkerSelect;
+const mapStateToProps = state => {
+    return {
+        walkers: state.ownerReducer.walkers,
+        selectedWalker: state.ownerReducer.selectedWalker,
+        searchedWalker: state.ownerReducer.searchedWalker,
+        selectedPet: state.ownerReducer.selectedPet
+    }
+}
+
+export default connect(mapStateToProps, {
+    updateState,
+    getWalkers,
+    searchWalkers
+})(WalkerSelect);
