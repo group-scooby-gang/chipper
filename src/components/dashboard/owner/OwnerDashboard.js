@@ -25,7 +25,6 @@ class OwnerDashoard extends Component {
 			<>
 				<div class='main-container'>
 					<h1>Owner Dashboard</h1>
-					<h1></h1>
 					<div className='schedule-container'>
 						<p className='your_companion '>Your companions next walk..</p>
 						<div>
@@ -34,7 +33,7 @@ class OwnerDashoard extends Component {
 					</div>
 
 					<div className='buttons-container'>
-						<Link to='/owner/schedule'>
+						<Link to='/scheduled'>
 							<button
 								className='buttons'
 								name='Schedule'

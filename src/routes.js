@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 //components
-import App from './App';
+// import App from './App';
 import UserType from './components/auth/register/userType/signUpUserType';
 import RegisterOwnerInfo from './components/auth/register/ownerInfo/signUpOwnerInfo';
 import PetRegisterName from './components/auth/register/petRegistrationInfo/petRegisterName/petRegisterName';
@@ -23,6 +23,7 @@ import WalkDateSelect from './components/schedule/owner/scheduleNewWalk/date/new
 import WalkTime from './components/schedule/owner/scheduleNewWalk/time/newWalkTime';
 import ExtraNotes from './components/schedule/owner/scheduleNewWalk/extraNotes/newWalkExtraNotes';
 import WalkReview from './components/schedule/owner/scheduleNewWalk/review/newWalkReview';
+import ViewSchedule from './components/schedule/viewSchedule/ViewSchedule'
 
 export default (
 	<Switch>
@@ -46,5 +47,6 @@ export default (
 		<Route component={WalkTime} path='/owner/schedule/new/select_time' />
 		<Route component={ExtraNotes} path='/owner/schedule/new/extra_notes' />
 		<Route component={WalkReview} path='/owner/schedule/new/review' />
+		<Route component={ViewSchedule} path='/scheduled' />
 	</Switch>
 );

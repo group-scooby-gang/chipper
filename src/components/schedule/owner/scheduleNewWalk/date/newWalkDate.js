@@ -5,6 +5,7 @@ import Calendar from '../../../../calendar/Calendar';
 class WalkDateSelect extends Component {
 
     onDayClick = (e, day) => {
+        console.log(e)
         alert(day);
     }
 

@@ -1,5 +1,6 @@
 import React, {useEffect, useRef} from 'react'
-import {TweenMax, Power3, Elastic, Bounce} from "gsap"
+import {TweenMax, Power3 } from "gsap"
+// import {TweenMax, Power3, Elastic, Bounce} from "gsap"
 import "./landing.css"
 
 function Landing(props){
@@ -20,7 +21,7 @@ function Landing(props){
         return (
             <div className="mainLandingCard">
                 <h1>Chipper</h1>
-                <img></img>
+                {/* <img></img> */}
                 <section>
                     <div className="about"     ref={el => {aboutItem = el}} >
                         <h3>What we do</h3>

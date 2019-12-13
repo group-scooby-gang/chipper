@@ -9,11 +9,20 @@ const initialState = {
 	month: '',
 	time: '',
 	jobs: [],
+	selectedDay: null,
 	loading: false
-};
+}
 
+const ON_DAY_CLICK = 'ON_DAY_CLICK';
 const UPDATE_STATE = 'UPDATE_STATE';
 const VIEW_SCHEDULE = 'VIEW_SCHEDULE';
+
+export const onDayClick = (e, day) => {
+	return {
+		type: ON_DAY_CLICK,
+		payload: day
+	}
+}
 
 export const updateState = (e) => {
 	return {
@@ -39,14 +48,20 @@ export default function ownerReducer(state = initialState, action) {
 				...payload
 			};
 		case `${VIEW_SCHEDULE}_PENDING`:
-			return { ...state, loading: true };
-
+			return { ...state, loading: true 
+			};
 		case `${VIEW_SCHEDULE}_FULFILLED`:
 			console.log(payload.data);
 			return {
 				...state,
 				jobs: payload.data,
 				loading: false
+			};
+		case `${ON_DAY_CLICK}_FULFILLED`:
+			console.log(payload.data);
+			return {
+				...state,
+				selectedDay: payload.data.day
 			};
 		default:
 			return state;
