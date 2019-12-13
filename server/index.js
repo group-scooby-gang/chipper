@@ -65,7 +65,9 @@ app.get('/Chipper/Walker/Applications/Approved', walker.allAccepted);
 app.post('/Chipper/Walker/Applications/Submitted', walker.applyWalker);
 app.delete('/Chipper/Walker/Application/Deny/:application_id', walker.denyWalker);
 app.put('/Chipper/Walker/Application/Approve/:application_id', walker.acceptWalker);
-app.get("/Chipper/Walker/NextJobs", walker.getWalkerSchedule)
+app.get("/Chipper/Walker/NextJobs", walker.getWalkerSchedule);
+app.get('/Chipper/Walker/Search', walker.searchWalker);
+app.get('/Chipper/Walker/:id', walker.getWalker);
 
 //jobs
 app.post("/Chipper/Jobs/Hire", job.addJob) //Where jobs are posted into db and put as false (aka pending)

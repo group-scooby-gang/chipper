@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 //components
-import App from './App';
+// import App from './App';
 import UserType from './components/auth/register/userType/signUpUserType';
 import RegisterOwnerInfo from './components/auth/register/ownerInfo/signUpOwnerInfo';
 import PetRegisterName from './components/auth/register/petRegistrationInfo/petRegisterName/petRegisterName';

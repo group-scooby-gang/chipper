@@ -1,7 +1,7 @@
 //for new walk date component (just in case instead of calendar)
 <div>
     do I need to make each month a number value
-                    <select name="month">
+    <select name="month">
         <option value="Month">Month</option>
         <option value="January">January</option>
         <option value="February">February</option>
@@ -66,3 +66,58 @@
         <option value="2030">2030</option>
     </select>
 </div>
+
+    //for walker select component to select state
+    // <select name="state">
+    //     <option value="State">State</option>
+    //     <option value="Alabama"></option>
+    //     <option value="Alaska"></option>
+    //     <option value="Arkansas"></option>
+    //     <option value="California"></option>
+    //     <option value="Conneticut"></option>
+    //     <option value="Florida"></option>
+    //     <option value="Georgia"></option>
+    //     <option value="North Dakota"></option>
+    //     <option value="South Dakota"></option>
+    //     <option value="Virginia"></option>
+    //     <option value="Deleware"></option>
+    //     <option value="Hawaii"></option>
+    //     <option value="Texas"></option>
+    //     <option value="Tennessee"></option>
+    //     <option value="Louisiana"></option>
+    //     <option value="Nevada"></option>
+    //     <option value="Arizona"></option>
+    //     <option value="Utah"></option>
+    //     <option value="Idaho"></option>
+    //     <option value="Wyoming"></option>
+    //     <option value="Nebraska"></option>
+    //     <option value="Kansas"></option>
+    //     <option value="Colorado"></option>
+    //     <option value="West Virginia"></option>
+    //     <option value="South Carolina"></option>
+    //     <option value="North Carolina"></option>
+    //     <option value="Maryland"></option>
+    //     <option value="Indiana"></option>
+    //     <option value="Ohio"></option>
+    //     <option value="Maine"></option>
+    //     <option value="Vermont"></option>
+    //     <option value="Kentucky"></option>
+    //     <option value="Missouri"></option>
+    //     <option value="Michigan"></option>
+    //     <option value="Rhode Island"></option>
+    //     <option value="Oregan"></option>
+    //     <option value="Washington"></option>
+    //     <option value="New Mexico"></option>
+    //     <option value="Mississippi"></option>
+    //     <option value="Pennsylvania"></option>
+    //     <option value="Massachusetts"></option>
+    //     <option value="New York"></option>
+    //     <option value="New Jersey"></option>
+    //     <option value="Illinois"></option>
+    //     <option value="Montana"></option>
+    //     <option value="Iowa"></option>
+    //     <option value="New Hampshire"></option>
+    //     <option value="Oklahoma"></option>
+    //     <option value="Wisconsin"></option>
+    //     <option value="Minnesota"></option>
+    // </select>
