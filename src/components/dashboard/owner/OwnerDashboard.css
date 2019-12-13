@@ -1,7 +1,6 @@
 .main-container {
 	display: flex;
 	flex-direction: column;
-	margin: 2em;
 }
 
 .schedule-container {
@@ -21,10 +20,8 @@
 .buttons {
 	text-transform: uppercase;
 	outline: 0;
-	/* background: #4caf50; */
 	background: #d2b338;
 	width: 100%;
-	border: 0;
 	padding: 16px;
 	color: #000000;
 	font-size: 16px;
@@ -32,7 +29,8 @@
 	transition: all 0.3 ease;
 	border-radius: 5px;
 	cursor: pointer;
-	margin-bottom: 2em;
+	margin-bottom: 0em;
+	margin-top: 2em;
 }
 
 .buttons:hover {
@@ -50,5 +48,22 @@
 	justify-content: center;
 	height: 12em;
 	width: 15em;
-	margin-top: 1em;
+	margin-top: 10%;
+}
+
+footer {
+	border: 1px solid rgb(168, 168, 168);
+	background-color: rgb(168, 168, 168);
+	display: flex;
+	justify-content: space-around;
+	width: 119%;
+	align-items: center;
+	margin-top: 38%;
+}
+
+i,
+a:visited,
+i:hover,
+i:active {
+	color: black;
 }
