@@ -1,0 +1,26 @@
+.extra_notes_page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.extra_notes_page textarea {
+    padding: 1%;
+    margin-bottom: 2%;
+    width: 75%;
+    box-shadow: rgba(0, 0, 0, 0.26) 0 2.5px 5px 0;
+}
+
+.extra_notes_page button {
+    margin: 0 0 2% 0;
+    width: 20%;
+    height: 4vh;
+    border-radius: 4px;
+}
+
+.extra_notes_page button:hover {
+    cursor: pointer;
+    border: 1px solid gray;
+    color: rgba(0, 0, 0, 0.623);
+}

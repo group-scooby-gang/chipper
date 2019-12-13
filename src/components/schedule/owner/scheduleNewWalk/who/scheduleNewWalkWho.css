@@ -30,6 +30,10 @@
     box-shadow: rgba(0, 0, 0, 0.3) 0px 2.5px 5px 0px;
 }
 
+.owner_pet:hover {
+    cursor: pointer;
+}
+
 .who_page button {
     height: 5vh;
     width: 50%;

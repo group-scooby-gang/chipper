@@ -51,6 +51,20 @@ const getWalkerSchedule = async (req, res) => {
     res.status(200).json(schedule)
 }
 
+const searchWalker = async (req, res) => {
+    const db = req.app.get('db')
+    const {state, city} = req.query;
+    const searchedWalker = await db.WalkerSearch(state, city)
+    res.status(200).json(searchedWalker)
+}
+
+const getWalker = async (req, res) => {
+    const db = req.app.get('db')
+    const {id} = req.params;
+    const getWalkerById = await db.getWalker(id)
+    res.status(200).json(getWalkerById);
+}
+
 module.exports = {
     applyWalker,
     denyWalker,
@@ -58,5 +72,7 @@ module.exports = {
     allApplications,
     allAccepted,
     applicationDetails,
-    getWalkerSchedule
+    getWalkerSchedule,
+    searchWalker,
+    getWalker
 }
