@@ -8,6 +8,7 @@ import {
 } from '../../../../redux/userReducer';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import {storage} from "./../../../../../firebase-config"
 
 class UserType extends Component {
 	state = {
@@ -18,6 +19,20 @@ class UserType extends Component {
 		e.preventDefault();
 		this.props.updateState({ [e.target.name]: e.target.value });
 	};
+
+	handleImage = (e) => {
+        if(e.target.files[0]){
+            const image = (e.target.files[0])
+			const uploadTask = storage.ref(`/userProfilePicture/${image.name}`).put(image)
+			uploadTask.on("state_changed", 
+			() => {
+				storage.ref('userProfilePicture').child(image.name).getDownloadURL()
+				.then(url => {
+					this.props.updateState({profileImg: url})
+				})
+			})
+		}
+	}
 
 	handleRegisterOwner = async (e) => {
 		e.preventDefault();
@@ -98,8 +113,14 @@ class UserType extends Component {
 				zip
 			)
 			.then(() => {
+				axios.post('/Chipper/Login', {
+					username: this.props.userName,
+					password: this.props.password
+				})
+				.then(() => {
+					this.props.history.push('/register/walker/info');
+				});
 				this.props.resetFields();
-				this.props.history.push('/register/walker/info');
 			})
 			.catch(() => {
 				this.setState({ error: true });
@@ -180,6 +201,12 @@ class UserType extends Component {
 						type='text'
 						placeholder='zip'
 						name='zip'
+					/>
+					<h>Upload Profile Image:</h>
+					<input
+						type="file"
+						name="profileImg"
+						onChange={this.handleImage}
 					/>
 				</form>
 				<div className='button_section'>
