@@ -1,37 +1,81 @@
 .pet_breed_page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .back_button {
-    margin: 2.5% 0% 0% 2.5%;
-    align-self: flex-start;
+	margin: 2.5% 0% 0% 2.5%;
+	align-self: flex-start;
 }
 
 .back_button:hover {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .pet_breed_page img {
-    width: 40%;
-    margin: 2% 0 0 0;
+	width: 40%;
+	margin: 2% 0 0 0;
 }
 
-.pet_breed_page input {
-    width: 50%;
-    height: 5vh;
-    margin: 0 0 1% 0;
+.what_is_breed {
+	font-family: 'Lilita One', cursive;
+	font-size: 1.4em;
+	color: #d2b338;
+	margin-top: 13%;
+	text-align: center;
 }
 
-.pet_breed_page button {
-    width: 30%;
-    height: 5vh;
-    margin: 1% 0 1% 0;
+.breed_input {
+	width: 47%;
+	height: 4.7vh;
+	margin: 0 0 1% 0;
+	margin-top: 5%;
+	padding-left: 1%;
+	border-radius: 5px;
+	border-color: transparent;
+	background-color: rgba(232, 232, 232, 0.776);
+	padding-left: 2%;
+	font-size: 0.9em;
+}
+
+.next_button {
+	align-self: center;
+	width: 50%;
+	height: 5vh;
+	margin-top: 5%;
+	border-radius: 5px;
+	font-family: 'Catamaran', sans-serif;
+	font-size: 1em;
+	background-color: #d2b338;
 }
 
 .pet_breed_page button:hover {
-    cursor: pointer;
-    border: 1px solid grey;
+	cursor: pointer;
+	border: 1px solid grey;
+}
+
+.progress_container {
+	align-self: center;
+	margin-top: 38%;
+	width: 80%;
+}
+
+.progress_bar {
+	width: 95%;
+	background-color: #e0e0e0;
+	padding: 3px;
+	border-radius: 3px;
+	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.progress_bar_fill_50 {
+	width: 50%;
+	display: block;
+	height: 22px;
+	background-color: #659cef;
+	border-radius: 3px;
+	transition: width 500ms ease-in-out;
+	transition-duration: 5s;
 }
