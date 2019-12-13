@@ -5,7 +5,7 @@
 
 .Sign-up {
 	align-self: center;
-	color: #ffc404;
+	color: #d2b338;
 	font-family: 'Permanent Marker', cursive;
 }
 
@@ -23,9 +23,8 @@ form {
 	justify-content: space-around;
 	width: 70%;
 	height: 45vh;
-
 	margin: 2.5% 0 0% 0;
-	background-color: rgb(198, 194, 194);
+	background-color: #e0e0e0;
 	box-shadow: rgba(65, 65, 65, 0.3) 0px 2.5px 5px 5px;
 	padding: 1% 0 1% 0;
 }
@@ -48,11 +47,11 @@ form input {
 }
 
 .owner-button {
-	background-color: #ffc404;
+	background-color: #d2b338;
 	margin-top: 1em;
 }
 .walker-button {
-	background-color: #ffc404;
+	background-color: #d2b3384;
 }
 .owner-button:hover {
 	cursor: pointer;

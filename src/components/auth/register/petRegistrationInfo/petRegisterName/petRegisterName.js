@@ -30,9 +30,10 @@ class PetRegisterName extends Component {
 				<button className='pet_name_page button' onClick={this.nextButton}>
 					next
 				</button>
+
 				<div className='progress_container'>
 					<div class='progress_bar'>
-						<span class='progress_bar_fill'></span>
+						<span class='progress_bar_fill_33'></span>
 					</div>
 				</div>
 			</div>
