@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './newWalkTime.css';
+import {updateState} from './../../../../../redux/ownerReducer';
+import { connect } from 'react-redux';
 
 class WalkTime extends Component {
     next = () => {
@@ -11,6 +13,7 @@ class WalkTime extends Component {
     }
 
     render() {
+        console.log(this.props.month)
         return (
             <div>
                 <div>
@@ -29,4 +32,12 @@ class WalkTime extends Component {
     }
 }
 
-export default WalkTime;
+const mapStateToProps = state => {
+    return {
+        month: state.ownerReducer.month
+    }
+}
+
+export default connect(mapStateToProps, {
+    updateState
+})(WalkTime);

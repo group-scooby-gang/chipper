@@ -1,7 +1,7 @@
 //for new walk date component (just in case instead of calendar)
 <div>
     do I need to make each month a number value
-                    <select name="month">
+    <select name="month">
         <option value="Month">Month</option>
         <option value="January">January</option>
         <option value="February">February</option>

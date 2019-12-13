@@ -35,7 +35,6 @@ class WalkerSelect extends Component {
     }
 
     searchWalker = async() => {
-        console.log("hit")
         this.props.updateState({ searchWalker: [] })
         const {state, city} = this.state;
         await this.props.searchWalkers(state, city);
@@ -44,7 +43,6 @@ class WalkerSelect extends Component {
 
     render() {
         console.log(this.props.selectedWalker);
-        console.log(this.props.searchedWalker);
         const mappedWalkers = this.props.walkers.map(val => {
             return(
                 <div className='walker' onClick={() => this.selectWalker(val.user_id)}>
