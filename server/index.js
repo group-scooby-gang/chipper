@@ -57,6 +57,7 @@ app.post('/Chipper/Logout', auth.logoutUser);
 app.post('/Chipper/Pet/Add', pet.addPet);
 app.delete('/Chipper/Pet/Remove/:pet_id', pet.deletePet);
 app.put('/Chipper/Pet/Edit/:pet_id', pet.editPet);
+app.get("/Chipper/Pet/History/:pet_id", pet.petsWalks)
 
 //walker
 app.get('/Chipper/Walker/Application/:application_id', walker.applicationDetails);
@@ -66,12 +67,16 @@ app.post('/Chipper/Walker/Applications/Submitted', walker.applyWalker);
 app.delete('/Chipper/Walker/Application/Deny/:application_id', walker.denyWalker);
 app.put('/Chipper/Walker/Application/Approve/:application_id', walker.acceptWalker);
 app.get("/Chipper/Walker/NextJobs", walker.getWalkerSchedule)
+app.get("/Chipper/Profile/Walker", walker.getWalkerProfile)
+app.get("/Chipper/History/Walker", walker.walkerHistory)
 
 //jobs
 app.post("/Chipper/Jobs/Hire", job.addJob) //Where jobs are posted into db and put as false (aka pending)
 app.put("/Chipper/Jobs/Accept/:job_id", job.acceptJob) //Where walkers accept jobs
 app.delete("/Chipper/Jobs/Decline/:job_id", job.declineJob) //Where walkers decline jobs
 app.get("/Chipper/Jobs/Pending", job.walkerPendingJobs) //Where walkers can see their pending hires
+app.put("/Chipper/Jobs/Start/:job_id", job.startWalk) //When a walker starts a walk, it changes the status of the walk
+app.put("/Chipper/Jobs/Complete/:job_id", job.completeWalk) //When a walker finished a job, marks job as complete in db
 
 
 //owner

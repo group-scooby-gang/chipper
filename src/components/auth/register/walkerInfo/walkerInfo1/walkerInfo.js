@@ -8,6 +8,11 @@ class RegisterWalkerInfo extends Component {
         error: false
     }
 
+
+    componentDidMount(){
+        console.log(this.props)
+    }
+
     handleChange = e => {
         e.preventDefault();
         this.props.updateState({ [e.target.name]: e.target.value })

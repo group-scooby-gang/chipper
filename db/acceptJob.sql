@@ -1,3 +1,3 @@
 UPDATE jobs
-SET jobaccepted = true
+SET jobaccepted = true, walkstatus = 'Not Started'
 WHERE job_id = $1

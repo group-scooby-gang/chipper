@@ -51,6 +51,21 @@ const getWalkerSchedule = async (req, res) => {
     res.status(200).json(schedule)
 }
 
+const getWalkerProfile = async (req, res) => {
+    const db = req.app.get("db")
+    const id = req.session.user.id;
+    const profile = await db.WalkerProfile(id);
+    res.status(200).json(profile)
+}
+
+
+const walkerHistory = async (req, res) => {
+    const db = req.app.get("db")
+    const id = req.session.user.id
+    const history = await db.walkerHistory(id)
+    res.status(200).json(history)
+}
+
 module.exports = {
     applyWalker,
     denyWalker,
@@ -58,5 +73,7 @@ module.exports = {
     allApplications,
     allAccepted,
     applicationDetails,
-    getWalkerSchedule
+    getWalkerSchedule,
+    getWalkerProfile,
+    walkerHistory
 }

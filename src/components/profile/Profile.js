@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux"
 import {getPets} from "./../../redux/profileReducer"
 import "./Profile.css"
+import {Link} from "react-router-dom"
 
 class Profile extends React.Component {
     constructor(){
@@ -22,15 +23,18 @@ class Profile extends React.Component {
                     <img src={val.img} alt="No image"></img>
                         <p>Breed: {val.breed}</p>
                         <p>Age: {val.age}</p>
+                        <Link to={`/Profile/Dog/${val.pet_id}`}>
                         <button>View walk history</button>
+                        </Link>
                 </div>
             )
         })
         return (
             <div>
-                <h1>Profile</h1>
-                <h2>Your pets: </h2>
-                {mappedPets}
+                <h2 id="yourPets">Your pets: </h2>
+                <div className="petCard">
+                    {mappedPets}
+                </div>
             </div>
         )
     }

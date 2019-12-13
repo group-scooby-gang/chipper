@@ -1,18 +1,37 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './navbar.css';
+import axios from "axios"
 
 class navbar extends Component {
 	constructor() {
 		super();
 		this.state = {
-			menuStatus: false
+			menuStatus: false,
+			isWalker: "/Profile/Walker"
 		};
 	}
 
 	handleClick = () => {
 		this.setState({ menuStatus: !this.state.menuStatus });
 	};
+
+	componentDidMount(){
+		console.log(this.props)
+	}
+
+
+
+	moveUser = () => {
+		axios.get('/Chipper/Check/Walker')
+		.then(res => {
+			if(res.data.isWalker === false){
+				this.props.history.push("/Profile/Owner")
+			} else {
+				this.props.history.push("/Profile/Walker")
+			}
+		})
+	}
 
 	render() {
 		return (
@@ -38,12 +57,11 @@ class navbar extends Component {
 								login
 							</button>
 						</Link>
+
 						<Link to='/'>
 							<button onClick={this.handleClick}>home</button>
 						</Link>
-						<Link to="/Profile">
-							<button>Profile</button>
-						</Link>
+						<button onClick={this.moveUser}>Profile</button>
 					</div>
 				) : null}{' '}
 			</>
@@ -51,4 +69,4 @@ class navbar extends Component {
 	}
 }
 
-export default navbar;
+export default withRouter(navbar);

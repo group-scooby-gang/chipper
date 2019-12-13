@@ -1,3 +1,39 @@
 .mappedpet {
-    color: red;
+    border: 1px solid rgba(155, 155, 155, 0.8);
+    margin: 0px 20px 10px 20px;
+    width: 200px;
+}
+
+
+.petCard {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-left: 80px;
+}
+
+.mappedpet img {
+    margin-left: 25px;
+}
+
+.mappedpet p, .mappedpet h4, .mappedpet button{
+    margin-left: 27.5px;
+}
+
+
+#yourPets {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 2em;
+    margin-left: 115px;
+    color: #d2c338;;
+}
+
+.mappedpet button {
+    margin-left: 45px;
+    margin-bottom: 5px;
+    border: none;
+    height: 30px;
+}
+
+.mappedpet button:hover {
+    background: #d2c338;
 }
