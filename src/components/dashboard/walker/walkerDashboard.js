@@ -79,12 +79,12 @@ class WalkerDashboard extends Component {
 				<div className='button_section'>
 					{/* <button onClick={this.handleClickWalks}>Dogs Need Walking</button> */}
 					<button
-						className='button_section_schedule'
+						className='button_section_button'
 						onClick={this.handleClickSchedule}>
 						full schedule
 					</button>
 					<button
-						className='button_section_pending'
+						className='button_section_button'
 						onClick={this.handleClickPendingJobs}>
 						pending jobs
 					</button>

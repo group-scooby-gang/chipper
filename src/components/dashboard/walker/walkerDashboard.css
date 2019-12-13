@@ -47,16 +47,31 @@
 	width: 70%;
 }
 
-.button_section button {
-	height: 5vh;
-	width: 75%;
+.button_section_button {
+	text-transform: uppercase;
+	align-content: center;
+	outline: 0;
+	background: #d2b338;
+	width: 100%;
+	border: 0;
+	padding: 15px;
+	color: #ffffff;
+	font-size: 14px;
+	-webkit-transition: all 0.3 ease;
+	transition: all 0.3 ease;
 	border-radius: 5px;
+	cursor: pointer;
+	margin-bottom: 20%;
 }
 
-.button_section button:hover {
-	border: 1px solid grey;
+.button_section_button:hover {
+	background: #d2b338aa;
+	letter-spacing: 1px;
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+	box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
+	transition: all 0.4s ease 0s;
 	cursor: pointer;
-	color: rgba(0, 0, 0, 0.527);
 }
 
 .dogs_need_walking {
