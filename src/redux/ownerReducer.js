@@ -24,8 +24,9 @@ const initialState = {
 	walkers: [],
 	searchedWalker: [],
 	loading: false
-};
+}
 
+const ON_DAY_CLICK = 'ON_DAY_CLICK';
 const UPDATE_STATE = 'UPDATE_STATE';
 const RESET_FIELDS = 'RESET_FIELDS';
 const VIEW_SCHEDULE = 'VIEW_SCHEDULE';
@@ -34,6 +35,13 @@ const GET_WALKERS = 'GET_WALKERS';
 const SEARCH_WALKERS = 'SEARCH_WALKERS';
 const GET_WALKERS_PRICE = 'GET_WALKERS_PRICE';
 const ADD_JOB = 'ADD_JOB';
+
+export const onDayClick = (e, day) => {
+	return {
+		type: ON_DAY_CLICK,
+		payload: day
+	}
+}
 
 export const updateState = (e) => {
 	return {
@@ -113,8 +121,8 @@ export default function ownerReducer(state = initialState, action) {
 				...state
 			}
 		case `${VIEW_SCHEDULE}_PENDING`:
-			return { ...state, loading: true };
-
+			return { ...state, loading: true 
+			};
 		case `${VIEW_SCHEDULE}_FULFILLED`:
 			return {
 				...state,

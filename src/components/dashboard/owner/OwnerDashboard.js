@@ -37,7 +37,7 @@ class OwnerDashoard extends Component {
 					</div>
 
 					<div className='buttons-container'>
-						<Link to='/owner/schedule'>
+						<Link to='/scheduled'>
 							<button
 								className='buttons'
 								name='Schedule'
@@ -63,7 +63,7 @@ class OwnerDashoard extends Component {
 								title='home'></i>
 						</Link>
 						<h3>|</h3>
-						<Link to='/schedule/walker/walkerSchedule'>
+						<Link to='/schedule'>
 							<i
 								className='calendar_footer'
 								class='far fa-calendar-alt fa-2x'></i>

@@ -11,8 +11,7 @@ class Calendar extends React.Component {
         showMonthPopup: false,
         showYearPopup: false,
         selectedDay: null,
-        selectedYear: null,
-        selectedMonth: null
+        //move three below to reducer so that will be able to pass to db
     }
 
     constructor(props) {
@@ -193,23 +192,39 @@ class Calendar extends React.Component {
                 </td>
             );
         }
+       
+        // console.log("blanks: ", blanks);
 
-        console.log("blanks: ", blanks);
+        // let daysInMonth = [];
+        // for (let d = 1; d <= this.daysInMonth(); d++) {
+        //     let className = (d === this.currentDay() ? "day current-day": "day");
+        //     let selectedClass = (d === this.state.selectedDay ? " selected-day " : "");
+        //     let scheduledClass = (d === 2 ? " scheduled-day ": "");
+        //     daysInMonth.push(
+        //         <td key={d} className={className + selectedClass + scheduledClass} >
+        //             <span onClick={(e)=>{this.onDayClick(e, d)}}>{d}</span>
+        //         </td>
+        //     );
+        // }
 
-        let daysInMonth = [];
+           let daysInMonth = [];
         for (let d = 1; d <= this.daysInMonth(); d++) {
-            let className = (d == this.currentDay() ? "day current-day": "day");
-            let selectedClass = (d == this.state.selectedDay ? " selected-day " : "")
+            let className = (d === this.currentDay() ? "day current-day": "day");
+            let selectedClass = (d === this.state.selectedDay ? " selected-day " : "");
+            console.log(this.props.bigCities)
+            
+            let scheduledClass = (d === this.props.bigCities ? "scheduled-day" : "");
             daysInMonth.push(
-                <td key={d} className={className + selectedClass} >
+                <td key={d} className={className + selectedClass + scheduledClass } >
                     <span onClick={(e)=>{this.onDayClick(e, d)}}>{d}</span>
                 </td>
             );
         }
 
-
         console.log("days: ", daysInMonth);
-
+        console.log("selected day", this.state.selectedDay);
+        console.log("selected year", this.year())
+        console.log("selected month", this.month())
         var totalSlots = [...blanks, ...daysInMonth];
         let rows = [];
         let cells = [];
@@ -239,6 +254,7 @@ class Calendar extends React.Component {
 
         return (
             <div className="calendar-container" style={this.style}>
+                {/* {matchesMapped} */}
                 <table className="calendar">
                     <thead>
                         <tr className="calendar-header">
@@ -270,7 +286,6 @@ class Calendar extends React.Component {
                         {trElems}
                     </tbody>
                 </table>
-
             </div>
 
         );
