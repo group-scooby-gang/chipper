@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import Calendar from '../../calendar/Calendar';
 import { logoutUser } from '../../../redux/userReducer';
 import { connect } from 'react-redux';
-// import './OwnerDashboard.css';
 import { viewSchedule } from '../../../redux/ownerReducer';
+// import './OwnerDashboard.css';
 
 const ViewSchedule = (props) => {
     const { jobs, viewSchedule } = props
@@ -30,7 +30,8 @@ const ViewSchedule = (props) => {
     let bigCities = [];
     for (let i = 0; i < jobs.length; i++) {
         jobs[i].month = convertMonth(jobs[i])
-        bigCities.push(jobs[i]);
+        bigCities.push({date:jobs[i].date,month:jobs[i].month,year:jobs[i].year});
+        console.log(bigCities)
 }
 console.log(bigCities);
     const jobsMapped = jobs.map((val, index) => {
