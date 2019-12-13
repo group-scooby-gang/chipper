@@ -53,12 +53,9 @@ export default (
 		<Route component={WalkTime} path='/owner/schedule/new/select_time' />
 		<Route component={ExtraNotes} path='/owner/schedule/new/extra_notes' />
 		<Route component={WalkReview} path='/owner/schedule/new/review' />
-<<<<<<< HEAD
 		<Route component={DogProfile} path="/Profile/Dog/:pet_id" />
 		<Route component={Profile} path="/Profile/Owner" />
 		<Route component={WalkerProfile} path="/Profile/Walker"/>
-=======
 		<Route component={ViewSchedule} path='/scheduled' />
->>>>>>> 3a35907ed8d0ff6fab1c6a3ca83efe1cc9896faf
 	</Switch>
 );
