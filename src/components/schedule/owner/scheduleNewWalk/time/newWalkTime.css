@@ -1,0 +1,26 @@
+.time_selection_page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.selection_container {
+    border: 1px solid grey;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 2.5px 5px 0;
+    margin: 0 0 2% 0;
+    padding: 2%;
+}
+
+.time_selection_page button {
+    margin: 0 0 2% 0;
+    width: 25%;
+    height: 4vh;
+    border-radius: 4px;
+}
+
+.time_selection_page button:hover {
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.418);
+    color: rgba(0, 0, 0, 0.637);
+}

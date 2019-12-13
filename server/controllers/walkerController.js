@@ -64,6 +64,18 @@ const walkerHistory = async (req, res) => {
     const id = req.session.user.id
     const history = await db.walkerHistory(id)
     res.status(200).json(history)
+const searchWalker = async (req, res) => {
+    const db = req.app.get('db')
+    const {state, city} = req.query;
+    const searchedWalker = await db.WalkerSearch(state, city)
+    res.status(200).json(searchedWalker)
+}
+
+const getWalker = async (req, res) => {
+    const db = req.app.get('db')
+    const {id} = req.params;
+    const getWalkerById = await db.getWalker(id)
+    res.status(200).json(getWalkerById);
 }
 
 module.exports = {
@@ -76,4 +88,6 @@ module.exports = {
     getWalkerSchedule,
     getWalkerProfile,
     walkerHistory
+    searchWalker,
+    getWalker
 }

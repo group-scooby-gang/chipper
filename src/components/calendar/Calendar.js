@@ -1,14 +1,15 @@
 import React from 'react';
 import moment from 'moment';
 import './calendar.css';
+import {updateState} from '../../redux/calendarReducer';
+import { connect } from 'react-redux';
 
-export default class Calendar extends React.Component {
+class Calendar extends React.Component {
     state = {
         dateContext: moment(),
         today: moment(),
         showMonthPopup: false,
         showYearPopup: false,
-        //move three below to reducer so that will be able to pass to db
         selectedDay: null,
         selectedYear: null,
         selectedMonth: null
@@ -168,13 +169,12 @@ export default class Calendar extends React.Component {
         this.setState({
             selectedDay: day,
             selectedYear: year,
-            selectedMonth: month
+            selectedMonth: month,
         }, () => {
             console.log("SELECTED DAY: ", this.state.selectedDay);
             console.log(this.year())
             console.log(this.month())
         });
-
         this.props.onDayClick && this.props.onDayClick(e, day);
     }
 
@@ -276,3 +276,15 @@ export default class Calendar extends React.Component {
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        selectedMonth: state.calendarReducer.selectedMonth,
+        selectedDay: state.calendarReducer.selectedDay,
+        selectedYear: state.calendarReducer.selectedYear
+    };
+};
+
+export default connect(mapStateToProps, {
+    updateState
+})(Calendar);

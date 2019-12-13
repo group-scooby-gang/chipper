@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import './newWalkTime.css';
+import { updateState, getWalkerById } from './../../../../../redux/ownerReducer';
+import { connect } from 'react-redux';
 
 class WalkTime extends Component {
+
+    componentDidMount() {
+        this.props.getWalkerById(this.props.selectedWalker)
+    }
+
     next = () => {
         this.props.history.push('/owner/schedule/new/extra_notes')
     }
@@ -10,16 +17,20 @@ class WalkTime extends Component {
         this.props.history.goBack()
     }
 
+    handleChange = e => {
+        this.props.updateState({ [e.target.name]: parseInt(e.target.value) })
+    }
+
     render() {
+        const { _15minprice, _30minprice, _45minprice, _60minprice } = this.props;
         return (
-            <div>
-                <div>
-                    <h2>Time</h2>
-                    {/* api request to get the prices from each walker */}
-                    <input type="radio" name='payment' value='$30' /> 15 min. ($30)<br />
-                    <input type="radio" name='payment' value='$40' checked /> 30 min. ($40) Default<br />
-                    <input type="radio" name='payment' value='$50' /> 45 min. ($50)<br />
-                    <input type="radio" name='payment' value='$60' /> 60 min. ($60)<br />
+            <div className='time_selection_page'>
+                    <h1>Time</h1>
+                <div className='selection_container'>
+                    <input onChange={this.handleChange} type="radio" name='payment' value={_15minprice} /> 15 min. (${_15minprice})<br />
+                    <input onChange={this.handleChange} type="radio" name='payment' value={_30minprice} /> 30 min. (${_30minprice})<br />
+                    <input onChange={this.handleChange} type="radio" name='payment' value={_45minprice} /> 45 min. (${_45minprice})<br />
+                    <input onChange={this.handleChange} type="radio" name='payment' value={_60minprice} /> 60 min. (${_60minprice})<br />
                 </div>
                 <button onClick={this.next}>Next</button>
                 <button onClick={this.back}>Back</button>
@@ -29,4 +40,19 @@ class WalkTime extends Component {
     }
 }
 
-export default WalkTime;
+const mapStateToProps = state => {
+    return {
+        payment: state.ownerReducer.payment,
+        selectedWalker: state.ownerReducer.selectedWalker,
+        _15minprice: state.ownerReducer._15minprice,
+        _30minprice: state.ownerReducer._30minprice,
+        _45minprice: state.ownerReducer._45minprice,
+        _60minprice: state.ownerReducer._60minprice,
+        time: state.ownerReducer.time
+    }
+}
+
+export default connect(mapStateToProps, {
+    updateState,
+    getWalkerById
+})(WalkTime);

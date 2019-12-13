@@ -9,6 +9,7 @@ import twilioReducer from './twillioReducer';
 import profileReducer from "./profileReducer";
 
 import ownerReducer from './ownerReducer';
+import calendarReducer from './calendarReducer';
 
 const rootReducer = combineReducers({ 
     userReducer,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
     walkerReducer,
     TR: twilioReducer,
     profileReducer,
-    ownerReducer
+    ownerReducer,
+    calendarReducer
 });
 
 export default createStore(rootReducer, applyMiddleware(promise));
