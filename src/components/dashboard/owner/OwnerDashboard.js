@@ -16,6 +16,7 @@ class OwnerDashoard extends Component {
 	};
 
 	render() {
+		console.log(this.props.jobs && this.props.jobs);
 		let month = this.props.jobs[0] && this.props.jobs[0].month;
 		let date = this.props.jobs[0] && this.props.jobs[0].date;
 		let year = this.props.jobs[0] && this.props.jobs[0].year;

@@ -58,9 +58,13 @@ footer {
 	background-color: rgb(168, 168, 168);
 	display: flex;
 	justify-content: space-around;
-	width: 119%;
+	/* width: 119%; */
 	align-items: center;
-	margin-top: 17%;
+	/* margin-top: 17%; */
+	overflow: hidden;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 }
 
 i,

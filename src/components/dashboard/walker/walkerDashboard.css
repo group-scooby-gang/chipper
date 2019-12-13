@@ -114,6 +114,9 @@ footer {
 	justify-content: space-around;
 	width: 100%;
 	align-items: center;
+	overflow: hidden;
+	position: fixed;
+	bottom: 0;
 }
 
 i,
