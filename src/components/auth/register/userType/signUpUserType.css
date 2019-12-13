@@ -6,7 +6,7 @@
 .Sign-up {
 	align-self: center;
 	color: #d2b338;
-	font-family: 'Permanent Marker', cursive;
+	font-family: 'Rammetto One', cursive;
 }
 
 img {
@@ -51,7 +51,7 @@ form input {
 	margin-top: 1em;
 }
 .walker-button {
-	background-color: #d2b3384;
+	background-color: #e0e0e0;
 }
 .owner-button:hover {
 	cursor: pointer;
