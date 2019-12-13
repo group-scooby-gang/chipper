@@ -93,6 +93,10 @@
 	background-color: #d2b338;
 }
 
+.button_section_pending:visited {
+	background-color: #d2b338;
+}
+
 .button_section_schedule:hover {
 	border: 1px solid grey;
 	cursor: pointer;
@@ -110,4 +114,11 @@ footer {
 	justify-content: space-around;
 	width: 100%;
 	align-items: center;
+}
+
+i,
+a:visited,
+i:hover,
+i:active {
+	color: black;
 }

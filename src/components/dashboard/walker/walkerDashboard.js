@@ -3,6 +3,7 @@ import './walkerDashboard.css';
 import { getWalkerSchedule } from './../../../redux/walkerReducer';
 import { logoutUser } from './../../../redux/userReducer';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class WalkerDashboard extends Component {
 	state = {
@@ -98,9 +99,18 @@ class WalkerDashboard extends Component {
                         null
                 } */}
 				<footer>
-					<i className='home_footer' class='fas fa-home fa-2x' title='home'></i>
+					<Link to='/'>
+						<i
+							className='home_footer'
+							class='fas fa-home fa-2x'
+							title='home'></i>
+					</Link>
 					<h3>|</h3>
-					<i className='calendar_footer' class='far fa-calendar-alt fa-2x'></i>
+					<Link to='/schedule/walker/walkerSchedule'>
+						<i
+							className='calendar_footer'
+							class='far fa-calendar-alt fa-2x'></i>
+					</Link>
 					<h3>|</h3>
 					<i
 						className='logout_footer'
