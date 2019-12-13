@@ -8,8 +8,8 @@
 
 .next_walk_section {
 	border: 1px solid rgb(167, 167, 167);
-	width: 70%;
-	padding: 2%;
+	width: 80%;
+	padding: 3%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -26,9 +26,9 @@
 }
 
 .walker_dash_pet_img {
-	height: 25%;
-	width: 25%;
-	padding-right: 1%;
+	height: 40%;
+	width: 40%;
+	padding-right: 4%;
 }
 
 .next_walk_job {

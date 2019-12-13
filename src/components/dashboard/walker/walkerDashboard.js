@@ -61,13 +61,18 @@ class WalkerDashboard extends Component {
 						<img src={img} alt='pet_img' className='walker_dash_pet_img' />
 						<div>
 							<div>
-								Date: {month}/{date}/{year} Time: {time}
+								Date: {month}/{date}/{year} <br />
+								Time: {time} <br />
+								Companion: {name}
+								<br />
+								Breed: {breed}
+								<br />
+								Age: {age}
+								<br />
+								Notes: {notes}
+								<br />
+								Total: ${price}
 							</div>
-							<div>
-								Companion: {name} Breed: {breed} Age: {age}
-							</div>
-							<div>Notes: {notes}</div>
-							<div>Total: ${price}</div>
 						</div>
 					</div>
 				</div>
