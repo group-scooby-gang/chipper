@@ -17,14 +17,14 @@ class login extends Component {
 	};
 	handleSubmit = (e) => {
 		e.preventDefault();
-		axios.post('/Chipper/Login', {
-			username: this.state.username,
-			password: this.state.password
-		})
-		.then((res) => {
-			this.props.updateState({ user: res.data})
-			axios.get('/Chipper/Check/Walker')
-				.then((res) => {
+		axios
+			.post('/Chipper/Login', {
+				username: this.state.username,
+				password: this.state.password
+			})
+			.then((res) => {
+				this.props.updateState({ user: res.data });
+				axios.get('/Chipper/Check/Walker').then((res) => {
 					console.log(res);
 					if (res.data.isWalker === false) {
 						this.props.history.push('/owner/dashboard');
@@ -42,7 +42,11 @@ class login extends Component {
 				<div class='login-container'>
 					<h1 class='chipper'>Chipper</h1>
 
-					<img src='good-boy.jpg' alt='chipper dog' />
+					<img
+						class='login_chipper_dog'
+						src='https://png2.cleanpng.com/sh/b434d0f27e02dc60d84a17de16e7bce9/L0KzQYm3UcA4N5tsfZG8Zki0cofoVsQ5PZNoTKM8YkHnSbW6gBE6amNqStUBYT24cYa5U8Q2PJQ9S6UBOD68QYq4WMcxQWI6Sac8M0a6SImBUsUxPmEziNDw/3f81b6a6485bc413b1d9d3ca9b2e2c6a-5a523454c83368.919187091515336788825060.png'
+						alt='happy dog'
+					/>
 					<br />
 
 					<div class='Login-inputs'>

@@ -3,10 +3,10 @@
 	flex-direction: column;
 }
 
-h1 {
+.Sign-up {
 	align-self: center;
 	color: #d2b338;
-	font-family: 'Permanent Marker', cursive;
+	font-family: 'Rammetto One', cursive;
 }
 
 img {
@@ -23,10 +23,9 @@ form {
 	justify-content: space-around;
 	width: 70%;
 	height: 45vh;
-	border: 1px solid #d2b338;
 	margin: 2.5% 0 0% 0;
-	background-color: #d2b338;
-	box-shadow: rgba(0, 0, 0, 0.3) 0px 2.5px 5px 0px;
+	background-color: #e0e0e0;
+	box-shadow: rgba(65, 65, 65, 0.3) 0px 2.5px 5px 5px;
 	padding: 1% 0 1% 0;
 }
 
@@ -37,28 +36,28 @@ form input {
 	padding-left: 1.5%;
 	border-radius: 2.5px;
 	align-self: center;
+	border-radius: 5px;
 }
 
 .button_section {
 	display: flex;
 	flex-direction: column;
 	align-self: center;
-	height: 20;
-	border: solid 1px red;
-}
-.button_section button {
-	color: black;
-	background-color: rgb(184, 182, 182);
+	height: 20%;
 }
 
-/* .owner_button {
-	height: 10%;
-	width: 50%;
-} */
-
-button:hover {
+.owner-button {
+	background-color: #d2b338;
+	margin-top: 1em;
+}
+.walker-button {
+	background-color: #e0e0e0;
+}
+.owner-button:hover {
 	cursor: pointer;
-	border: 1px solid #d2b338;
+}
+.walker-button:hover {
+	cursor: pointer;
 }
 
 p {
