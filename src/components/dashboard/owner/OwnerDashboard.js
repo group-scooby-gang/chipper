@@ -45,20 +45,8 @@ class OwnerDashoard extends Component {
 								view schedule
 							</button>
 						</Link>
-<<<<<<< HEAD
-						{/* <Link to='/walker/now'>
-						<button
-							class='now'
-							name='Walker Now'
-							onClick={this.handleSubmit}>
-							Walk Now
-						</button>
-					</Link> */}
-						<Link to='/owner/schedule/new/pet_select'>
-=======
 
 						<Link to='/walker/later'>
->>>>>>> master
 							<button
 								className='buttons'
 								name='Walker Later'
