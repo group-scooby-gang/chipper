@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 
 class WalkDateSelect extends Component {
     state = {
-        hour: 0,
-        minute: 0
+        hour: '',
+        minute: ''
     }
 
     next = () => {
@@ -21,11 +21,18 @@ class WalkDateSelect extends Component {
         this.props.updateState({ [e.target.name]: e.target.value })
     }
 
+    handleSetTime = () => {
+        this.props.updateState({ time: this.state.hour + '' + this.state.minute})
+    }
+
     handleTimeChange = e => {
         this.setState({ [e.target.name]: e.target.value})
     }
 
     render() {
+        console.log(this.props.time);
+        console.log(this.state.hour);
+        console.log(this.state.minute);
         return (
             <div className='date_page'>
                 <h1>Date</h1>

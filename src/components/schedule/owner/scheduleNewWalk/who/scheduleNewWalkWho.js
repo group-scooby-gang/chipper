@@ -22,14 +22,21 @@ class NewWalkWho extends Component {
     }
 
     selectPet = (val) => {
-        this.props.updateState({ selectedPet: val});
+        this.props.updateState({ 
+            selectedPet: val.pet_id,
+            selectPetName: val.name,
+            selectPetImg: val.img
+        });
     }
 
     render() {
         console.log(this.props.selectedPet)
+        console.log(this.props.selectedPetName)
+        console.log(this.props.selectedPetImg)
         const mappedPets = this.props.pets.map(val => {
+            console.log(val)
             return (
-                <div onClick={() => this.selectPet(val.pet_id)} className='owner_pet'>
+                <div onClick={() => this.selectPet(val)} className='owner_pet'>
                     <img src={val.img} alt="pup_pic"/>
                     <h3>{val.name}</h3>
                 </div>
@@ -53,7 +60,9 @@ class NewWalkWho extends Component {
 const mapStateToProps = (state) => {
     return {
         pets: state.ownerReducer.pets,
-        selectedPet: state.ownerReducer.selectedPet
+        selectedPet: state.ownerReducer.selectedPet,
+        selectedPetName: state.ownerReducer.selectPetName,
+        selectedPetImg: state.ownerReducer.selectPetImg
     }
 }
 

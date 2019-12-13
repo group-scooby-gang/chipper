@@ -7,9 +7,19 @@ const initialState = {
 	day: null,
 	year: null,
 	month: null,
-	time: null,
+	time: '',
 	selectedPet: null,
+	selectedPetName: '',
+	selectedPetImg: '',
 	selectedWalker: null,
+	selectedWalkerName: '',
+	selectedWalkerImg: '',
+	_15minprice: null,
+	_30minprice: null,
+	_45minprice: null,
+	_60minprice: null,
+	payment: null,
+	extraNotes: '',
 	jobs: [],
 	pets: [],
 	walkers: [],
@@ -23,6 +33,7 @@ const VIEW_SCHEDULE = 'VIEW_SCHEDULE';
 const GET_PETS = 'GET_PETS';
 const GET_WALKERS = 'GET_WALKERS';
 const SEARCH_WALKERS = 'SEARCH_WALKERS';
+const GET_WALKERS_PRICE = 'GET_WALKERS_PRICE';
 
 export const updateState = (e) => {
 	return {
@@ -62,6 +73,13 @@ export const searchWalkers = (state, city) => {
 	return {
 		type: SEARCH_WALKERS,
 		payload: axios.get(`/Chipper/Walker/Search?state=${state}&city=${city}`)
+	}
+}
+
+export const getWalkerById = (id) => {
+	return {
+		type: GET_WALKERS_PRICE,
+		payload: axios.get(`/Chipper/Walker/${id}`)
 	}
 }
 
@@ -119,6 +137,20 @@ export default function ownerReducer(state = initialState, action) {
 				...state,
 				loading: false,
 				searchedWalker: payload.data
+			};
+		case `${GET_WALKERS_PRICE}_PENDING`:
+			return {
+				...state,
+				loading: true
+			};
+		case `${GET_WALKERS_PRICE}_FULFILLED`:
+			return {
+				...state,
+				loading: false,
+				_15minprice: payload.data[0]._15minprice,
+				_30minprice: payload.data[0]._30minprice,
+				_45minprice: payload.data[0]._45minprice,
+				_60minprice: payload.data[0]._60minprice
 			}
 		default:
 			return state;

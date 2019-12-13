@@ -58,6 +58,13 @@ const searchWalker = async (req, res) => {
     res.status(200).json(searchedWalker)
 }
 
+const getWalker = async (req, res) => {
+    const db = req.app.get('db')
+    const {id} = req.params;
+    const getWalkerById = await db.getWalker(id)
+    res.status(200).json(getWalkerById);
+}
+
 module.exports = {
     applyWalker,
     denyWalker,
@@ -66,5 +73,6 @@ module.exports = {
     allAccepted,
     applicationDetails,
     getWalkerSchedule,
-    searchWalker
+    searchWalker,
+    getWalker
 }

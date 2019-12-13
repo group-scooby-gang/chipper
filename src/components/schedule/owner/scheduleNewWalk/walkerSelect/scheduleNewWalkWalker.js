@@ -27,7 +27,11 @@ class WalkerSelect extends Component {
     }
 
     selectWalker = (val) => {
-        this.props.updateState({ selectedWalker: val});
+        this.props.updateState({ 
+            selectedWalker: val.user_id,
+            selectedWalkerName: val.firstname + val.lastname,
+            selectedWalkerImg: val.profileimg
+        });
     }
 
     handleChange = e => {
@@ -42,7 +46,8 @@ class WalkerSelect extends Component {
     }
 
     render() {
-        console.log(this.props.selectedWalker);
+        console.log(this.props.selectedPetName);
+        console.log(this.props.selectedPetimg)
         const mappedWalkers = this.props.walkers.map(val => {
             return(
                 <div className='walker' onClick={() => this.selectWalker(val.user_id)}>
@@ -60,9 +65,9 @@ class WalkerSelect extends Component {
         })
 
         const mappedSearchWalkers = this.props.searchedWalker.map(val => {
-            console.log(val)
             return (
-                <div className='walker' onClick={() => this.selectWalker(val.user_id)}>
+                <div className='walker' onClick={() => this.selectWalker(val)}>
+                    <img src={val.profileimg} alt="profile_pic"/>
                     <h3>{val.firstname} {val.lastname}</h3>
                     <p>{val.experience}</p>
                     <div>Price:</div>
@@ -93,7 +98,6 @@ class WalkerSelect extends Component {
                             <input onChange={this.handleChange} type="text" name="city" placeholder='City' />
                         </div>
                     </div>
-                    {/* function to search for walkers based on state and city inputs */}
                     <button onClick={this.searchWalker}>Search</button>
                 </div>
                 {
@@ -116,7 +120,9 @@ const mapStateToProps = state => {
     return {
         walkers: state.ownerReducer.walkers,
         selectedWalker: state.ownerReducer.selectedWalker,
-        searchedWalker: state.ownerReducer.searchedWalker
+        searchedWalker: state.ownerReducer.searchedWalker,
+        selectedPetName: state.ownerReducer.selectedPetName,
+        selectedPetImg: state.ownerReducer.selectedPetImg
     }
 }
 
