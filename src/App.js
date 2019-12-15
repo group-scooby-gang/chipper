@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import routes from './routes';
 // import Sms from './components/sms/Sms';
 import Navbar from './components/navbar/navbar';
+import Footer from './components/footer/footer';
 
 function App() {
 	return (
@@ -11,6 +12,7 @@ function App() {
 			<div>
 				{/* <Sms /> */}
 				<Navbar />
+				<Footer />
 			</div>
 			{routes}
 		</BrowserRouter>
