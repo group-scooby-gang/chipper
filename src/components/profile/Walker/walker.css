@@ -8,16 +8,14 @@
 }
 
 .walkerProfileCard h1 {
-	width: 70%;
-    margin-left: 5%;
-    bord
-}
-
-.walkerProfileCard span {
+	width: 80%;
+	font-size: 1.6em;
+	text-align: center;
+	font-style: italic;
 }
 
 .walkerProfileCard p {
-	margin-left: 10px;
+	width: 80%;
 }
 
 .walkerProfilePrices {
