@@ -21,12 +21,17 @@ class Walker extends React.Component {
 			return (
 				<div className='walkerProfileCard'>
 					<h1>
-						{val.firstname} {val.lastname}'s <span>profile..</span>
+						{val.firstname} {val.lastname}
 					</h1>
-					<p>{val.experience}</p>
-					<p>You are a {val.category}</p>
-					<p>Service rates:</p>
+					<p>
+						About {val.firstname}: {val.experience}
+					</p>
+
 					<div className='walkerProfilePrices'>
+						<p>
+							{val.firstname} is a {val.category}
+						</p>
+						<p>Service rates:</p>
 						<h6>15 minute rate: ${val._15minprice}</h6>
 						<h6>30 minute rate: ${val._30minprice}</h6>
 						<h6>45 minute rate: ${val._45minprice}</h6>
@@ -35,23 +40,29 @@ class Walker extends React.Component {
 					<div className='walkerProfileContact'>
 						<p>Phone: {val.phone}</p>
 						<p>Email: {val.email}</p>
+						<p>
+							Address:
+							<br /> {val.address}, {val.city} {val.zip}, {val.state}
+						</p>
 					</div>
-					<header>
-						<h6>
-							{val.address}, {val.city} {val.zip}, {val.state}
+					{/* <header className='address_container'>
+						<h6 className='address'>
+							
 						</h6>
-					</header>
+					</header> */}
 				</div>
 			);
 		});
 
 		const mappedHistory = this.props.walkerHistory.map((val, i) => {
 			return (
-				<div className='walkerHistoryCard'>
-					<p>
-						Date: {val.month}/{val.date}/{val.year}
-					</p>
-					<p>Companion: {val.name}</p>
+				<div className='historyCardContainer'>
+					<div className='walkerHistoryCard'>
+						<p>
+							Date: {val.month}/{val.date}/{val.year}
+						</p>
+						<p>Companion: {val.name}</p>
+					</div>
 				</div>
 			);
 		});
