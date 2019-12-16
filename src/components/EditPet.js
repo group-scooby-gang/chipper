@@ -1,12 +1,16 @@
 import React from 'react';
 import {connect} from "react-redux"
-
+import {petDetails} from "./../redux/petReducer"
 
 class EditPet extends React.Component {
     constructor(){
         super()
     }
 
+    componentDidMount = async () => {
+        this.props.petDetails(this.props.match.params.pet_id)
+        console.log(this.props.pet)
+    }
 
     render(){
         return (
@@ -26,12 +30,9 @@ class EditPet extends React.Component {
 
 const mapStateToProps = reduxState => {
     return {
-        name: reduxState.PetReducer.name,
-        breed: reduxState.PetReducer.breed,
-        age: reduxState.PetReducer.age,
-        img: reduxState.PetReducer.img
+        pet: reduxState.petReducer.pet
     }
 }
 
 
-export default connect(mapStateToProps, {})(EditPet);
+export default connect(mapStateToProps, {petDetails})(EditPet);

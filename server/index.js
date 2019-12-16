@@ -58,6 +58,7 @@ app.post('/Chipper/Pet/Add', pet.addPet);
 app.delete('/Chipper/Pet/Remove/:pet_id', pet.deletePet);
 app.put('/Chipper/Pet/Edit/:pet_id', pet.editPet);
 app.get("/Chipper/Pet/History/:pet_id", pet.petsWalks)
+app.get("/Chipper/Pet/Details/:pet_id", pet.petDetails)
 
 //walker
 app.get('/Chipper/Walker/Application/:application_id', walker.applicationDetails);
