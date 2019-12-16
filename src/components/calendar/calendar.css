@@ -58,22 +58,22 @@ tr {
     border-radius: 2%;
     color: white;
 }
+
+.scheduled-day {
+    background-color:orange;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    color: black;
+}
+
 .selected-day {
     background-color:yellow;
     width: 28px;
     height: 28px;
     line-height: 28px;
     border-radius: 2%;
-    color: black;
-}
-
-.scheduled-day {
-    background-color:orange;
-    width: 28px;
-    height: 28px;
-    line-height: 28px;
-    border-radius: 2%;
-    color: black;
+    font-size:0.8em
 }
 
 .month-popup {
@@ -94,11 +94,11 @@ tr {
     right:3px;
 }
 
-.prev {
-}
+/* .prev {
+} */
 
-.next {
-}
+/* .next {
+} */
 
 .editor-year {
     max-width: 3.6em;

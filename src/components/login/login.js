@@ -25,7 +25,7 @@ class login extends Component {
 			.then((res) => {
 				this.props.updateState({ user: res.data });
 				axios.get('/Chipper/Check/Walker').then((res) => {
-					console.log(res);
+					// console.log(res);
 					if (res.data.isWalker === false) {
 						this.props.history.push('/owner/dashboard');
 					} else {
