@@ -93,7 +93,7 @@
 	margin-bottom: 4%;
 }
 
-footer {
+/* footer {
 	border: 1px solid rgb(168, 168, 168);
 	background-color: rgb(168, 168, 168);
 	display: flex;
@@ -103,7 +103,7 @@ footer {
 	overflow: hidden;
 	position: fixed;
 	bottom: 0;
-}
+} */
 
 i,
 a:visited,

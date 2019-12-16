@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { logoutUser } from '../../redux/userReducer';
 import { connect } from 'react-redux';
+import './footer.css';
 
 class Footer extends Component {
 	render() {
 		return (
-			<footer>
+			<footer className='footer'>
 				<Link to='/'>
 					<i className='home_footer' class='fas fa-home fa-2x' title='home'></i>
 				</Link>

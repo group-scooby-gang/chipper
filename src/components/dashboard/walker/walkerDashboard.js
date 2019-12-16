@@ -103,7 +103,7 @@ class WalkerDashboard extends Component {
                         :
                         null
                 } */}
-				<footer>
+				{/* <footer>
 					<Link to='/'>
 						<i
 							className='home_footer'
@@ -123,7 +123,7 @@ class WalkerDashboard extends Component {
 						onClick={() =>
 							this.props.logoutUser().then(() => this.props.history.push('/'))
 						}></i>
-				</footer>
+				</footer> */}
 			</div>
 		);
 	}
