@@ -266,17 +266,17 @@ class Calendar extends React.Component {
                                     onClick={(e)=> {this.prevMonth()}}>
                                 </i>
                                 <i className="prev fa fa-fw fa-chevron-right"
-                                    onClick={(e)=> {this.nextMonth(e)}}>
+                                    onClick={(e)=> {this.nextMonth()}}>
                                 </i>
                             </td>
-                            {/* <td colSpan="2" className="nav-month">
+                            <td colSpan="2" className="nav-month">
                                 <i className="prev fa fa-fw fa-chevron-left"
                                     onClick={(e)=> {this.prevMonth()}}>
                                 </i>
                                 <i className="prev fa fa-fw fa-chevron-right"
                                     onClick={(e)=> {this.nextMonth()}}>
                                 </i>
-                            </td> */}
+                            </td>
                         </tr>
                     </thead>
                     <tbody>
