@@ -12,7 +12,7 @@ class Footer extends Component {
 					<i className='home_footer' class='fas fa-home fa-2x' title='home'></i>
 				</Link>
 				<h3>|</h3>
-				<Link to='/schedule'>
+				<Link to='/walker/schedule'>
 					<i className='calendar_footer' class='far fa-calendar-alt fa-2x'></i>
 				</Link>
 				<h3>|</h3>
