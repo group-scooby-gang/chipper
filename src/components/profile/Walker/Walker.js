@@ -16,20 +16,27 @@ class Walker extends React.Component {
 		this.props.getWalkerHistory();
 	}
 
+	settingsPage = () => {
+		this.props.history.push('/walker/settings')
+	}
+
 	render() {
 		const mappedProfile = this.props.walkerProfle.map((val, i) => {
 			return (
 				<div className='walkerProfileCard'>
+					<div style={{
+						marginTop: '5%'
+					}} onClick={this.settingsPage}><i class="fas fa-cog"></i></div>
 					<h1>
 						{val.firstname} {val.lastname}
 					</h1>
 					<p>
-						About {val.firstname}: {val.experience}
+						About {val.firstname} {val.lastname}: {val.experience}
 					</p>
 
 					<div className='walkerProfilePrices'>
 						<p>
-							{val.firstname} is a {val.category}
+							{val.firstname} {val.lastname} is a {val.category}
 						</p>
 						<p>Service rates:</p>
 						<h6>15 minute rate: ${val._15minprice}</h6>

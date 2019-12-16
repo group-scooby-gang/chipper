@@ -46,6 +46,7 @@ const loginUser  = async (req, res) => {
             lastname: checkUser[0].lastname,
             phone: checkUser[0].phone,
             address: checkUser[0].address,
+            profileimg: checkUser[0].profileimg,
             isAdmin: checkUser[0].isAdmin,
             isWalker: false
         }
