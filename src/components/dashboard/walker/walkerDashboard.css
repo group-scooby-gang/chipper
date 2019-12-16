@@ -1,5 +1,6 @@
 .walkerDashboard {
-	height: 93vh;
+	height: 100%;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -8,21 +9,24 @@
 
 .next_walk_section {
 	border: 1px solid rgb(167, 167, 167);
-	width: 80%;
+	width: 70%;
+	height: 80%;
 	padding: 3%;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
-	margin-top: 8%;
+	justify-content: center;
+	margin-top: 5%;
+	font-size: 0.8em;
+
 	box-shadow: rgba(0, 0, 0, 0.3) 0px 2.5px 5px 0px;
-	font-size: 0.9em;
+
 	font-family: 'Oswald', sans-serif;
 }
 
 .next_walk_section h3 {
 	margin: 0 0 0 1%;
 	color: #d2b338;
-	font-size: 1em;
+	font-size: 2em;
 }
 
 .walker_dash_pet_img {
@@ -43,8 +47,10 @@
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	height: 20vh;
-	width: 70%;
+	height: 40%;
+	width: 50%;
+	margin-bottom: 5%;
+	margin-top: 15%;
 }
 
 .button_section_button {
@@ -87,42 +93,7 @@
 	margin-bottom: 4%;
 }
 
-.button_section_schedule {
-	align-self: center;
-	width: 50%;
-	height: 5vh;
-	margin-top: 0%;
-	border-radius: 5px;
-	font-family: 'Catamaran', sans-serif;
-	font-size: 1em;
-	background-color: #d2b338;
-}
-
-.button_section_pending {
-	align-self: center;
-	width: 50%;
-	height: 5vh;
-	border-radius: 5px;
-	font-family: 'Catamaran', sans-serif;
-	font-size: 1em;
-	background-color: #d2b338;
-}
-
-.button_section_pending:visited {
-	background-color: #d2b338;
-}
-
-.button_section_schedule:hover {
-	border: 1px solid grey;
-	cursor: pointer;
-}
-
-.button_section_pending:hover {
-	border: 1px solid grey;
-	cursor: pointer;
-}
-
-footer {
+/* footer {
 	border: 1px solid rgb(168, 168, 168);
 	background-color: rgb(168, 168, 168);
 	display: flex;
@@ -132,7 +103,7 @@ footer {
 	overflow: hidden;
 	position: fixed;
 	bottom: 0;
-}
+} */
 
 i,
 a:visited,

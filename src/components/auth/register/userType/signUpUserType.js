@@ -117,13 +117,14 @@ class UserType extends Component {
 				zip
 			)
 			.then(() => {
-				axios.post('/Chipper/Login', {
-					username: this.props.userName,
-					password: this.props.password
-				})
-				.then(() => {
-					this.props.history.push('/register/walker/info');
-				});
+				axios
+					.post('/Chipper/Login', {
+						username: this.props.userName,
+						password: this.props.password
+					})
+					.then(() => {
+						this.props.history.push('/register/walker/info');
+					});
 				this.props.resetFields();
 			})
 			.catch(() => {
@@ -206,13 +207,15 @@ class UserType extends Component {
 						placeholder='zip'
 						name='zip'
 					/>
-					<h>Upload Profile Image:</h>
+					<h className='img'>Upload Profile Image:</h>
 					<input
-						type="file"
-						name="profileImg"
+						className='upload'
+						type='file'
+						name='profileImg'
 						onChange={this.handleImage}
 					/>
 				</form>
+
 				<div className='button_section'>
 					<button className='owner-button' onClick={this.handleRegisterOwner}>
 						I am a.. dog owner
