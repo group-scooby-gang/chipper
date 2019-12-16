@@ -208,7 +208,12 @@ class UserType extends Component {
 						name='zip'
 					/>
 					<h className='img'>Upload Profile Image:</h>
-					<input type='file' name='profileImg' onChange={this.handleImage} />
+					<input
+						className='upload'
+						type='file'
+						name='profileImg'
+						onChange={this.handleImage}
+					/>
 				</form>
 
 				<div className='button_section'>
