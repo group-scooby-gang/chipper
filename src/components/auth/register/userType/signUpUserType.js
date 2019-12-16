@@ -8,7 +8,7 @@ import {
 } from '../../../../redux/userReducer';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import {storage} from "./../../../../../firebase-config"
+import {storage} from "./../../../../firebase-config"
 
 class UserType extends Component {
 	state = {
@@ -26,6 +26,10 @@ class UserType extends Component {
 			const uploadTask = storage.ref(`/userProfilePicture/${image.name}`).put(image)
 			uploadTask.on("state_changed", 
 			() => {
+				// storage.ref('userProfilePicture').child(image.name).getDownloadURL()
+				// .then(url => {
+				// 	this.props.updateState({profileImg: url})
+				// })
 				storage.ref('userProfilePicture').child(image.name).getDownloadURL()
 				.then(url => {
 					this.props.updateState({profileImg: url})

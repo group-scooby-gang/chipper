@@ -17,8 +17,8 @@ const deletePet = async (req, res) => {
 const editPet = async (req, res) => {
     const db = req.app.get("db")
     const pet_id = +req.params.pet_id
-    const {name, breed, age} = req.body;
-    await db.editPet(name, breed, age, pet_id)
+    const {name, breed, age, img} = req.body;
+    await db.editPet(name, breed, age, img, pet_id)
     res.status(200).json("Pet edited")
 }
 
