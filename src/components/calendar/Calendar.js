@@ -21,10 +21,12 @@ class Calendar extends React.Component {
         this.style.width = this.width; // add this
     }
 
-
     weekdays = moment.weekdays(); //["Sunday", "Monday", "Tuesday", "Wednessday", "Thursday", "Friday", "Saturday"]
     weekdaysShort = moment.weekdaysShort(); // ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     months = moment.months();
+    matches = []
+    parentYear = []
+    parentMonth = []
 
     year = () => {
         return this.state.dateContext.format("Y");
@@ -58,29 +60,29 @@ class Calendar extends React.Component {
         });
     }
 
-    nextMonth = () => {
+    nextMonth = (e) => {
         let dateContext = Object.assign({}, this.state.dateContext);
         dateContext = moment(dateContext).add(1, "month");
         this.setState({
             dateContext: dateContext
         });
-        this.props.onNextMonth && this.props.onNextMonth();
+        this.props.onNextMonth && this.props.onNextMonth(e, dateContext);
     }
 
-    prevMonth = () => {
+    prevMonth = (e) => {
         let dateContext = Object.assign({}, this.state.dateContext);
         dateContext = moment(dateContext).subtract(1, "month");
         this.setState({
             dateContext: dateContext
         });
-        this.props.onPrevMonth && this.props.onPrevMonth();
+        this.props.onPrevMonth && this.props.onPrevMonth(e, dateContext);
     }
 
     onSelectChange = (e, data) => {
         this.setMonth(data);
         this.props.onMonthChange && this.props.onMonthChange();
-
     }
+
     SelectList = (props) => {
         let popup = props.data.map((data) => {
             return (
@@ -164,21 +166,26 @@ class Calendar extends React.Component {
         );
     }
 
-    onDayClick = (e, day, year, month) => {
+    onDayClick = (e, day) => {
+        e.preventDefault()
         this.setState({
             selectedDay: day,
-            selectedYear: year,
-            selectedMonth: month,
         }, () => {
             console.log("SELECTED DAY: ", this.state.selectedDay);
-            console.log(this.year())
-            console.log(this.month())
+            console.log("SELECTED YEAR: ", this.year())
+            console.log("SELECTED MONTH: ", this.month())
         });
         this.props.onDayClick && this.props.onDayClick(e, day);
     }
 
+    scheduledClass = () => {
+        return "scheduled-day"
+    }
+
     render() {
+        console.log('THE COMPONENT HAS RE-RENDERED')
         // Map the weekdays i.e Sun, Mon, Tue etc as <td>
+
         let weekdays = this.weekdaysShort.map((day) => {
             return (
                 <td key={day} className="week-day">{day}</td>
@@ -191,40 +198,33 @@ class Calendar extends React.Component {
                 {""}
                 </td>
             );
-        }
-       
-        // console.log("blanks: ", blanks);
-
-        // let daysInMonth = [];
-        // for (let d = 1; d <= this.daysInMonth(); d++) {
-        //     let className = (d === this.currentDay() ? "day current-day": "day");
-        //     let selectedClass = (d === this.state.selectedDay ? " selected-day " : "");
-        //     let scheduledClass = (d === 2 ? " scheduled-day ": "");
-        //     daysInMonth.push(
-        //         <td key={d} className={className + selectedClass + scheduledClass} >
-        //             <span onClick={(e)=>{this.onDayClick(e, d)}}>{d}</span>
-        //         </td>
-        //     );
-        // }
-
-           let daysInMonth = [];
-        for (let d = 1; d <= this.daysInMonth(); d++) {
-            let className = (d === this.currentDay() ? "day current-day": "day");
-            let selectedClass = (d === this.state.selectedDay ? " selected-day " : "");
-            console.log(this.props.bigCities)
+        }      
             
-            let scheduledClass = (d === this.props.bigCities ? "scheduled-day" : "");
+            let daysInMonth = [];
+        for (let d = 1; d <= this.daysInMonth(); d++) {
+            let className = (d == this.currentDay() ? "day current-day": "day");
+            let selectedClass = (d === this.state.selectedDay ? " selected-day " : "");
+            for (let i=0; i< this.props.bigCities.length; i++){
+                // console.log(this.props.bigCities[i].date, d, this.props.bigCities[i].month, this.month(), this.props.bigCities[i].year, +this.year())
+                if (this.props.bigCities[i].date === d && this.props.bigCities[i].month === this.month() && this.props.bigCities[i].year === +this.year()) {
+                    this.matches.push(d)
+                    console.log(this.props.bigCities[i].year)
+                    this.parentYear.push(this.props.bigCities[i].year)
+                    this.parentMonth.push(this.props.bigCities[i].month)
+                    console.log(this.parentMonth)
+                }
+            }
             daysInMonth.push(
-                <td key={d} className={className + selectedClass + scheduledClass } >
-                    <span onClick={(e)=>{this.onDayClick(e, d)}}>{d}</span>
+                <td onClick={(e)=>{this.onDayClick(e, d)}} key={d} name={d} className={className + selectedClass + (this.matches.includes(d) && this.parentYear[1] === +this.year() &&  this.parentMonth[1] === this.month()  ? 'day scheduled-day':'')} >
+                    <span>{d}</span>
                 </td>
             );
         }
 
-        console.log("days: ", daysInMonth);
-        console.log("selected day", this.state.selectedDay);
-        console.log("selected year", this.year())
-        console.log("selected month", this.month())
+        // console.log("days: ", daysInMonth);
+        // console.log("selected day", this.state.selectedDay);
+        // console.log("selected year", this.year())
+        // console.log("selected month", this.month())
         var totalSlots = [...blanks, ...daysInMonth];
         let rows = [];
         let cells = [];
@@ -246,12 +246,12 @@ class Calendar extends React.Component {
 
         let trElems = rows.map((d, i) => {
             return (
-                <tr key={i*100}>
+                <tr key={i*100} >
                     {d}
                 </tr>
             );
         })
-
+        console.log(' the component has re-rendered')
         return (
             <div className="calendar-container" style={this.style}>
                 {/* {matchesMapped} */}
@@ -266,7 +266,7 @@ class Calendar extends React.Component {
                                     onClick={(e)=> {this.prevMonth()}}>
                                 </i>
                                 <i className="prev fa fa-fw fa-chevron-right"
-                                    onClick={(e)=> {this.nextMonth()}}>
+                                    onClick={(e)=> {this.nextMonth(e)}}>
                                 </i>
                             </td>
                             {/* <td colSpan="2" className="nav-month">
