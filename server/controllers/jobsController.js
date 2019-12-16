@@ -34,9 +34,26 @@ const walkerPendingJobs = async (req, res) => {
 }
 
 
+const startWalk = async (req, res) => {
+    const db = req.app.get("db")
+    const job_id = +req.params.job_id;
+    await db.startWalk(job_id)
+    res.status(200).json("Active")
+}
+
+const completeWalk = async (req, res) => {
+    const db = req.app.get("db")
+    const job_id = +req.params.job_id;
+    await db.completeWalk(job_id)
+    res.status(200).json("Walk Completed")
+}
+
+
 module.exports = {
     addJob,
     acceptJob,
     declineJob,
-    walkerPendingJobs
+    walkerPendingJobs,
+    startWalk,
+    completeWalk
 }

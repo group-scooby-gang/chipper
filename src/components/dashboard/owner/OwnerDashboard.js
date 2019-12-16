@@ -55,7 +55,7 @@ class OwnerDashoard extends Component {
 							</button>
 						</Link>
 					</div>
-					<footer>
+					{/* <footer>
 						<Link to='/'>
 							<i
 								className='home_footer'
@@ -75,7 +75,7 @@ class OwnerDashoard extends Component {
 							onClick={() =>
 								this.props.logoutUser().then(() => this.props.history.push('/'))
 							}></i>
-					</footer>
+					</footer> */}
 				</div>
 			</>
 		);

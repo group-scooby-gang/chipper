@@ -1,0 +1,28 @@
+.mappedWalkHistory {
+    margin: 0px 30px 10px 30px;
+    font-family: 'Permanent Marker', cursive;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(155, 155, 155, 0.8);
+}
+
+h6 {
+	color: #d2b338;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 2.5em;
+    margin-left: 65px;
+    margin-bottom: 50px;
+    margin-top: 10px;
+}
+
+.mappedWalkHistory p {
+    padding-left: 10px;
+    border-left: 4px solid #d2c338;
+}
+
+.backToProfile {
+    position: absolute;
+    top: 75px;
+    border: none;
+    height: 20px;
+    width: 50px;
+}

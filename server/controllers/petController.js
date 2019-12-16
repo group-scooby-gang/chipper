@@ -30,9 +30,18 @@ const ownersPets = async (req, res) => {
     res.status(200).json(pets)
 }
 
+
+const petsWalks = async (req, res) => {
+    const db = req.app.get("db")
+    const pet_id = +req.params.pet_id
+    const history = await db.petsWalkHistory(pet_id)
+    res.status(200).json(history)
+}
+
 module.exports = {
     addPet,
     deletePet,
     editPet,
-    ownersPets
+    ownersPets,
+    petsWalks
 }
