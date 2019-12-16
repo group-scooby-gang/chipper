@@ -4,7 +4,7 @@ const initialState = {
     name: '',
     breed: '',
     age: 0,
-    img: 'https://pbs.twimg.com/media/C6MOE7CUoAA_pHM.jpg',
+    img: '',
     loading: false
 }
 

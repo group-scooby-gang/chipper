@@ -2,6 +2,7 @@ import React from "react"
 import {connect} from "react-redux"
 import {walkHistory} from "./../../../redux/profileReducer"
 import "./DogProfile.css"
+import {Link} from 'react-router-dom'
 
 class DogProfile extends React.Component {
     constructor(){
@@ -23,7 +24,9 @@ class DogProfile extends React.Component {
         })
         return (
             <div>
-                <button className="backToProfile">Back</button>
+                <Link to="/Profile/Owner">
+                    <button className="backToProfile">Back</button>
+                </Link>
                 <h6>Walk History</h6>
                 {mappedWalks}
             </div>

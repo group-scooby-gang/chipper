@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './petRegisterReview.css';
-import { resetFields, registerPet } from '../../../../../redux/petReducer';
+import { resetFields, registerPet, updateState} from '../../../../../redux/petReducer';
 import { connect } from 'react-redux';
+import {storage} from "./../../../../../firebase-config"
 
 class PetRegisterReview extends Component {
 	goBack = () => {
@@ -13,9 +14,23 @@ class PetRegisterReview extends Component {
 		const { name, breed, age, img } = this.props;
 		await this.props.registerPet(name, breed, age, img).then(() => {
 			this.props.resetFields();
-			this.props.history.push('/dashboard/owner');
+			this.props.history.push('/owner/dashboard');
 		});
 	};
+
+	handleImage = (e) => {
+		if(e.target.files[0]){
+			const image = (e.target.files[0])
+			const uploadTask = storage.ref(`/dogPics/${image.name}`).put(image)
+			uploadTask.on("state_changed", 
+			() => {
+				storage.ref('dogPics').child(image.name).getDownloadURL()
+				.then(url => {
+					this.props.updateState({img: url})
+				})
+			})
+		}
+	}
 
 	render() {
 		const { name, breed, age, img } = this.props;
@@ -32,6 +47,8 @@ class PetRegisterReview extends Component {
 				<h5>Breed: {breed}</h5>
 
 				<h5>Age: {age}</h5>
+
+				<h5>Upload Companion Profile Picture: <input type="file" onChange={this.handleImage}></input></h5>
 
 				<button
 					className='pet_review_page_button'
@@ -59,5 +76,6 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
 	resetFields,
-	registerPet
+	registerPet,
+	updateState
 })(PetRegisterReview);

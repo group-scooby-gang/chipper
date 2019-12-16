@@ -73,6 +73,7 @@ const walkerHistory = async (req, res) => {
 	const history = await db.walkerHistory(id);
 	res.status(200).json(history);
 };
+
 const searchWalker = async (req, res) => {
 	const db = req.app.get('db');
 	const { state, city } = req.query;
