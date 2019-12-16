@@ -76,6 +76,6 @@
 	height: 22px;
 	background-color: #659cef;
 	border-radius: 3px;
-	transition: 500ms ease-in-out;
-	transition-duration: 3s;
+	transition: width 2s ease-in-out;
+	-webkit-transition: width 2s;
 }
