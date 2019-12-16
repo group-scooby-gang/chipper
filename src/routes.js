@@ -27,6 +27,7 @@ import DogProfile from "./components/profile/dogProfile/DogProfile"
 import WalkerProfile from "./components/profile/Walker/Walker"
 import ViewSchedule from './components/schedule/viewSchedule/ViewSchedule'
 import EditPet from "./components/EditPet";
+import WalkerSettings from './components/settings/walkerSettings';
 
 export default (
 	<Switch>
@@ -54,5 +55,6 @@ export default (
 		<Route component={WalkerProfile} path="/Profile/Walker"/>
 		<Route component={ViewSchedule} path='/walker/schedule' />
 		<Route component={EditPet} path="/Pet/Edit/:pet_id"/>
+		<Route component={WalkerSettings} path='/walker/settings' />
 	</Switch>
 );
