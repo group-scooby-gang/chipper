@@ -1,78 +1,86 @@
 .selected_walker_page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .top_three_walkers_section {
-    border: 1px solid grey;
-    width: 75%;
-    padding: 2%;
-    box-shadow: rgba(0, 0, 0, 0.418) 0px 2px 5px 0px;
+	border: 1px solid grey;
+	width: 75%;
+	padding: 2%;
+	box-shadow: rgba(0, 0, 0, 0.418) 0px 2px 5px 0px;
 }
 
 .walker:hover {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .price_section {
-    display: flex;
-    width: 95%;
-    justify-content: space-around;
-    align-items: center;
+	display: flex;
+	width: 95%;
+	justify-content: space-around;
+	align-items: center;
 }
 
 .search_section {
-    border: 1px solid grey;
-    width: 75%;
-    margin: 2% 0 0 0;
-    padding: 2%;
-    display: flex;
-    flex-direction: column;
-    box-shadow: rgba(0, 0, 0, 0.418) 0px 2px 5px 0px;
+	border: 1px solid grey;
+	width: 75%;
+	margin: 2% 0 0 0;
+	padding: 2%;
+	display: flex;
+	flex-direction: column;
+	box-shadow: rgba(0, 0, 0, 0.418) 0px 2px 5px 0px;
 }
 
 .search_section div {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 }
 
 .search_section div input {
-    height: 2.5vh;
+	height: 2.5vh;
+	width: 50%;
+	background-color: #e8e8e8;
+	border-radius: 5px;
+	padding: 1%;
 }
 
 .search_section button {
-    width: 25%;
-    height: 3vh;
-    border-radius: 4px;
-    align-self: center;
+	width: 25%;
+	height: 3vh;
+	border-radius: 4px;
+	align-self: center;
 }
 
 .search_section button:hover {
-    cursor: pointer;
-    border: 1px solid rgba(0, 0, 0, 0.418);
-    color: rgba(0, 0, 0, 0.637);
+	cursor: pointer;
+	border: 1px solid rgba(0, 0, 0, 0.418);
+	color: rgba(0, 0, 0, 0.637);
 }
 
 .searched_walkers_results_section {
-    border: 1px solid grey;
-    width: 75%;
-    padding: 2%;
-    box-shadow: rgba(0, 0, 0, 0.418) 0px 2px 5px 0px;
-    margin: 0 0 2% 0;
+	border: 1px solid grey;
+	width: 75%;
+	padding: 2%;
+	box-shadow: rgba(0, 0, 0, 0.418) 0px 2px 5px 0px;
+	margin: 0 0 2% 0;
 }
 
 .selected_walker_page button {
-    margin: 2% 0 1% 0;
-    width: 25%;
-    height: 3vh;
-    border-radius: 4px;
+	margin: 2% 0 1% 0;
+	width: 25%;
+	height: 3vh;
+	border-radius: 4px;
 }
 
 .selected_walker_page button:hover {
-    cursor: pointer;
-    border: 1px solid rgba(0, 0, 0, 0.418);
-    color: rgba(0, 0, 0, 0.637);
+	cursor: pointer;
+	border: 1px solid rgba(0, 0, 0, 0.418);
+	color: rgba(0, 0, 0, 0.637);
+}
+
+img {
+	border-radius: 50%;
 }
