@@ -55,7 +55,7 @@ class WalkerDashboard extends Component {
 					<div className='next_walk_job'>
 						<img src={img} alt='pet_img' className='walker_dash_pet_img' />
 						<div>
-							<div>
+							<div className='next_walk_container'>
 								Date: {month}/{date}/{year} <br />
 								Time: {time} <br />
 								Companion: {name}
@@ -107,7 +107,7 @@ class WalkerDashboard extends Component {
                         :
                         null
                 } */}
-				<footer>
+				{/* <footer>
 					<Link to='/'>
 						<i
 							className='home_footer'
@@ -127,7 +127,7 @@ class WalkerDashboard extends Component {
 						onClick={() =>
 							this.props.logoutUser().then(() => this.props.history.push('/'))
 						}></i>
-				</footer>
+				</footer> */}
 			</div>
 		);
 	}
