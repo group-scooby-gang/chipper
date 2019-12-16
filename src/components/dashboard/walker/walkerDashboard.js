@@ -21,14 +21,12 @@ class WalkerDashboard extends Component {
 
 	handleClickSchedule = () => {
 		this.setState({ dogsNeedWalking: 'closed' });
-		//the function below will route us to the scheduled walks page for the walker
-		// this.props.history.push('/walker/schedule')
+		this.props.history.push('/walker/schedule')
 	};
 
 	handleClickPendingJobs = () => {
 		this.setState({ dogsNeedWalking: 'closed' });
-		//the function below will route us to the scheduled walks page for the walker
-		// this.props.history.push('/walker/schedule')
+		this.props.history.push('/walker/schedule')
 	};
 
 	getNextWalk = async () => {
@@ -37,6 +35,7 @@ class WalkerDashboard extends Component {
 	};
 
 	render() {
+		console.log(this.props.schedule)
 		const month = this.props.schedule[0] ? this.props.schedule[0].month : null;
 		const date = this.props.schedule[0] ? this.props.schedule[0].date : null;
 		const year = this.props.schedule[0] ? this.props.schedule[0].year : null;
@@ -49,13 +48,9 @@ class WalkerDashboard extends Component {
 		const img = this.props.schedule[0] ? this.props.schedule[0].img : null;
 		return (
 			<div className='walkerDashboard'>
-				{/* <button
-					onClick={() =>
-						this.props.logoutUser().then(() => this.props.history.push('/'))
-					}>
-					Logout
-				</button> */}
 				<div className='next_walk_section'>
+					{name ?
+					<>
 					<h3>Next Walk:</h3>
 					<div className='next_walk_job'>
 						<img src={img} alt='pet_img' className='walker_dash_pet_img' />
@@ -75,6 +70,15 @@ class WalkerDashboard extends Component {
 							</div>
 						</div>
 					</div>
+					</>
+					:
+					null}
+					{!name ?
+					<>
+					<h3>No walks scheduled at this time.</h3>
+					</>
+					:
+					null}
 				</div>
 				<div className='button_section'>
 					{/* <button onClick={this.handleClickWalks}>Dogs Need Walking</button> */}

@@ -14,7 +14,6 @@ import RegisterWalkerInfoStep2 from './components/auth/register/walkerInfo/walke
 import RegisterWalkerReview from './components/auth/register/walkerInfo/walkerReview/walkerReview';
 import Login from './components/login/login';
 import WalkerDashboard from './components/dashboard/walker/walkerDashboard';
-import WalkerSchedule from './components/schedule/walker/walkerSchedule';
 import OwnerDashboard from './components/dashboard/owner/OwnerDashboard';
 import Landing from "./components/landing/landing"
 import NewWalkWho from './components/schedule/owner/scheduleNewWalk/who/scheduleNewWalkWho';
@@ -42,7 +41,6 @@ export default (
 		<Route component={RegisterWalkerReview} path='/register/walker/review' />
 		<Route component={Login} path='/login' />
 		<Route component={WalkerDashboard} path='/walker/dashboard' />
-		<Route component={WalkerSchedule} path='/walker/schedule' />
 		<Route component={OwnerDashboard} path='/owner/dashboard' />
 		<Route component={NewWalkWho} path='/owner/schedule/new/pet_select' />
 		<Route component={WalkerSelect} path='/owner/schedule/new/walker_select' />
@@ -53,6 +51,6 @@ export default (
 		<Route component={DogProfile} path="/Profile/Dog/:pet_id" />
 		<Route component={Profile} path="/Profile/Owner" />
 		<Route component={WalkerProfile} path="/Profile/Walker"/>
-		<Route component={ViewSchedule} path='/scheduled' />
+		<Route component={ViewSchedule} path='/walker/schedule' />
 	</Switch>
 );

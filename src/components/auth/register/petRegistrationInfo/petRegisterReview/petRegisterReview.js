@@ -13,7 +13,7 @@ class PetRegisterReview extends Component {
 		const { name, breed, age, img } = this.props;
 		await this.props.registerPet(name, breed, age, img).then(() => {
 			this.props.resetFields();
-			this.props.history.push('/dashboard/owner');
+			this.props.history.push('/owner/dashboard');
 		});
 	};
 
