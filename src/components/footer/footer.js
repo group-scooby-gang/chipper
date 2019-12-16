@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { logoutUser } from '../../redux/userReducer';
 import { connect } from 'react-redux';
 import './footer.css';
@@ -27,4 +27,4 @@ class Footer extends Component {
 	}
 }
 
-export default connect(null, { logoutUser })(Footer);
+export default withRouter(connect(null, { logoutUser })(Footer));

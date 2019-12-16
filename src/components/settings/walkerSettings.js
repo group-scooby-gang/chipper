@@ -3,6 +3,11 @@ import { connect } from "react-redux";
 import { updateState } from "../../redux/userReducer";
 
 class WalkerSettings extends Component {
+
+    done = () => {
+        this.props.history.goBack()
+    }
+
     render() {
         console.log(this.props.user);
         const {
@@ -19,6 +24,7 @@ class WalkerSettings extends Component {
                 marginTop: '10%'
             }}>
                 <div className="pic_name_container">
+                    <button onClick={this.done}>Done</button>
                     <div className='img_update_container'>
                         <img src={profileimg} alt="profile_pic" />
                         <button>FireBase Img</button>
