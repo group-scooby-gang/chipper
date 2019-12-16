@@ -28,3 +28,4 @@ class Footer extends Component {
 }
 
 export default connect(null, { logoutUser })(Footer);
+``;
