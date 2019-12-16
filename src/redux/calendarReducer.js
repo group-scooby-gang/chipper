@@ -27,6 +27,7 @@ export default function calendarReducer(state = initialState, action ) {
                 payload
             };
         default:
+            // console.log(initialState)
             return state;
     }
 }
