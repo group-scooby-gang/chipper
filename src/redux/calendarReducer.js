@@ -1,8 +1,9 @@
 // import axios from 'axios';
 
 const initialState = {
+    killer: [],
     month: null,
-    day: null,
+    date: null,
     year: null,
     selectedMonth: null,
     selectedDay: null,
@@ -11,10 +12,10 @@ const initialState = {
 
 const UPDATE_STATE = 'UPDATE_STATE';
 
-export const updateState = e => {
+export const updateState = (killer) => {
     return {
-        type: UPDATE_STATE,
-        payload: e
+        type:UPDATE_STATE,
+        payload:killer
     }
 }
 
@@ -22,12 +23,13 @@ export default function calendarReducer(state = initialState, action ) {
     const { type, payload } = action;
     switch (type) {
         case UPDATE_STATE:
+            console.log(payload.data)
             return {
                 ...state,
-                payload
+                killer:payload.data
             };
         default:
-            // console.log(initialState)
+            console.log('calendar reducer:',initialState)
             return state;
     }
 }

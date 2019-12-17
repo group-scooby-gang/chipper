@@ -30,6 +30,7 @@ const ViewSchedule = (props) => {
     }
 
     let bigCities = [];
+    console.log('bigCities:', bigCities)
     for (let i = 0; i < jobs.length; i++) {
         jobs[i].month = convertMonth(jobs[i])
         bigCities.push({ date: jobs[i].date, month: jobs[i].month, year: jobs[i].year });
