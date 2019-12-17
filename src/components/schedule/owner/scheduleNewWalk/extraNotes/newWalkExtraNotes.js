@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './newWalkExtra.css';
 import { updateState } from '../../../../../redux/ownerReducer';
 import { connect } from 'react-redux';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 class ExtraNotes extends Component {
 	next = () => {
@@ -33,6 +34,7 @@ class ExtraNotes extends Component {
 				<button className='extra_button_back' onClick={this.back}>
 					BACK
 				</button>
+				<ProgressBar animated now={80} className='progress' animated />
 			</div>
 		);
 	}

@@ -6,6 +6,7 @@ import {
 	searchWalkers
 } from '../../../../../redux/ownerReducer';
 import { connect } from 'react-redux';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 class WalkerSelect extends Component {
 	state = {
@@ -130,6 +131,7 @@ class WalkerSelect extends Component {
 				<button className='selected_walker_page_back' onClick={this.back}>
 					BACK
 				</button>
+				<ProgressBar animated now={20} className='progress' animated />
 			</div>
 		);
 	}

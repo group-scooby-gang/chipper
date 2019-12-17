@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './newWalkReview.css';
 import { addNewJob } from '../../../../../redux/ownerReducer';
 import { connect } from 'react-redux';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 class WalkReview extends Component {
 	handleSetWalk = () => {
@@ -86,7 +87,7 @@ class WalkReview extends Component {
 				<button className='review_button_back' onClick={this.back}>
 					BACK
 				</button>
-				<div>Status Bar</div>
+				<ProgressBar animated now={100} className='progress' animated />
 			</div>
 		);
 	}

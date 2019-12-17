@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './scheduleNewWalkWho.css';
 import { updateState, getOwnerPets } from '../../../../../redux/ownerReducer';
 import { connect } from 'react-redux';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 class NewWalkWho extends Component {
 	componentDidMount() {
@@ -47,6 +48,7 @@ class NewWalkWho extends Component {
 					<div className='pet_selectors'>{mappedPets}</div>
 				</div>
 				<button onClick={this.next}>NEXT</button>
+				<ProgressBar animated now={20} className='progress_who' animated />
 			</div>
 		);
 	}

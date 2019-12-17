@@ -5,6 +5,7 @@ import {
 	getWalkerById
 } from './../../../../../redux/ownerReducer';
 import { connect } from 'react-redux';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 class WalkTime extends Component {
 	componentDidMount() {
@@ -64,7 +65,8 @@ class WalkTime extends Component {
 				<button className='time_button_back' onClick={this.back}>
 					BACK
 				</button>
-				<div>Status Bar</div>
+
+				<ProgressBar animated now={60} className='progress' animated />
 			</div>
 		);
 	}

@@ -3,6 +3,7 @@ import './newWalkDate.css';
 // import Calendar from '../../../../calendar/Calendar'
 import { updateState } from '../../../../../redux/ownerReducer';
 import { connect } from 'react-redux';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 class WalkDateSelect extends Component {
 	state = {
@@ -124,6 +125,7 @@ class WalkDateSelect extends Component {
 				<button className='date_page_button_back' onClick={this.back}>
 					BACK
 				</button>
+				<ProgressBar animated now={40} className='progress' animated />
 			</div>
 		);
 	}

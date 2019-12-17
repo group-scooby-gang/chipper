@@ -8,7 +8,7 @@
 .top_three_walkers_section {
 	border: 1px solid grey;
 	width: 75%;
-	padding: 2%;
+	padding: 3%;
 	box-shadow: rgba(0, 0, 0, 0.418) 0px 2px 5px 0px;
 }
 
@@ -37,21 +37,28 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
+	padding: 3%;
 }
 
 .search_section div input {
-	height: 2.5vh;
-	width: 50%;
+	height: 4vh;
+	width: 15vw;
 	background-color: #e8e8e8;
 	border-radius: 5px;
-	padding: 1%;
+	padding: 2%;
 }
 
 .search_section button {
 	width: 25%;
-	height: 3vh;
+	height: 5vh;
 	border-radius: 4px;
 	align-self: center;
+	margin: 2%;
+}
+
+.search_section h3 {
+	font-size: 1.2em;
+	margin: 2%;
 }
 
 .search_section button:hover {
@@ -90,7 +97,7 @@
 	height: 30%;
 	width: 30%;
 	padding: 2%;
-	margin: 4%;
+	margin-top: 4%;
 	border-radius: 5px;
 	font-size: 14px;
 	color: white;
@@ -98,4 +105,9 @@
 
 img {
 	border-radius: 50%;
+}
+
+.progress {
+	width: 80%;
+	margin-bottom: 5%;
 }
