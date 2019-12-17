@@ -1,39 +1,54 @@
 .date_page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .time_section {
-    border: 1px solid grey;
-    display: flex;
-    flex-direction: column;
-    margin: 2% 0 2% 0;
-    padding: 2%;
+	border: 1px solid grey;
+	display: flex;
+	flex-direction: column;
+	margin: 2% 0 2% 0;
+	padding: 2%;
 }
 
 .time_section div {
-    display: flex;
-    align-items: center;
-    align-self: center;
-    height: 2vh;
+	display: flex;
+	align-items: center;
+	align-self: center;
+	height: 2vh;
 }
 
 .time_section div input {
-    width: 30%;
-    margin: 0 0.5% 0 0.5%;
-}
-
-.date_page button {
-    height: 5vh;
-    width: 50%;
-    border-radius: 2px;
-    margin-bottom: 2%;
+	width: 30%;
+	margin: 0 0.5% 0 0.5%;
 }
 
 .date_page button:hover {
-    cursor: pointer;
-    border: 1px solid rgba(128, 128, 128, 0.74);
-    color: rgba(0, 0, 0, 0.521);
+	cursor: pointer;
+	border: 1px solid rgba(128, 128, 128, 0.74);
+	color: rgba(0, 0, 0, 0.521);
+}
+
+.date_page_button_next {
+	background-color: #d2b338;
+	height: 30%;
+	width: 30%;
+	padding: 2%;
+	margin: 4%;
+	border-radius: 5px;
+	font-size: 14px;
+	color: white;
+}
+
+.date_page_button_back {
+	background-color: #d2b338;
+	height: 30%;
+	width: 30%;
+	padding: 2%;
+	margin: 1%;
+	border-radius: 5px;
+	font-size: 14px;
+	color: white;
 }
