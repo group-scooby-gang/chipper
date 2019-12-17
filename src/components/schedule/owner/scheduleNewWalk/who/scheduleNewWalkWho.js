@@ -48,7 +48,7 @@ class NewWalkWho extends Component {
 					<div className='pet_selectors'>{mappedPets}</div>
 				</div>
 				<button onClick={this.next}>NEXT</button>
-				<ProgressBar animated now={20} className='progress_who' animated />
+				<ProgressBar animated now={4} className='progress_who' animated />
 			</div>
 		);
 	}
