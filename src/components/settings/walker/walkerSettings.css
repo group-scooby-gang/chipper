@@ -1,0 +1,181 @@
+.settings_page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.settings_page button {
+    align-self: flex-end;
+    margin: 1% 2.5% 0 0;
+    width: 5%;
+    height: 4vh;
+    border-radius: 5px;
+}
+
+.settings_page button:hover {
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.7);
+    border: 1px solid gray;
+}
+
+.pic_name_container {
+    border: 1px solid grey;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 2.5px 5px 0;
+    width: 75%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2%;
+    margin: 2% 0 1% 0;
+}
+
+.img_update_container {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 1%;
+}
+
+.img_update_container img {
+    border-radius: 50%;
+}
+
+.img_update_container button {
+    width: 30%;
+    height: 3vh;
+    align-self: center;
+    margin-top: 10%;
+}
+
+.img_update_container button:hover {
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.7);
+    border: 1px solid grey;
+}
+
+.name_update_container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 1%;
+}
+
+.name_data_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.name_data_container h3 {
+    margin: 0;
+}
+
+.name_data_container p {
+    text-align: center;
+    margin: 0;
+}
+
+.name_update_container button {
+    width: 30%;
+    height: 3vh;
+    align-self: center;
+    margin-top: 10%;
+}
+
+.name_update_container button:hover {
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.7);
+    border: 1px solid grey;
+}
+
+.phone_address_bio {
+    border: 1px solid grey;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 2.5px 5px 0;
+    width: 75%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2%;
+    margin: 1% 0 2% 0;
+}
+
+.pab_data_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 40%;
+}
+
+.phone_data {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+}
+
+.phone_data h3 {
+    margin: 0;
+    padding: 5%;
+}
+
+.phone_data p {
+    margin: 0;
+    padding: 5%;
+}
+
+.address_data {
+    display: flex;
+    justify-content: space-evenly;
+    width: 60%;
+}
+
+.address_data h3 {
+    margin: 0;
+    padding: 5%;
+}
+
+.address_data p {
+    margin: 0;
+    padding: 5%;
+    width: 100%;
+    text-align: center;
+}
+
+.bio_data {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.bio_data h3 {
+    margin: 0;
+    padding: 5%;    
+}
+
+.bio_data p {
+    margin: 0;
+    padding: 5%;
+}
+
+.data_update_button_container {
+    width: 30%;
+    height: 3vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.data_update_button_container button {
+    width: 40%;
+    height: 4vh;
+}
+
+.data_update_button_container button:hover {
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.7);
+    border: 1px solid grey;
+}
