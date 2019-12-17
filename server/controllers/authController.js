@@ -46,11 +46,12 @@ const loginUser  = async (req, res) => {
             lastname: checkUser[0].lastname,
             phone: checkUser[0].phone,
             address: checkUser[0].address,
+            profileimg: checkUser[0].profileimg,
             isAdmin: checkUser[0].isAdmin,
             isWalker: false
         }
         res.status(200).json(req.session.user)
-        // console.log(req.session.user)
+        console.log(req.session.user)
     } else {
         res.status(403).json("Invalid Login")
     }
@@ -66,7 +67,7 @@ const isWalker = async (req, res) => {
         req.session.user.isWalker = false
     }
 
-    console.log(req.session.user);
+    // console.log(req.session.user);
     res.status(200).json(req.session.user);
 }
 

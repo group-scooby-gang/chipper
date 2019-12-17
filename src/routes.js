@@ -14,7 +14,6 @@ import RegisterWalkerInfoStep2 from './components/auth/register/walkerInfo/walke
 import RegisterWalkerReview from './components/auth/register/walkerInfo/walkerReview/walkerReview';
 import Login from './components/login/login';
 import WalkerDashboard from './components/dashboard/walker/walkerDashboard';
-import WalkerSchedule from './components/schedule/walker/walkerSchedule';
 import OwnerDashboard from './components/dashboard/owner/OwnerDashboard';
 import Landing from "./components/landing/landing"
 import NewWalkWho from './components/schedule/owner/scheduleNewWalk/who/scheduleNewWalkWho';
@@ -29,10 +28,15 @@ import WalkerProfile from "./components/profile/Walker/Walker"
 import ViewSchedule from './components/schedule/viewSchedule/ViewSchedule'
 import EditPet from "./components/EditPet";
 import About from "./components/about/About"
+import WalkerSettings from './components/settings/walker/walkerSettings';
+import WalkerSchedule from './components/schedule/walker/walkerSchedule';
 
 export default (
 	<Switch>
+		{/* guest view */}
 		<Route component={Landing} exact path='/' />
+
+		{/* register */}
 		<Route component={UserType} path='/register/usertype' />
 		<Route component={RegisterOwnerInfo} path='/register/owner/info' />
 		<Route component={PetRegisterName} path='/register/pet/name' />
@@ -42,21 +46,34 @@ export default (
 		<Route component={RegisterWalkerInfo} exact path='/register/walker/info' />
 		<Route component={RegisterWalkerInfoStep2} path='/register/walker/info2' />
 		<Route component={RegisterWalkerReview} path='/register/walker/review' />
+
+		{/* Login */}
 		<Route component={Login} path='/login' />
+
+		{/* dashboards */}
 		<Route component={WalkerDashboard} path='/walker/dashboard' />
-		<Route component={WalkerSchedule} path='/walker/schedule' />
 		<Route component={OwnerDashboard} path='/owner/dashboard' />
+
+		{/* create walk pages */}
 		<Route component={NewWalkWho} path='/owner/schedule/new/pet_select' />
 		<Route component={WalkerSelect} path='/owner/schedule/new/walker_select' />
 		<Route component={WalkDateSelect} path='/owner/schedule/new/select_date' />
 		<Route component={WalkTime} path='/owner/schedule/new/select_time' />
 		<Route component={ExtraNotes} path='/owner/schedule/new/extra_notes' />
 		<Route component={WalkReview} path='/owner/schedule/new/review' />
+
+		{/* profile pages  */}
 		<Route component={DogProfile} path="/Profile/Dog/:pet_id" />
 		<Route component={Profile} path="/Profile/Owner" />
 		<Route component={WalkerProfile} path="/Profile/Walker"/>
-		<Route component={ViewSchedule} path='/scheduled' />
+
+		{/* schedule pages  */}
+		<Route component={ViewSchedule} path='/owner/schedule' />
+		<Route component={WalkerSchedule} path='/walker/schedule' />
+
+		{/* settings pages */}
 		<Route component={EditPet} path="/Pet/Edit/:pet_id"/>
 		<Route component={About} path="/About" />
+		<Route component={WalkerSettings} path='/walker/settings' />
 	</Switch>
 );

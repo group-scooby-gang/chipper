@@ -23,7 +23,8 @@ const initialState = {
 	pets: [],
 	walkers: [],
 	searchedWalker: [],
-	loading: false
+	loading: false,
+	walker_phone: 0
 }
 
 const ON_DAY_CLICK = 'ON_DAY_CLICK';
@@ -35,6 +36,7 @@ const GET_WALKERS = 'GET_WALKERS';
 const SEARCH_WALKERS = 'SEARCH_WALKERS';
 const GET_WALKERS_PRICE = 'GET_WALKERS_PRICE';
 const ADD_JOB = 'ADD_JOB';
+const GET_WALKER_PHONE = "GET_WALKER_PHONE";
 
 export const onDayClick = (e, day) => {
 	return {

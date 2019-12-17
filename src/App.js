@@ -9,12 +9,14 @@ import Footer from './components/footer/footer';
 function App() {
 	return (
 		<BrowserRouter>
-			<div>
+			<div className='app_container'>
 				{/* <Sms /> */}
+				<div className='app_content'>
 				<Navbar />
+				{routes}
+				</div>
 				<Footer />
 			</div>
-			{routes}
 		</BrowserRouter>
 	);
 }

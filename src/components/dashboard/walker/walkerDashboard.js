@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './walkerDashboard.css';
-import { getWalkerSchedule } from './../../../redux/walkerReducer';
+import { getWalkerSchedule, getWalkerInfo } from './../../../redux/walkerReducer';
 import { logoutUser } from './../../../redux/userReducer';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 class WalkerDashboard extends Component {
 	state = {
@@ -13,6 +12,7 @@ class WalkerDashboard extends Component {
 
 	componentDidMount() {
 		this.getNextWalk();
+		this.props.getWalkerInfo();
 	}
 
 	handleClickWalks = () => {
@@ -21,14 +21,12 @@ class WalkerDashboard extends Component {
 
 	handleClickSchedule = () => {
 		this.setState({ dogsNeedWalking: 'closed' });
-		//the function below will route us to the scheduled walks page for the walker
-		// this.props.history.push('/walker/schedule')
+		this.props.history.push('/walker/schedule')
 	};
 
 	handleClickPendingJobs = () => {
 		this.setState({ dogsNeedWalking: 'closed' });
-		//the function below will route us to the scheduled walks page for the walker
-		// this.props.history.push('/walker/schedule')
+		this.props.history.push('/walker/schedule')
 	};
 
 	getNextWalk = async () => {
@@ -49,13 +47,9 @@ class WalkerDashboard extends Component {
 		const img = this.props.schedule[0] ? this.props.schedule[0].img : null;
 		return (
 			<div className='walkerDashboard'>
-				{/* <button
-					onClick={() =>
-						this.props.logoutUser().then(() => this.props.history.push('/'))
-					}>
-					Logout
-				</button> */}
 				<div className='next_walk_section'>
+					{name ?
+					<>
 					<h3>Next Walk:</h3>
 					<div className='next_walk_job'>
 						<img src={img} alt='pet_img' className='walker_dash_pet_img' />
@@ -75,6 +69,15 @@ class WalkerDashboard extends Component {
 							</div>
 						</div>
 					</div>
+					</>
+					:
+					null}
+					{!name ?
+					<>
+					<h3>No walks scheduled at this time.</h3>
+					</>
+					:
+					null}
 				</div>
 				<div className='button_section'>
 					{/* <button onClick={this.handleClickWalks}>Dogs Need Walking</button> */}
@@ -140,5 +143,6 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
 	logoutUser,
-	getWalkerSchedule
+	getWalkerSchedule,
+	getWalkerInfo
 })(WalkerDashboard);
