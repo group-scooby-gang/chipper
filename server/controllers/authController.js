@@ -48,7 +48,6 @@ const loginUser  = async (req, res) => {
             address: checkUser[0].address,
             profileimg: checkUser[0].profileimg,
             isAdmin: checkUser[0].isAdmin,
-            bio: checkUser[0].experience,
             isWalker: false
         }
         res.status(200).json(req.session.user)

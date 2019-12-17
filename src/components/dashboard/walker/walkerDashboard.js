@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './walkerDashboard.css';
-import { getWalkerSchedule } from './../../../redux/walkerReducer';
+import { getWalkerSchedule, getWalkerInfo } from './../../../redux/walkerReducer';
 import { logoutUser } from './../../../redux/userReducer';
 import { connect } from 'react-redux';
 
@@ -12,6 +12,7 @@ class WalkerDashboard extends Component {
 
 	componentDidMount() {
 		this.getNextWalk();
+		this.props.getWalkerInfo();
 	}
 
 	handleClickWalks = () => {
@@ -142,5 +143,6 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
 	logoutUser,
-	getWalkerSchedule
+	getWalkerSchedule,
+	getWalkerInfo
 })(WalkerDashboard);
