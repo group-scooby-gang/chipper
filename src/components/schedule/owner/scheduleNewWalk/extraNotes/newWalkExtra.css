@@ -1,26 +1,48 @@
 .extra_notes_page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .extra_notes_page textarea {
-    padding: 1%;
-    margin-bottom: 2%;
-    width: 75%;
-    box-shadow: rgba(0, 0, 0, 0.26) 0 2.5px 5px 0;
+	padding: 1%;
+	margin-bottom: 2%;
+	width: 75%;
+	box-shadow: rgba(0.5, 0.5, 0.5, 0.5) 0px 2.5px 5px 0;
 }
 
-.extra_notes_page button {
-    margin: 0 0 2% 0;
-    width: 20%;
-    height: 4vh;
-    border-radius: 4px;
-}
+/* .extra_notes_page button {
+	margin: 0 0 2% 0;
+	width: 20%;
+	height: 4vh;
+	border-radius: 4px;
+} */
 
 .extra_notes_page button:hover {
-    cursor: pointer;
-    border: 1px solid gray;
-    color: rgba(0, 0, 0, 0.623);
+	cursor: pointer;
+	border: 1px solid gray;
+	color: rgba(0, 0, 0, 0.623);
+}
+
+.extra_button_review {
+	background-color: #d2b338;
+	height: 30%;
+	width: 30%;
+	padding: 2%;
+	margin: 4%;
+	border-radius: 5px;
+	font-size: 14px;
+	color: white;
+}
+
+.extra_button_back {
+	background-color: #d2b338;
+	height: 30%;
+	width: 30%;
+	padding: 2%;
+	margin: 0%;
+	border-radius: 5px;
+	font-size: 14px;
+	color: white;
 }
