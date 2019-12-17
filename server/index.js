@@ -108,3 +108,17 @@ app.post('/sms', (req, res) => {
 			res.json({ success: false });
 		});
 });
+
+app.post('/sms/walker/jobNotification', (req, res) => {
+	client.messages.create({
+		from: TWILIO_PHONE_NUMBER,
+		to: req.body.number,
+		body: `Hey ${req.body.name}! An owner has scheduled an appointment with you! Log on to accept, or to decline.`
+	})
+	.then(() => {
+		res.status(200).json("Text sent")
+	})
+	.catch(error => {
+		console.log(error)
+	})
+})

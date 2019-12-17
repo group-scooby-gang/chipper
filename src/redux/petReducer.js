@@ -13,6 +13,7 @@ const UPDATE_STATE = 'UPDATE_STATE';
 const RESET_FIELDS = 'RESET_FIELDS';
 const REGISTER_PET = 'REGISTER_PET';
 const PET_DETAILS = "PET_DETAILS";
+const EDIT_PET = "EDIT_PET";
 
 
 export const updateState = (e) => {
@@ -47,6 +48,18 @@ export const petDetails = (pet_id) => {
     }
 }
 
+export const editPet = (name, breed, age, img, pet_id) => {
+    return {
+        type: EDIT_PET,
+        payload: axios.put(`/Chipper/Pet/Edit/${pet_id}`, {
+            name: name,
+            breed: breed,
+            age: age,
+            img: img
+        })
+    }
+}
+
 export default function petReducer(state = initialState, action) {
     const {type, payload} = action;
     switch(type) {
@@ -75,12 +88,22 @@ export default function petReducer(state = initialState, action) {
                 ...state,
                 loading: true
             }
-        case `${PET_DETAILS}_FULFILED`:
-            console.log(payload.data)
+        case `${PET_DETAILS}_FULFILLED`:
+            console.log("vklrwho")
             return {
                 ...state,
                 loading: false,
                 pet: payload.data
+            }
+        case   `${EDIT_PET}_PENDING`:
+            return {
+                ...state, 
+                loading: true
+            }
+        case `${EDIT_PET}_FULFILLED`:
+            return {
+                ...state,
+                loading: false
             }
         default:
             return state;
