@@ -18,7 +18,7 @@ class WalkerSettings extends Component {
             phone,
             profileimg,
             username,
-            bio
+            // bio
         } = this.props.user;
         return (
             <div className="settings_page">
@@ -46,7 +46,7 @@ class WalkerSettings extends Component {
                             <h3>Address:</h3><p>{address}</p>
                         </div>
                         <div className='bio_data'>
-                            <h3>Bio:</h3><p>{bio}</p>
+                            {/* <h3>Bio:</h3><p>{bio}</p> */}
                         </div>
                     </div>
                     <div className='data_update_button_container'>
