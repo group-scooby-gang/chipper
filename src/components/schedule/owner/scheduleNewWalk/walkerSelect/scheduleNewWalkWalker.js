@@ -115,15 +115,21 @@ class WalkerSelect extends Component {
 							/>
 						</div>
 					</div>
-					<button onClick={this.searchWalker}>Search</button>
+					<button className='search_section_button' onClick={this.searchWalker}>
+						Search
+					</button>
 				</div>
 				{this.state.searchContainer === 'open' ? (
 					<div className='searched_walkers_results_section'>
 						{mappedSearchWalkers}
 					</div>
 				) : null}
-				<button onClick={this.next}>Next</button>
-				<button onClick={this.back}>Back</button>
+				<button className='selected_walker_page_next' onClick={this.next}>
+					NEXT
+				</button>
+				<button className='selected_walker_page_back' onClick={this.back}>
+					BACK
+				</button>
 			</div>
 		);
 	}

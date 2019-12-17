@@ -68,17 +68,40 @@
 	margin: 0 0 2% 0;
 }
 
-.selected_walker_page button {
+/* .selected_walker_page button {
 	margin: 2% 0 1% 0;
-	width: 25%;
+	width: 30%;
 	height: 3vh;
 	border-radius: 4px;
-}
+	text-align: center;
+} */
 
 .selected_walker_page button:hover {
 	cursor: pointer;
 	border: 1px solid rgba(0, 0, 0, 0.418);
 	color: rgba(0, 0, 0, 0.637);
+}
+
+.selected_walker_page_next {
+	background-color: #d2b338;
+	height: 30%;
+	width: 30%;
+	padding: 3%;
+	margin-top: 5%;
+	border-radius: 5px;
+	font-size: 14px;
+	color: white;
+}
+
+.selected_walker_page_back {
+	background-color: #d2b338;
+	height: 30%;
+	width: 30%;
+	padding: 3%;
+	margin: 4%;
+	border-radius: 5px;
+	font-size: 14px;
+	color: white;
 }
 
 img {
