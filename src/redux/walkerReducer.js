@@ -9,12 +9,14 @@ const initialState = {
     sixty: 0,
     loading: false,
     schedule: [],
+    walkerInfo: {}
 }
 
 const UPDATE_STATE = 'UPDATE_STATE';
 const RESET_FIELDS = 'RESET_FIELDS';
 const REGISTER_WALKER = 'REGISTER_WALKER';
 const GET_SCHEDULE = 'GET_SCHEDULE';
+const GET_WALKER_INFO = 'GET_WALKER_INFO';
 
 export const updateState = e => {
     return {
@@ -47,6 +49,13 @@ export const getWalkerSchedule = () => {
     return {
         type: GET_SCHEDULE,
         payload: axios.get('/Chipper/Walker/NextJobs')
+    }
+}
+
+export const getWalkerInfo = () => {
+    return {
+        type: GET_WALKER_INFO,
+        payload: axios.get('/Chipper/Profile/Walker')
     }
 }
 
@@ -84,6 +93,17 @@ export default function walkerReducer(state = initialState, action) {
                 loading: false,
                 schedule: payload.data
             };
+        case `${GET_WALKER_INFO}_PENDING`:
+            return {
+                ...state,
+                loading: true
+            };
+        case `${GET_WALKER_INFO}_FULFILLED`:
+            return {
+                ...state,
+                loading: false,
+                walkerInfo: payload.data[0]
+            }
         default:
             return state;
     }

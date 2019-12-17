@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './walkerDashboard.css';
-import { getWalkerSchedule } from './../../../redux/walkerReducer';
+import { getWalkerSchedule, getWalkerInfo } from './../../../redux/walkerReducer';
 import { logoutUser } from './../../../redux/userReducer';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 class WalkerDashboard extends Component {
 	state = {
@@ -13,6 +12,7 @@ class WalkerDashboard extends Component {
 
 	componentDidMount() {
 		this.getNextWalk();
+		this.props.getWalkerInfo();
 	}
 
 	handleClickWalks = () => {
@@ -35,7 +35,6 @@ class WalkerDashboard extends Component {
 	};
 
 	render() {
-		console.log(this.props.schedule)
 		const month = this.props.schedule[0] ? this.props.schedule[0].month : null;
 		const date = this.props.schedule[0] ? this.props.schedule[0].date : null;
 		const year = this.props.schedule[0] ? this.props.schedule[0].year : null;
@@ -144,5 +143,6 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
 	logoutUser,
-	getWalkerSchedule
+	getWalkerSchedule,
+	getWalkerInfo
 })(WalkerDashboard);
