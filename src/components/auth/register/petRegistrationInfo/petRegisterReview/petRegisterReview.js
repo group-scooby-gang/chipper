@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import './petRegisterReview.css';
-import { resetFields, registerPet, updateState} from '../../../../../redux/petReducer';
+import {
+	resetFields,
+	registerPet,
+	updateState
+} from '../../../../../redux/petReducer';
 import { connect } from 'react-redux';
-import {storage} from "./../../../../../firebase-config"
+import { storage } from './../../../../../firebase-config';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 class PetRegisterReview extends Component {
 	goBack = () => {
@@ -19,18 +24,20 @@ class PetRegisterReview extends Component {
 	};
 
 	handleImage = (e) => {
-		if(e.target.files[0]){
-			const image = (e.target.files[0])
-			const uploadTask = storage.ref(`/dogPics/${image.name}`).put(image)
-			uploadTask.on("state_changed", 
-			() => {
-				storage.ref('dogPics').child(image.name).getDownloadURL()
-				.then(url => {
-					this.props.updateState({img: url})
-				})
-			})
+		if (e.target.files[0]) {
+			const image = e.target.files[0];
+			const uploadTask = storage.ref(`/dogPics/${image.name}`).put(image);
+			uploadTask.on('state_changed', () => {
+				storage
+					.ref('dogPics')
+					.child(image.name)
+					.getDownloadURL()
+					.then((url) => {
+						this.props.updateState({ img: url });
+					});
+			});
 		}
-	}
+	};
 
 	render() {
 		const { name, breed, age, img } = this.props;
@@ -41,14 +48,17 @@ class PetRegisterReview extends Component {
 				</div>
 				<h1 className='pet_info'>Pet Info</h1>
 				<img src={img} alt='owner_dog_picture' />
+				<div className='info_container'>
+					<h5>Name: {name}</h5>
 
-				<h5>Name: {name}</h5>
+					<h5>Breed: {breed}</h5>
 
-				<h5>Breed: {breed}</h5>
-
-				<h5>Age: {age}</h5>
-
-				<h5>Upload Companion Profile Picture: <input type="file" onChange={this.handleImage}></input></h5>
+					<h5>Age: {age}</h5>
+				</div>
+				<h5 className='companion_upload'>
+					Upload Companion Profile Picture:{' '}
+					<input type='file' onChange={this.handleImage}></input>
+				</h5>
 
 				<button
 					className='pet_review_page_button'
@@ -56,9 +66,7 @@ class PetRegisterReview extends Component {
 					add pet
 				</button>
 				<div className='progress_container'>
-					<div class='progress_bar_100'>
-						<span class='progress_bar_fill_99'></span>
-					</div>
+					<ProgressBar animated now={100} className='progress_who' animated />
 				</div>
 			</div>
 		);

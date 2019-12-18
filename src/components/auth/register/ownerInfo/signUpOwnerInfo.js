@@ -22,9 +22,9 @@ class RegisterOwnerInfo extends Component {
 					src='https://media.istockphoto.com/vectors/man-and-his-best-friend-dog-cuddle-hug-backside-view-cute-cartoon-vector-id1018691406?k=6&m=1018691406&s=612x612&w=0&h=W_rDzQk3a1n4PaS8xJwa396YLmMsv1FMqyEs1Bfponw='
 					alt='dog_owner'
 				/>
-				<button onClick={this.next}>add companion</button>
+				<button onClick={this.next}>add</button>
 				<div className='progress-container'>
-					<ProgressBar animated now={4} className='progress_who' animated />
+					<ProgressBar animated now={20} className='progress_who' animated />
 				</div>
 			</div>
 		);

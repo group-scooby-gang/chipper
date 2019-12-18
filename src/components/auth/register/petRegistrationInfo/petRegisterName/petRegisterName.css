@@ -8,32 +8,37 @@
 .whats_dogs_name {
 	font-family: 'Lilita One', cursive;
 	font-size: 1.4em;
-	margin-top: 15%;
+	margin-top: 20px;
 }
 
 .pet_name_page img {
-	width: 50%;
-	margin: 2% 0 0 0;
-	margin-top: 8%;
+	width: 150px;
+	margin-top: 30px;
 }
 
 .pet_name_page input {
-	width: 50%;
-	height: 5vh;
-	margin: 0 0 1% 0;
-	margin-top: 5%;
+	width: 200px;
+	height: 40px;
+	margin-top: 15px;
+	border-radius: 5px;
+	border-color: transparent;
 	background-color: rgba(232, 232, 232, 0.776);
+	padding: 10px;
+	font-size: 0.9em;
 }
 
 .pet_name_page button {
 	align-self: center;
-	width: 50%;
-	height: 5vh;
-	margin-top: 5%;
+	width: 100px;
+	height: 35px;
+	margin-top: 10px;
+	padding-top: 5px;
 	border-radius: 5px;
 	font-family: 'Catamaran', sans-serif;
 	font-size: 1em;
 	background-color: #d2b338;
+	color: white;
+	text-transform: uppercase;
 }
 
 .pet_name_page button:hover {
@@ -43,24 +48,5 @@
 
 .progress_container {
 	align-self: center;
-	margin-top: 38%;
 	width: 80%;
-}
-
-.progress_bar {
-	width: 95%;
-	background-color: #e0e0e0;
-	padding: 3px;
-	border-radius: 3px;
-	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-.progress_bar_fill_33 {
-	width: 33.333%;
-	display: block;
-	height: 22px;
-	background-color: #659cef;
-	border-radius: 3px;
-	transition: 500ms ease-in-out;
-	transition-duration: 3s;
 }
