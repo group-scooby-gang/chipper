@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './signUpOwnerInfo.css';
 import { connect } from 'react-redux';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 class RegisterOwnerInfo extends Component {
 	goBack = () => {
@@ -23,9 +24,7 @@ class RegisterOwnerInfo extends Component {
 				/>
 				<button onClick={this.next}>add companion</button>
 				<div className='progress-container'>
-					<div class='progress-bar'>
-						<span class='progress-bar-fill'></span>
-					</div>
+					<ProgressBar animated now={4} className='progress_who' animated />
 				</div>
 			</div>
 		);
