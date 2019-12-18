@@ -6,6 +6,7 @@ const ownerSchedule = async (req, res) => {
 	res.status(200).json(schedule);
 };
 
+
 module.exports = {
 	ownerSchedule
 };

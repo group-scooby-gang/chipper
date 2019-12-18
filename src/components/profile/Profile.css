@@ -11,7 +11,7 @@
 	font-family: 'Catamaran', sans-serif;
 	font-size: 1.2em;
 	padding-left: 5%;
-	margin-bottom: 10%;
+	margin-bottom: 20%;
 }
 
 .petCard {
@@ -40,8 +40,8 @@
 .mappedpet button {
 	margin-left: 45px;
 	margin-bottom: 5px;
-	border: none;
 	height: 30px;
+	border: none;
 }
 
 .mappedpet button:hover {

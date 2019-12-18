@@ -88,6 +88,14 @@ const getWalker = async (req, res) => {
 	res.status(200).json(getWalkerById);
 };
 
+const walkerPhone = async (req, res) => {
+	const db = req.app.get("db");
+	const id = +req.params.id
+	const phone = await db.getPhone(id)
+	console.log("Hit")
+	res.status(200).json(phone)
+}
+
 module.exports = {
 	applyWalker,
 	denyWalker,
@@ -99,5 +107,6 @@ module.exports = {
 	getWalkerProfile,
 	walkerHistory,
 	searchWalker,
-	getWalker
+	getWalker,
+	walkerPhone
 };
