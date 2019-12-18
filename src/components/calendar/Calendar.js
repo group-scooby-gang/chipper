@@ -232,14 +232,6 @@ class Calendar extends React.Component {
         for (let d = 1; d <= this.daysInMonth(); d++) {
             let className = (d == this.currentDay() ? "day current-day" : "day");
             let selectedClass = (d === this.state.selectedDay ? " selected-day " : "");
-            for (let i=0; i< this.props.bigCities.length; i++){
-                // console.log(this.props.bigCities[i].date, d, this.props.bigCities[i].month, this.month(), this.props.bigCities[i].year, +this.year())
-                if (this.props.bigCities[i].date === d && this.props.bigCities[i].month === this.month() && this.props.bigCities[i].year === +this.year()) {
-                    this.matches.push(d)
-                    this.parentYear.push(this.props.bigCities[i].year)
-                    this.parentMonth.push(this.props.bigCities[i].month)
-                }
-            }
             daysInMonth.push(
                 <td onClick={(e) => { this.onDayClick(e, d) }} key={d} name={d} className={className + selectedClass + this.highlight(this.props.jobsFromParent, d)}>
                     <span>{d}</span>
