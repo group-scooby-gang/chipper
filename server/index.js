@@ -73,6 +73,7 @@ app.get("/Chipper/History/Walker", walker.walkerHistory)
 app.get("/Chipper/Walker/NextJobs", walker.getWalkerSchedule);
 app.get('/Chipper/Walker/Search', walker.searchWalker);
 app.get('/Chipper/Walker/:id', walker.getWalker);
+app.get("/Chipper/Phone/:id", walker.walkerPhone)
 
 //jobs
 app.post("/Chipper/Jobs/Hire", job.addJob) //Where jobs are posted into db and put as false (aka pending)
@@ -113,10 +114,52 @@ app.post('/sms/walker/jobNotification', (req, res) => {
 	client.messages.create({
 		from: TWILIO_PHONE_NUMBER,
 		to: req.body.number,
-		body: `Hey ${req.body.name}! An owner has scheduled an appointment with you! Log on to accept, or to decline.`
+		body: `Greetings from Chipper! You have a new pending walk waiting for you!`
 	})
 	.then(() => {
 		res.status(200).json("Text sent")
+	})
+	.catch(error => {
+		console.log(error)
+	})
+})
+
+app.post("/sms/owner/onTheWay", (req, res) => {
+	client.messages.create({
+		from: TWILIO_PHONE_NUMBER,
+		to: req.body.number,
+		body: `Your walker is on their way to fuck up your dog!`
+	})
+	.then(() => {
+		res.status(200).json("Sent")
+	})
+	.catch(error => {
+		console.log(error)
+	})
+})
+
+app.post("/sms/owner/walkStarted", (req, res) => {
+	client.messages.create({
+		from: TWILIO_PHONE_NUMBER,
+		to: req.body.number,
+		body: "The Vickster is starting your scheduled walk! Hope you said bye to your pet!"
+	})
+	.then(() => {
+		res.status(200).json("Sent Bro")
+	})
+	.catch(error => {
+		console.log(error)
+	})
+})
+
+app.post("/sms/owner/walkCompleted", (req, res) => {
+	client.messages.create({
+		from: TWILIO_PHONE_NUMBER,
+		to: req.body.number,
+		body: `Your walker has returned your dog lookin like a mutt Connor McGregor!`
+	})
+	.then(() => {
+		console.log("Text sent to peasent")
 	})
 	.catch(error => {
 		console.log(error)

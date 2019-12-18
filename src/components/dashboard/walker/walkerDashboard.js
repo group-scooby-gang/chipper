@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import './walkerDashboard.css';
-import { getWalkerSchedule, getWalkerInfo } from './../../../redux/walkerReducer';
+import { getWalkerSchedule, getWalkerInfo} from './../../../redux/walkerReducer';
 import { logoutUser } from './../../../redux/userReducer';
 import { connect } from 'react-redux';
+import {getOwnerPhone, sendOTWMessage, sendStartMessage, sendCompleteMessage} from "./../../../redux/phoneReducer"
+import axios from "axios";
 
 class WalkerDashboard extends Component {
 	state = {
 		error: false,
-		dogsNeedWalking: 'closed'
+		dogsNeedWalking: 'closed',
+		status: "On the Way"
 	};
 
 	componentDidMount() {
 		this.getNextWalk();
-		this.props.getWalkerInfo();
 	}
 
 	handleClickWalks = () => {
@@ -33,6 +35,25 @@ class WalkerDashboard extends Component {
 		const { id } = this.props.user;
 		await this.props.getWalkerSchedule(id);
 	};
+
+	handleStatus = async () => {
+		if(this.state.status === "On the Way"){
+			await this.props.getOwnerPhone(this.props.schedule[0].owner_id)
+			await this.props.sendOTWMessage(this.props.ownerPhone[0].phone)
+			this.setState({status: "Start Walk"})
+		} else if(this.state.status === "Start Walk"){
+			await axios.put(`/Chipper/Jobs/Start/${this.props.schedule[0].job_id}`)
+			await this.props.sendStartMessage(this.props.ownerPhone[0].phone)
+			this.setState({status: this.props.schedule[0].walkstatus})
+			this.setState({status: "Complete Walk"})
+		} else if (this.state.status === "Complete Walk"){
+			console.log("1",this.props.schedule)
+			this.props.schedule.shift(0, 1)
+			console.log("2", this.props.schedule)
+			await this.props.sendCompleteMessage(this.props.ownerPhone[0].phone)
+			await axios.put(`/Chipper/Jobs/Complete/${this.props.schedule[0].job_id}`)
+		}
+	}
 
 	render() {
 		const month = this.props.schedule[0] ? this.props.schedule[0].month : null;
@@ -66,6 +87,7 @@ class WalkerDashboard extends Component {
 								Notes: {notes}
 								<br />
 								Total: ${price}
+								<button onClick={this.handleStatus}>{this.state.status}</button>
 							</div>
 						</div>
 					</div>
@@ -80,7 +102,6 @@ class WalkerDashboard extends Component {
 					null}
 				</div>
 				<div className='button_section'>
-					{/* <button onClick={this.handleClickWalks}>Dogs Need Walking</button> */}
 					<button
 						className='button_section_button'
 						onClick={this.handleClickSchedule}>
@@ -92,41 +113,6 @@ class WalkerDashboard extends Component {
 						pending jobs
 					</button>
 				</div>
-				{/* {
-                    this.state.dogsNeedWalking === 'open'
-                        ?
-                        <div className='dogs_need_walking'>
-                            <h4>Dogs Need Walking</h4>
-                            <div>
-                                <input type="radio" name="name" value='dog_name' /> Name - Owner(distance away) <br />
-                                <input type="radio" name="name" value='dog_name2' /> Name - Owner(distance away) <br />
-                            </div>
-                            <button>Walk</button>
-                        </div>
-                        :
-                        null
-                } */}
-				{/* <footer>
-					<Link to='/'>
-						<i
-							className='home_footer'
-							class='fas fa-home fa-2x'
-							title='home'></i>
-					</Link>
-					<h3>|</h3>
-					<Link to='/schedule/walker/walkerSchedule'>
-						<i
-							className='calendar_footer'
-							class='far fa-calendar-alt fa-2x'></i>
-					</Link>
-					<h3>|</h3>
-					<i
-						className='logout_footer'
-						class='fas fa-sign-out-alt fa-2x'
-						onClick={() =>
-							this.props.logoutUser().then(() => this.props.history.push('/'))
-						}></i>
-				</footer> */}
 			</div>
 		);
 	}
@@ -137,12 +123,17 @@ const mapStateToProps = (state) => {
 		username: state.walkerReducer.username,
 		user: state.userReducer.user,
 		schedule: state.walkerReducer.schedule,
-		pets: state.walkerReducer.pets
+		pets: state.walkerReducer.pets,
+		ownerPhone : state.phoneReducer.ownerPhone
 	};
 };
 
 export default connect(mapStateToProps, {
 	logoutUser,
 	getWalkerSchedule,
-	getWalkerInfo
+	getWalkerInfo,
+	getOwnerPhone,
+	sendOTWMessage,
+	sendStartMessage,
+	sendCompleteMessage
 })(WalkerDashboard);

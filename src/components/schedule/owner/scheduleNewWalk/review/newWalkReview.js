@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
 import './newWalkReview.css';
-import { addNewJob } from '../../../../../redux/ownerReducer';
+import { addNewJob, walkerPhoneNumber } from '../../../../../redux/ownerReducer';
 import { connect } from 'react-redux';
+import axios from "axios"
 
 class WalkReview extends Component {
 
-    handleSetWalk = () => {
+    handleSetWalk = async () => {
         const {selectedPet, payment, extraNotes, selectedWalker, month, day, year, time} = this.props;
-        this.props.addNewJob(selectedPet, payment, extraNotes, selectedWalker, month, day, year, time);
+        await this.props.addNewJob(selectedPet, payment, extraNotes, selectedWalker, month, day, year, time);
+        await this.props.walkerPhoneNumber(selectedWalker)
+        await axios.post("/sms/walker/jobNotification", {
+            number: this.props.walker_phone[0].phone
+        })
         this.props.history.push('/owner/schedule')
     }
 
@@ -71,10 +76,12 @@ const mapStateToProps = state => {
         month: state.ownerReducer.month,
         time: state.ownerReducer.time,
         extraNotes: state.ownerReducer.extraNotes,
-        payment: state.ownerReducer.payment
+        payment: state.ownerReducer.payment,
+        walker_phone: state.ownerReducer.walker_phone
     }
 }
 
 export default connect(mapStateToProps, {
-    addNewJob
+    addNewJob,
+    walkerPhoneNumber
 })(WalkReview);

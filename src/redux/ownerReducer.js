@@ -109,6 +109,13 @@ export const addNewJob = (selectedPet, payment, extraNotes, selectedWalker, mont
 	}
 }
 
+export const walkerPhoneNumber = (walker_id) => {
+	return {
+		type: GET_WALKER_PHONE,
+		payload: axios.get(`/Chipper/Phone/${walker_id}`)
+	}
+}
+
 export default function ownerReducer(state = initialState, action) {
 	const { type, payload } = action;
 
@@ -189,6 +196,17 @@ export default function ownerReducer(state = initialState, action) {
 				loading: false,
 				payload: payload.data
 			};
+		case `${GET_WALKER_PHONE}_PENDING`:
+			return {
+				...state, 
+				loading: true
+			}
+		case `${GET_WALKER_PHONE}_FULFILLED`:
+			return {
+				...state, 
+				loading: false, 
+				walker_phone: payload.data
+			}
 		default:
 			return state;
 	}
