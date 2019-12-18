@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import './calendar.css';
-import {updateState} from '../../redux/calendarReducer';
+import { updateState } from '../../redux/calendarReducer';
 import { connect } from 'react-redux';
 
 class Calendar extends React.Component {
@@ -13,21 +13,18 @@ class Calendar extends React.Component {
         selectedDay: null,
         //move three below to reducer so that will be able to pass to db
     }
-
+    
     constructor(props) {
         super(props);
         this.width = props.width || "350px";
         this.style = props.style || {};
         this.style.width = this.width; // add this
     }
-
-    weekdays = moment.weekdays(); //["Sunday", "Monday", "Tuesday", "Wednessday", "Thursday", "Friday", "Saturday"]
-    weekdaysShort = moment.weekdaysShort(); // ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-    months = moment.months();
-    matches = []
-    parentYear = []
-    parentMonth = []
-
+            
+        weekdays = moment.weekdays(); //["Sunday", "Monday", "Tuesday", "Wednessday", "Thursday", "Friday", "Saturday"]
+        weekdaysShort = moment.weekdaysShort(); // ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+        months = moment.months();
+        
     year = () => {
         return this.state.dateContext.format("Y");
     }
@@ -66,6 +63,7 @@ class Calendar extends React.Component {
             dateContext: dateContext
         });
         this.props.onNextMonth && this.props.onNextMonth(e, dateContext);
+        this.highlight(this.props.jobsFromParent)
     }
 
     prevMonth = (e) => {
@@ -75,18 +73,20 @@ class Calendar extends React.Component {
             dateContext: dateContext
         });
         this.props.onPrevMonth && this.props.onPrevMonth(e, dateContext);
+        this.highlight(this.props.jobsFromParent)
     }
 
     onSelectChange = (e, data) => {
         this.setMonth(data);
         this.props.onMonthChange && this.props.onMonthChange();
+        this.highlight(this.props.jobsFromParent)
     }
 
     SelectList = (props) => {
         let popup = props.data.map((data) => {
             return (
                 <div key={data}>
-                    <a href="#" onClick={(e)=> {this.onSelectChange(e, data)}}>
+                    <a href="#" onClick={(e) => { this.onSelectChange(e, data) }}>
                         {data}
                     </a>
                 </div>
@@ -104,15 +104,16 @@ class Calendar extends React.Component {
         this.setState({
             showMonthPopup: !this.state.showMonthPopup
         });
+        this.highlight(this.props.jobsFromParent)
     }
 
     MonthNav = () => {
         return (
             <span className="label-month"
-            onClick={(e)=> {this.onChangeMonth(e, this.month())}}>
+                onClick={(e) => { this.onChangeMonth(e, this.month()) }}>
                 {this.month()}
                 {this.state.showMonthPopup &&
-                 <this.SelectList data={this.months} />
+                    <this.SelectList data={this.months} />
                 }
             </span>
         );
@@ -148,20 +149,20 @@ class Calendar extends React.Component {
     YearNav = () => {
         return (
             this.state.showYearNav ?
-            <input
-                defaultValue = {this.year()}
-                className="editor-year"
-                ref={(yearInput) => { this.yearInput = yearInput}}
-                onKeyUp= {(e) => this.onKeyUpYear(e)}
-                onChange = {(e) => this.onYearChange(e)}
-                type="number"
-                placeholder="year"/>
-            :
-            <span
-                className="label-year"
-                onDoubleClick={(e)=> { this.showYearEditor()}}>
-                {this.year()}
-            </span>
+                <input
+                    defaultValue={this.year()}
+                    className="editor-year"
+                    ref={(yearInput) => { this.yearInput = yearInput }}
+                    onKeyUp={(e) => this.onKeyUpYear(e)}
+                    onChange={(e) => this.onYearChange(e)}
+                    type="number"
+                    placeholder="year" />
+                :
+                <span
+                    className="label-year"
+                    onDoubleClick={(e) => { this.showYearEditor() }}>
+                    {this.year()}
+                </span>
         );
     }
 
@@ -172,6 +173,7 @@ class Calendar extends React.Component {
         }, () => {
         });
         this.props.onDayClick && this.props.onDayClick(e, day);
+        this.highlight(this.props.jobsFromParent)
     }
 
     scheduledClass = () => {
@@ -181,6 +183,37 @@ class Calendar extends React.Component {
     render() {
         // Map the weekdays i.e Sun, Mon, Tue etc as <td>
 
+    
+    highlight = (jobs, daysInMonth) => {
+        var arrMonth = []
+        var arrYear = []
+        var arrDate = []
+        let parentSort = (jobs) => {
+        let childSort = (jobs) => {        
+            if (jobs.month === this.month() && jobs.year === +this.year()) {
+                arrMonth.push(jobs.month)
+                arrYear.push(jobs.year)
+                arrDate.push(jobs.date)
+            }
+            return false
+        }
+        return (jobs.forEach(childSort))
+        }
+        let jobFilteredToCurrentYearAndMonth = parentSort(jobs)
+        console.log('arrMonth:',arrMonth, 'arrYear:',arrYear,'arrDate:',arrDate )
+        let scheduledClass = (arrDate.includes(daysInMonth) && arrYear.includes(+this.year()) && arrMonth.includes(this.month())? "day scheduled-day":"")
+        console.log('scheduledClass:', scheduledClass)
+        return(
+            scheduledClass
+            )
+        }  
+        
+        render() {
+            // console.log('Jobs from parent:',this.props.jobsFromParent)
+            // this.highlight(this.props.jobsFromParent)
+        console.log('highlight:',this.highlight(this.props.jobsFromParent))
+        console.log('this.state.month:',this.state.month)
+        
         let weekdays = this.weekdaysShort.map((day) => {
             return (
                 <td key={day} className="week-day">{day}</td>
@@ -191,13 +224,13 @@ class Calendar extends React.Component {
         for (let i = 0; i < this.firstDayOfMonth(); i++) {
             blanks.push(<td key={i * 80} className="emptySlot">
                 {""}
-                </td>
+            </td>
             );
-        }      
-            
-            let daysInMonth = [];
+        }
+
+        let daysInMonth = []
         for (let d = 1; d <= this.daysInMonth(); d++) {
-            let className = (d == this.currentDay() ? "day current-day": "day");
+            let className = (d == this.currentDay() ? "day current-day" : "day");
             let selectedClass = (d === this.state.selectedDay ? " selected-day " : "");
             for (let i=0; i< this.props.bigCities.length; i++){
                 // console.log(this.props.bigCities[i].date, d, this.props.bigCities[i].month, this.month(), this.props.bigCities[i].year, +this.year())
@@ -208,7 +241,7 @@ class Calendar extends React.Component {
                 }
             }
             daysInMonth.push(
-                <td onClick={(e)=>{this.onDayClick(e, d)}} key={d} name={d} className={className + selectedClass + (this.matches.includes(d) && this.parentYear[1] === +this.year() &&  this.parentMonth[1] === this.month()  ? 'day scheduled-day':'')} >
+                <td onClick={(e) => { this.onDayClick(e, d) }} key={d} name={d} className={className + selectedClass + this.highlight(this.props.jobsFromParent, d)}>
                     <span>{d}</span>
                 </td>
             );
@@ -239,14 +272,13 @@ class Calendar extends React.Component {
 
         let trElems = rows.map((d, i) => {
             return (
-                <tr key={i*100} >
+                <tr key={i * 100} >
                     {d}
                 </tr>
             );
         })
         return (
             <div className="calendar-container" style={this.style}>
-                {/* {matchesMapped} */}
                 <table className="calendar">
                     <thead>
                         <tr className="calendar-header">
@@ -255,18 +287,18 @@ class Calendar extends React.Component {
                                 {" "}
                                 <this.YearNav />
                                 <i className="prev fa fa-fw fa-chevron-left"
-                                    onClick={(e)=> {this.prevMonth()}}>
+                                    onClick={(e) => { this.prevMonth() }}>
                                 </i>
                                 <i className="prev fa fa-fw fa-chevron-right"
-                                    onClick={(e)=> {this.nextMonth()}}>
+                                    onClick={(e) => { this.nextMonth() }}>
                                 </i>
                             </td>
                             <td colSpan="2" className="nav-month">
                                 <i className="prev fa fa-fw fa-chevron-left"
-                                    onClick={(e)=> {this.prevMonth()}}>
+                                    onClick={(e) => { this.prevMonth() }}>
                                 </i>
                                 <i className="prev fa fa-fw fa-chevron-right"
-                                    onClick={(e)=> {this.nextMonth()}}>
+                                    onClick={(e) => { this.nextMonth() }}>
                                 </i>
                             </td>
                         </tr>
@@ -284,14 +316,12 @@ class Calendar extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
+function mapStateToProps(reduxState) {
     return {
-        selectedMonth: state.calendarReducer.selectedMonth,
-        selectedDay: state.calendarReducer.selectedDay,
-        selectedYear: state.calendarReducer.selectedYear
+        selectedMonth: reduxState.CR.selectedMonth,
+        selectedDay: reduxState.CR.selectedDay,
+        selectedYear: reduxState.CR.selectedYear,
+        jobsFilteredToCurrentYearAndMonth: reduxState.CR.jobsFilteredToCurrentYearAndMonth,
     };
-};
-
-export default connect(mapStateToProps, {
-    updateState
-})(Calendar);
+}
+export default connect(mapStateToProps, { updateState })(Calendar);
