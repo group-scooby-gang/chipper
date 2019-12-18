@@ -37,7 +37,7 @@ const loginUser  = async (req, res) => {
     }
 
     const isMatching = bcrypt.compare(password, checkUser[0].password)
-
+    console.log('hello world')
     if(isMatching){
         req.session.user = {
             id: checkUser[0].user_id,
