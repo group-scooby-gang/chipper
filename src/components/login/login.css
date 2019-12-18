@@ -2,8 +2,9 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-items: center;
 	background-color: rgb(255, 255, 255);
-	margin: 25% 8%;
+	height: 100%vh;
 }
 
 .chipper {
@@ -17,20 +18,19 @@
 }
 
 .login-container {
-	box-shadow: 5px 5px 5px rgb(208, 208, 208);
-	border: solid 1px rgb(227, 227, 227);
+	/* box-shadow: 5px 5px 5px rgb(208, 208, 208);
+	border: solid 1px rgb(227, 227, 227); */
 	display: flex;
 	flex-direction: column;
 	text-align: center;
 	align-items: center;
 	font-family: 'Catamaran', sans-serif;
-	width: 100%;
-	height: 100%;
 }
 #dont {
 	font-size: 1em;
 	color: rgba(0, 0, 0, 0.769);
 	text-decoration: none;
+	margin: 4%;
 }
 .Login-inputs {
 	background-color: rgb(255, 255, 255);
@@ -66,7 +66,7 @@
 	background: #f2f2f2;
 	width: 100%;
 	border: 0;
-	margin: 0 0 15px;
+	margin: 0 0 5%;
 	padding: 15px;
 	font-size: 0.9em;
 }

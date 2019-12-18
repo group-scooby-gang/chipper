@@ -30,24 +30,24 @@ form {
 
 form input {
 	width: 80%;
-	height: 3vh;
+	height: 4vh;
 	border: 1px solid gray;
-	padding: 1% 1% 1% 1%;
-	margin: 1% 1% 1% 1%;
+	padding: 2% 2% 2% 2%;
+	margin: 1.5% 1.5% 1.5% 1.5%;
 	align-self: center;
 	border-radius: 5px;
 }
 
 .img {
 	text-align: center;
-	margin: 5%;
+	margin: 4%;
 	color: black;
 }
 
 .upload {
-	height: 3vh;
+	height: 8vh;
 	padding: 1% 1% 1% 1%;
-	margin: 0% 1% 0% 1%;
+	margin: 1% 1% 0% 1%;
 	border: solid 1px rgb(34, 34, 34);
 }
 
@@ -62,9 +62,8 @@ form input {
 	outline: 0;
 	background: #d2b338;
 	width: 70%;
-	border: 0;
 	padding: 15px;
-	color: #black;
+	color: white;
 	font-size: 14px;
 	-webkit-transition: all 0.3 ease;
 	transition: all 0.3 ease;
@@ -77,9 +76,8 @@ form input {
 	outline: 0;
 	background: #d2b338;
 	width: 70%;
-	border: 0;
 	padding: 15px;
-	color: #black;
+	color: white;
 	font-size: 14px;
 	-webkit-transition: all 0.3 ease;
 	transition: all 0.3 ease;

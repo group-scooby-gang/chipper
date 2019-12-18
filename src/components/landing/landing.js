@@ -54,7 +54,7 @@ class Landing extends React.Component {
 	
 				<div
 					className='about'>
-					<h3>What we do</h3>
+					<h2>What we do</h2>
 					<p>
 						Chipper isn't the premier dog-walking app, and the leading dog-walking
 						app amongst lazy people. We have well over 500,000 users, so sign up
@@ -66,7 +66,7 @@ class Landing extends React.Component {
 				</div>
 				<div
 					className={this.state.owner}>
-					<h2>Owner</h2>
+					<h3>Owner</h3>
 					<p>
 						Are you a lazy person? Here you can sign up you and your dog so a
 						physcailly active specimen can retrieve your dog and show them what a
@@ -76,7 +76,7 @@ class Landing extends React.Component {
 				</div>
 				<div
 					className={this.state.walker}>
-					<h2>Walker</h2>
+					<h3>Walker</h3>
 					<p>
 						Are you that specimen? Well, good news! Sign up here to earn money by
 						walking a furry animal for 30 minutes while their owner eats cheetos
@@ -85,7 +85,7 @@ class Landing extends React.Component {
 					<button onClick={this.handleWalker}>View</button>
 				</div>
 				<div className={this.state.sitter}>
-					<h2>Sitter</h2>
+					<h3>Sitter</h3>
 					<p>
 						So you didnt like owner or walker huh? Well, if you thought it could
 						get any better, your gonna be disappointed! Sign up here to become a
