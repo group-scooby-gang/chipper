@@ -26,13 +26,6 @@
 	width: 75%;
 }
 
-/* .review_new_walk_page button {
-	margin: 0 0 2% 0;
-	height: 4vh;
-	width: 20%;
-	border-radius: 4px;
-} */
-
 .review_new_walk_page button:hover {
 	cursor: pointer;
 	border: 1px solid grey;
@@ -41,10 +34,10 @@
 
 .review_button_schedule {
 	background-color: #d2b338;
-	height: 30%;
-	width: 30%;
-	padding: 2%;
-	margin: 4%;
+	height: 40px;
+	width: 100px;
+	padding: 6px;
+	margin-top: 15px;
 	border-radius: 5px;
 	font-size: 14px;
 	color: white;
@@ -52,10 +45,10 @@
 
 .review_button_back {
 	background-color: #d2b338;
-	height: 30%;
-	width: 30%;
-	padding: 2%;
-	margin: 0%;
+	height: 40px;
+	width: 100px;
+	padding: 6px;
+	margin-top: 5px;
 	border-radius: 5px;
 	font-size: 14px;
 	color: white;

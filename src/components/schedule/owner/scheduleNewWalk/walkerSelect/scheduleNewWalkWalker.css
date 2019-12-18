@@ -83,10 +83,10 @@
 
 .selected_walker_page_next {
 	background-color: #d2b338;
-	height: 30%;
-	width: 30%;
-	padding: 2%;
-	margin-top: 5%;
+	height: 40px;
+	width: 100px;
+	padding: 6px;
+	margin-top: 15px;
 	border-radius: 5px;
 	font-size: 14px;
 	color: white;
@@ -94,10 +94,10 @@
 
 .selected_walker_page_back {
 	background-color: #d2b338;
-	height: 30%;
-	width: 30%;
-	padding: 2%;
-	margin-top: 4%;
+	height: 40px;
+	width: 100px;
+	padding: 6px;
+	margin-top: 5px;
 	border-radius: 5px;
 	font-size: 14px;
 	color: white;

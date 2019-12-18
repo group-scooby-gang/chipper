@@ -33,10 +33,10 @@
 
 .date_page_button_next {
 	background-color: #d2b338;
-	height: 30%;
-	width: 30%;
-	padding: 2%;
-	margin: 4%;
+	height: 40px;
+	width: 100px;
+	padding: 6px;
+	margin-top: 15px;
 	border-radius: 5px;
 	font-size: 14px;
 	color: white;
@@ -44,10 +44,10 @@
 
 .date_page_button_back {
 	background-color: #d2b338;
-	height: 30%;
-	width: 30%;
-	padding: 2%;
-	margin: 1%;
+	height: 40px;
+	width: 100px;
+	padding: 6px;
+	margin-top: 5px;
 	border-radius: 5px;
 	font-size: 14px;
 	color: white;
