@@ -23,7 +23,8 @@ const initialState = {
 	pets: [],
 	walkers: [],
 	searchedWalker: [],
-	loading: false
+	loading: false,
+	walker_phone: 0
 }
 
 const ON_DAY_CLICK = 'ON_DAY_CLICK';
@@ -35,6 +36,7 @@ const GET_WALKERS = 'GET_WALKERS';
 const SEARCH_WALKERS = 'SEARCH_WALKERS';
 const GET_WALKERS_PRICE = 'GET_WALKERS_PRICE';
 const ADD_JOB = 'ADD_JOB';
+const GET_WALKER_PHONE = "GET_WALKER_PHONE";
 
 export const onDayClick = (e, day) => {
 	return {
@@ -104,6 +106,13 @@ export const addNewJob = (selectedPet, payment, extraNotes, selectedWalker, mont
 			year: year,
 			time: time
 		})
+	}
+}
+
+export const walkerPhoneNumber = (walker_id) => {
+	return {
+		type: GET_WALKER_PHONE,
+		payload: axios.get(`/Chipper/Phone/${walker_id}`)
 	}
 }
 
@@ -187,6 +196,17 @@ export default function ownerReducer(state = initialState, action) {
 				loading: false,
 				payload: payload.data
 			};
+		case `${GET_WALKER_PHONE}_PENDING`:
+			return {
+				...state, 
+				loading: true
+			}
+		case `${GET_WALKER_PHONE}_FULFILLED`:
+			return {
+				...state, 
+				loading: false, 
+				walker_phone: payload.data
+			}
 		default:
 			return state;
 	}

@@ -24,6 +24,9 @@ class Profile extends React.Component {
 					<Link to={`/Profile/Dog/${val.pet_id}`}>
 						<button>View walk history</button>
 					</Link>
+					<Link to={`/Pet/Edit/${val.pet_id}`}>
+						<button>Edit {val.name}'s Profile</button>
+					</Link>
 				</div>
 			);
 		});

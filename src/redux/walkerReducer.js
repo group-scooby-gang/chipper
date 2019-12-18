@@ -42,6 +42,7 @@ export const resetFields = () => {
     }
 }
 
+
 export const registerWalker = (bio, category, fifteen, thirty, fortyfive, sixty) => {
     return {
         type: REGISTER_WALKER,

@@ -35,7 +35,6 @@ class Calendar extends React.Component {
         return this.state.dateContext.daysInMonth();
     }
     currentDate = () => {
-        console.log("currentDate: ", this.state.dateContext.get("date"));
         return this.state.dateContext.get("date");
     }
     currentDay = () => {
@@ -172,13 +171,18 @@ class Calendar extends React.Component {
         this.setState({
             selectedDay: day,
         }, () => {
-            console.log("SELECTED DAY: ", this.state.selectedDay);
-            console.log("SELECTED YEAR: ", this.year())
-            console.log("SELECTED MONTH: ", this.month())
         });
         this.props.onDayClick && this.props.onDayClick(e, day);
         this.highlight(this.props.jobsFromParent)
     }
+
+    scheduledClass = () => {
+        return "scheduled-day"
+    }
+
+    
+        // Map the weekdays i.e Sun, Mon, Tue etc as <td>
+
     
     highlight = (jobs, daysInMonth) => {
         var arrMonth = []
@@ -228,6 +232,14 @@ class Calendar extends React.Component {
         for (let d = 1; d <= this.daysInMonth(); d++) {
             let className = (d == this.currentDay() ? "day current-day" : "day");
             let selectedClass = (d === this.state.selectedDay ? " selected-day " : "");
+            for (let i=0; i< this.props.bigCities.length; i++){
+                // console.log(this.props.bigCities[i].date, d, this.props.bigCities[i].month, this.month(), this.props.bigCities[i].year, +this.year())
+                if (this.props.bigCities[i].date === d && this.props.bigCities[i].month === this.month() && this.props.bigCities[i].year === +this.year()) {
+                    this.matches.push(d)
+                    this.parentYear.push(this.props.bigCities[i].year)
+                    this.parentMonth.push(this.props.bigCities[i].month)
+                }
+            }
             daysInMonth.push(
                 <td onClick={(e) => { this.onDayClick(e, d) }} key={d} name={d} className={className + selectedClass + this.highlight(this.props.jobsFromParent, d)}>
                     <span>{d}</span>
@@ -265,7 +277,6 @@ class Calendar extends React.Component {
                 </tr>
             );
         })
-        console.log(' the component has re-rendered')
         return (
             <div className="calendar-container" style={this.style}>
                 <table className="calendar">

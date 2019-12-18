@@ -95,6 +95,13 @@ const editWalker = async (req, res) => {
 	await db.updateWalker(id, username, firstname, lastname, email, profileimg, phone, address, city, state, zip, experience, _15minprice, _30minprice, _45minprice, _60minprice);
 	res.status(200).json("Walker edited")
 }
+const walkerPhone = async (req, res) => {
+	const db = req.app.get("db");
+	const id = +req.params.id
+	const phone = await db.getPhone(id)
+	console.log("Hit")
+	res.status(200).json(phone)
+}
 
 module.exports = {
 	applyWalker,
@@ -108,5 +115,6 @@ module.exports = {
 	walkerHistory,
 	searchWalker,
 	getWalker,
-	editWalker
+	editWalker,
+	walkerPhone
 };
