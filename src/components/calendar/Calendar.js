@@ -180,7 +180,7 @@ class Calendar extends React.Component {
         return "scheduled-day"
     }
 
-    render() {
+    
         // Map the weekdays i.e Sun, Mon, Tue etc as <td>
 
     
@@ -208,7 +208,7 @@ class Calendar extends React.Component {
             )
         }  
         
-        
+        render() {
             // console.log('Jobs from parent:',this.props.jobsFromParent)
             // this.highlight(this.props.jobsFromParent)
         console.log('highlight:',this.highlight(this.props.jobsFromParent))

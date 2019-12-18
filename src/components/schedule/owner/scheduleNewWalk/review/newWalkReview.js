@@ -30,7 +30,6 @@ class WalkReview extends Component {
 		this.props.history.push('/owner/schedule');
 	};
 
-<<<<<<< HEAD
     handleSetWalk = async () => {
         const {selectedPet, payment, extraNotes, selectedWalker, month, day, year, time} = this.props;
         await this.props.addNewJob(selectedPet, payment, extraNotes, selectedWalker, month, day, year, time);
@@ -40,11 +39,9 @@ class WalkReview extends Component {
         })
         this.props.history.push('/owner/schedule')
     }
-=======
 	back = () => {
 		this.props.history.goBack();
 	};
->>>>>>> master
 
 	render() {
 		const {
@@ -106,30 +103,6 @@ class WalkReview extends Component {
 	}
 }
 
-<<<<<<< HEAD
-const mapStateToProps = state => {
-    return {
-        selectedPetName: state.ownerReducer.selectedPetName,
-        selectedPetImg: state.ownerReducer.selectedPetImg,
-        selectedWalkerName: state.ownerReducer.selectedWalkerName,
-        selectedWalkerImg: state.ownerReducer.selectedWalkerImg,
-        selectedPet: state.ownerReducer.selectedPet,
-        selectedWalker: state.ownerReducer.selectedWalker,
-        day: state.ownerReducer.day,
-        year: state.ownerReducer.year,
-        month: state.ownerReducer.month,
-        time: state.ownerReducer.time,
-        extraNotes: state.ownerReducer.extraNotes,
-        payment: state.ownerReducer.payment,
-        walker_phone: state.ownerReducer.walker_phone
-    }
-}
-
-export default connect(mapStateToProps, {
-    addNewJob,
-    walkerPhoneNumber
-})(WalkReview);
-=======
 const mapStateToProps = (state) => {
 	return {
 		selectedPetName: state.ownerReducer.selectedPetName,
@@ -143,11 +116,12 @@ const mapStateToProps = (state) => {
 		month: state.ownerReducer.month,
 		time: state.ownerReducer.time,
 		extraNotes: state.ownerReducer.extraNotes,
-		payment: state.ownerReducer.payment
-	};
-};
+		payment: state.ownerReducer.payment,
+        walker_phone: state.ownerReducer.walker_phone
+    }
+}
 
 export default connect(mapStateToProps, {
-	addNewJob
+    addNewJob,
+    walkerPhoneNumber
 })(WalkReview);
->>>>>>> master
