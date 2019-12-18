@@ -73,6 +73,7 @@ app.get("/Chipper/History/Walker", walker.walkerHistory)
 app.get("/Chipper/Walker/NextJobs", walker.getWalkerSchedule);
 app.get('/Chipper/Walker/Search', walker.searchWalker);
 app.get('/Chipper/Walker/:id', walker.getWalker);
+app.put("/Chipper/Walker/Profile/Edit", walker.editWalker)
 app.get("/Chipper/Phone/:id", walker.walkerPhone)
 
 //jobs
