@@ -8,7 +8,7 @@ const initialState = {
     fortyfive: 0,
     sixty: 0,
     loading: false,
-    schedule: [],
+    jobs: [],
     walkerInfo: {}
 }
 
@@ -91,7 +91,7 @@ export default function walkerReducer(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                schedule: payload.data
+                jobs: payload.data
             };
         case `${GET_WALKER_INFO}_PENDING`:
             return {

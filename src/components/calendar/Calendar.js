@@ -124,6 +124,7 @@ class Calendar extends React.Component {
         this.setState({
             showYearNav: true
         });
+        this.highlight(this.props.jobsFromParent)
     }
 
     setYear = (year) => {

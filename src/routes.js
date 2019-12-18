@@ -28,7 +28,7 @@ import WalkerProfile from "./components/profile/Walker/Walker"
 import ViewSchedule from './components/schedule/viewSchedule/ViewSchedule'
 import EditPet from "./components/EditPet";
 import WalkerSettings from './components/settings/walker/walkerSettings';
-import WalkerSchedule from './components/schedule/walker/walkerSchedule';
+// import WalkerSchedule from './components/schedule/walker/walkerSchedule';
 
 export default (
 	<Switch>
@@ -67,8 +67,8 @@ export default (
 		<Route component={WalkerProfile} path="/Profile/Walker"/>
 
 		{/* schedule pages  */}
-		<Route component={ViewSchedule} path='/owner/schedule' />
-		<Route component={WalkerSchedule} path='/walker/schedule' />
+		<Route component={ViewSchedule} path='/schedule' />
+		{/* <Route component={WalkerSchedule} path='/walker/schedule' /> */}
 
 		{/* settings pages */}
 		<Route component={EditPet} path="/Pet/Edit/:pet_id"/>

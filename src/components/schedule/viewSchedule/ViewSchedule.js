@@ -3,13 +3,33 @@ import Calendar from '../../calendar/Calendar';
 import { logoutUser } from '../../../redux/userReducer';
 import { connect } from 'react-redux';
 import { viewSchedule } from '../../../redux/ownerReducer';
+import { getWalkerSchedule } from '../../../redux/walkerReducer';
+import axios from 'axios';
 // import './OwnerDashboard.css';
 
 const ViewSchedule = (props) => {
 
-    const { jobs, viewSchedule } = props
+    const { viewSchedule, getWalkerSchedule, walkerJobs, ownerJobs, jobs } = props
     useEffect(() => {
-        viewSchedule();
+        axios.get('/Chipper/Check/Walker').then(res => {
+            console.log('login res.data part 2 viewSchedule:', res.data)
+           return (res.data.isWalker===true?getWalkerSchedule()
+            :res.data.isWalker===false?viewSchedule():alert('error: this is not working'))})
+    },[])
+
+    // const walker = () => {
+    //     getWalkerSchedule()
+    //    divertJobsByUser(walkerJobs)
+    // }
+
+    // const owner = () => {
+    //     viewSchedule()
+    //    divertJobsByUser(ownerJobs)
+    // }
+
+    useEffect(() => {
+        // console.log('viewschedule props.jobs:',props.jobs)
+        console.log('walkerJobs:', walkerJobs, 'ownerJobs:', 'jobs:', jobs)
     },[])
 
     function convertMonth(m) {
@@ -30,11 +50,17 @@ const ViewSchedule = (props) => {
     }
 
     let alteredJobsForChild = [];
-    // console.log('alteredJobsForChild:', alteredJobsForChild)
-    // console.log('view schedule jobs:',jobs)
-    for (let i = 0; i < jobs.length; i++) {
-        jobs[i].month = convertMonth(jobs[i])
-        alteredJobsForChild.push({ date: jobs[i].date, month: jobs[i].month, year: jobs[i].year });
+    console.log('alteredJobsForChild:', alteredJobsForChild)
+    console.log('view schedule jobs:',jobs)
+    console.log('owner schedule jobs:',ownerJobs)
+    console.log('walker schedule jobs:',walkerJobs)
+
+    const divertJobsByUser = (jobs) => {
+        for (let i = 0; i < jobs.length; i++) {
+            console.log('jobs month', jobs[i].month)
+            jobs[i].month = convertMonth(jobs[i])
+            alteredJobsForChild.push({ date: jobs[i].date, month: jobs[i].month, year: jobs[i].year });
+        }
     }
 
     // const jobsMapped = jobs.map((val) => {
@@ -60,15 +86,25 @@ const ViewSchedule = (props) => {
     var selectMapped = apt.map((walk) => {
         // console.log( 'walk:' + walk, 'date:' + walk.date, 'year:' + walk.year, 'time:' + walk.time, 'month:' + walk.month, 'fname:' + walk.firstname, 'lname:' + walk.lastname, 'fruit:' + fruit)
         console.log(apt)
-        return (
-            <div>
+        console.log('walk.month:', walk.month)
+        return (<div>
+            {/* <div>
     <div>Date: {walk.date}</div> 
                <div>First Name: {walk.firstname} </div>
                <div>Last Name: {walk.lastname} </div>
                <div>Month: {walk.month} </div>
                <div>Time: {walk.time}</div>
                <div>Year: {walk.year}</div>
-            </div>
+            </div> */}
+            <div>You are scheduled to walk {walk.name} on {walk.month}/{walk.date}/{walk.year} </div>
+        <div>time: {walk.time}</div>
+    <div>Dog breed: {walk.breed}</div>
+        <div>Dog age: {walk.age}</div>
+        <span>{walk.name}</span><img src={walk.img}/>
+        <div>Notes: {walk.notes}</div>
+                <div>Price: {walk.price}</div>
+                <div>status: {walk.jobaccepted}</div>
+        </div>
         )
     })
 
@@ -84,9 +120,10 @@ const ViewSchedule = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    jobs: state.ownerReducer.jobs
+    jobs: state.ownerReducer.jobs,
+    jobs: state.walkerReducer.jobs
 });
 
-export default connect(mapStateToProps, { viewSchedule, logoutUser })(
-    ViewSchedule
+export default connect(mapStateToProps, { viewSchedule, logoutUser, getWalkerSchedule })(
+    ViewSchedule,
 );
