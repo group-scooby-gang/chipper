@@ -33,7 +33,7 @@ function Landing(props) {
 				ref={(el) => {
 					aboutItem = el;
 				}}>
-				<h3>What we do</h3>
+				<h2>What we do</h2>
 				<p>
 					Chipper isn't the premier dog-walking app, and the leading dog-walking
 					app amongst lazy people. We have well over 500,000 users, so sign up
@@ -45,7 +45,7 @@ function Landing(props) {
 				ref={(el) => {
 					ownerItem = el;
 				}}>
-				<h2>Owner</h2>
+				<h3>Owner</h3>
 				<p>
 					Are you a lazy person? Here you can sign up you and your dog so a
 					physcailly active specimen can retrieve your dog and show them what a
@@ -58,7 +58,7 @@ function Landing(props) {
 				ref={(el) => {
 					walkerItem = el;
 				}}>
-				<h2>Walker</h2>
+				<h3>Walker</h3>
 				<p>
 					Are you that specimen? Well, good news! Sign up here to earn money by
 					walking a furry animal for 30 minutes while their owner eats cheetos
@@ -71,7 +71,7 @@ function Landing(props) {
 				ref={(el) => {
 					sitterItem = el;
 				}}>
-				<h2>Sitter</h2>
+				<h3>Sitter</h3>
 				<p>
 					So you didnt like owner or walker huh? Well, if you thought it could
 					get any better, your gonna be disappointed! Sign up here to become a
