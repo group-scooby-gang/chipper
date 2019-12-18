@@ -147,6 +147,42 @@
     text-align: center;
 }
 
+.city_data {
+    display: flex;
+    justify-content: space-evenly;
+    width: 60%;
+}
+
+.city_data h3 {
+    margin: 0;
+    padding: 5%;
+}
+
+.city_data p {
+    margin: 0;
+    padding: 5%;
+    width: 100%;
+    text-align: center;
+}
+
+.state_data {
+    display: flex;
+    justify-content: space-evenly;
+    width: 60%;
+}
+
+.state_data h3 {
+    margin: 0;
+    padding: 5%;
+}
+
+.state_data p {
+    margin: 0;
+    padding: 5%;
+    width: 100%;
+    text-align: center;
+}
+
 .email_data {
     display: flex;
     justify-content: space-evenly;
