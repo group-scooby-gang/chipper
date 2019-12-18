@@ -12,10 +12,10 @@ const initialState = {
 
 const UPDATE_STATE = 'UPDATE_STATE';
 
-export const updateState = (killer) => {
+export const updateState = (e) => {
     return {
         type:UPDATE_STATE,
-        payload:killer
+        payload:e
     }
 }
 
@@ -23,13 +23,13 @@ export default function calendarReducer(state = initialState, action ) {
     const { type, payload } = action;
     switch (type) {
         case UPDATE_STATE:
-            console.log(payload.data)
+            // console.log(payload.data)
             return {
                 ...state,
                 killer:payload.data
             };
         default:
-            console.log('calendar reducer:',initialState)
+            // console.log('calendar reducer:',initialState)
             return state;
     }
 }

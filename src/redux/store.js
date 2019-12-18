@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
     TR: twilioReducer,
     profileReducer,
     ownerReducer,
-    calendarReducer
+    CR: calendarReducer
 });
 
 export default createStore(rootReducer, applyMiddleware(promise));

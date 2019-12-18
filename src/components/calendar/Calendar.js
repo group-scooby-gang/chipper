@@ -11,22 +11,27 @@ class Calendar extends React.Component {
         showMonthPopup: false,
         showYearPopup: false,
         selectedDay: null,
+        month:null,
+        year:null,
+        day:null
         //move three below to reducer so that will be able to pass to db
     }
-
+    
     constructor(props) {
         super(props);
         this.width = props.width || "350px";
         this.style = props.style || {};
         this.style.width = this.width; // add this
     }
-
-    weekdays = moment.weekdays(); //["Sunday", "Monday", "Tuesday", "Wednessday", "Thursday", "Friday", "Saturday"]
-    weekdaysShort = moment.weekdaysShort(); // ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-    months = moment.months();
-    matches = []
-    parentYear = []
-    parentMonth = []
+            
+        weekdays = moment.weekdays(); //["Sunday", "Monday", "Tuesday", "Wednessday", "Thursday", "Friday", "Saturday"]
+        weekdaysShort = moment.weekdaysShort(); // ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+        months = moment.months();
+        matches = []
+        parentYear = []
+        parentMonth = []
+        // hourOfHopelessness = []
+        
 
     year = () => {
         return this.state.dateContext.format("Y");
@@ -67,6 +72,7 @@ class Calendar extends React.Component {
             dateContext: dateContext
         });
         this.props.onNextMonth && this.props.onNextMonth(e, dateContext);
+        this.killingIt(this.props.bigCities)
     }
 
     prevMonth = (e) => {
@@ -76,11 +82,13 @@ class Calendar extends React.Component {
             dateContext: dateContext
         });
         this.props.onPrevMonth && this.props.onPrevMonth(e, dateContext);
+        this.killingIt(this.props.bigCities)
     }
 
     onSelectChange = (e, data) => {
         this.setMonth(data);
         this.props.onMonthChange && this.props.onMonthChange();
+        this.killingIt(this.props.bigCities)
     }
 
     SelectList = (props) => {
@@ -105,6 +113,7 @@ class Calendar extends React.Component {
         this.setState({
             showMonthPopup: !this.state.showMonthPopup
         });
+        this.killingIt(this.props.bigCities)
     }
 
     MonthNav = () => {
@@ -176,141 +185,143 @@ class Calendar extends React.Component {
             console.log("SELECTED MONTH: ", this.month())
         });
         this.props.onDayClick && this.props.onDayClick(e, day);
+        this.killingIt(this.props.bigCities)
     }
 
-    scheduledClass = () => {
-        return "scheduled-day"
-    }
-
-    killingIt = (die) => {
+    killingIt = (die, daysInMonth) => {
+        var arrMonth = []
+        var arrYear = []
+        var arrDate = []
         let killWithSmile = (die) => {
-            let killAll = (die) => {
-                if (die.month === this.month() && die.year === +this.year()) {
-                    return true
-                }
-                return false
+        let killAll = (die) => {        
+            if (die.month === this.month() && die.year === +this.year()) {
+                arrMonth.push(die.month)
+                arrYear.push(die.year)
+                arrDate.push(die.date)
             }
-            return die.filter(killAll)
+            return false
+        }
+        return (die.forEach(killAll))
         }
         let killer = killWithSmile(die)
-        console.log('killer:',killer)
-        console.log('props.killer:',this.state.killer)
-        this.props.updateState({killer:this.state.killer})
-        console.log('this.state.killer below:',this.state.killer)
-        return (
-            killer
+        console.log('killer:', killer)
+        console.log('arrMonth:',arrMonth, 'arrYear:',arrYear,'arrDate:',arrDate )
+        let scheduledClass = (arrDate.includes(daysInMonth) && arrYear.includes(+this.year()) && arrMonth.includes(this.month())? "day scheduled-day":"")
+        console.log('scheduledClass:', scheduledClass)
+        return(
+          scheduledClass
         )
-    }
-    
+    }  
+
     render() {
-        // Map the weekdays i.e Sun, Mon, Tue etc as <td>        
-    console.log(this.killingIt(this.props.bigCities))
+        let shadowsYouveCreated = []
+        // console.log('big Cities:',this.props.bigCities)
+        // this.killingIt(this.props.bigCities)
+        console.log('killing it:',this.killingIt(this.props.bigCities))
+        console.log('this.state.month:',this.state.month)
+        
+        let weekdays = this.weekdaysShort.map((day) => {
+            return (
+                <td key={day} className="week-day">{day}</td>
+            )
+        });
 
-    let weekdays = this.weekdaysShort.map((day) => {
-        return (
-            <td key={day} className="week-day">{day}</td>
-        )
-    });
-
-    let blanks = [];
-    for (let i = 0; i < this.firstDayOfMonth(); i++) {
-        blanks.push(<td key={i * 80} className="emptySlot">
-            {""}
-        </td>
-        );
-    }
-
-    let daysInMonth = [];
-    for (let d = 1; d <= this.daysInMonth(); d++) {
-        let className = (d == this.currentDay() ? "day current-day" : "day");
-        let selectedClass = (d === this.state.selectedDay ? " selected-day " : "");
-        daysInMonth.push(
-            <td onClick={(e) => { this.onDayClick(e, d) }} key={d} name={d} className={className + selectedClass + (this.matches.includes(1) && this.parentYear[1] === +this.year() && this.parentMonth[1] === this.month() ? 'day scheduled-day' : '')} >
-                <span>{d}</span>
+        let blanks = [];
+        for (let i = 0; i < this.firstDayOfMonth(); i++) {
+            blanks.push(<td key={i * 80} className="emptySlot">
+                {""}
             </td>
+            );
+        }
+
+        let daysInMonth = shadowsYouveCreated;
+        for (let d = 1; d <= this.daysInMonth(); d++) {
+            let className = (d == this.currentDay() ? "day current-day" : "day");
+            let selectedClass = (d === this.state.selectedDay ? " selected-day " : "");
+            shadowsYouveCreated.push(
+                <td onClick={(e) => { this.onDayClick(e, d) }} key={d} name={d} className={className + selectedClass + this.killingIt(this.props.bigCities, d)}>
+                    <span>{d}</span>
+                </td>
+            );
+        }
+
+        // console.log("days: ", daysInMonth);
+        // console.log("selected day", this.state.selectedDay);
+        // console.log("selected year", this.year())
+        // console.log("selected month", this.month())
+        var totalSlots = [...blanks, ...daysInMonth];
+        let rows = [];
+        let cells = [];
+
+        totalSlots.forEach((row, i) => {
+            if ((i % 7) !== 0) {
+                cells.push(row);
+            } else {
+                let insertRow = cells.slice();
+                rows.push(insertRow);
+                cells = [];
+                cells.push(row);
+            }
+            if (i === totalSlots.length - 1) {
+                let insertRow = cells.slice();
+                rows.push(insertRow);
+            }
+        });
+
+        let trElems = rows.map((d, i) => {
+            return (
+                <tr key={i * 100} >
+                    {d}
+                </tr>
+            );
+        })
+        console.log(' the component has re-rendered')
+        return (
+            <div className="calendar-container" style={this.style}>
+                {/* {matchesMapped} */}
+                <table className="calendar">
+                    <thead>
+                        <tr className="calendar-header">
+                            <td colSpan="5">
+                                <this.MonthNav />
+                                {" "}
+                                <this.YearNav />
+                                <i className="prev fa fa-fw fa-chevron-left"
+                                    onClick={(e) => { this.prevMonth() }}>
+                                </i>
+                                <i className="prev fa fa-fw fa-chevron-right"
+                                    onClick={(e) => { this.nextMonth() }}>
+                                </i>
+                            </td>
+                            <td colSpan="2" className="nav-month">
+                                <i className="prev fa fa-fw fa-chevron-left"
+                                    onClick={(e) => { this.prevMonth() }}>
+                                </i>
+                                <i className="prev fa fa-fw fa-chevron-right"
+                                    onClick={(e) => { this.nextMonth() }}>
+                                </i>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {weekdays}
+                        </tr>
+                        {trElems}
+                    </tbody>
+                </table>
+            </div>
+
         );
     }
-
-    // console.log("days: ", daysInMonth);
-    // console.log("selected day", this.state.selectedDay);
-    // console.log("selected year", this.year())
-    // console.log("selected month", this.month())
-    var totalSlots = [...blanks, ...daysInMonth];
-    let rows = [];
-    let cells = [];
-
-    totalSlots.forEach((row, i) => {
-        if ((i % 7) !== 0) {
-            cells.push(row);
-        } else {
-            let insertRow = cells.slice();
-            rows.push(insertRow);
-            cells = [];
-            cells.push(row);
-        }
-        if (i === totalSlots.length - 1) {
-            let insertRow = cells.slice();
-            rows.push(insertRow);
-        }
-    });
-
-    let trElems = rows.map((d, i) => {
-        return (
-            <tr key={i * 100} >
-                {d}
-            </tr>
-        );
-    })
-    console.log(' the component has re-rendered')
-    return (
-        <div className="calendar-container" style={this.style}>
-            {/* {matchesMapped} */}
-            <table className="calendar">
-                <thead>
-                    <tr className="calendar-header">
-                        <td colSpan="5">
-                            <this.MonthNav />
-                            {" "}
-                            <this.YearNav />
-                            <i className="prev fa fa-fw fa-chevron-left"
-                                onClick={(e) => { this.prevMonth() }}>
-                            </i>
-                            <i className="prev fa fa-fw fa-chevron-right"
-                                onClick={(e) => { this.nextMonth() }}>
-                            </i>
-                        </td>
-                        <td colSpan="2" className="nav-month">
-                            <i className="prev fa fa-fw fa-chevron-left"
-                                onClick={(e) => { this.prevMonth() }}>
-                            </i>
-                            <i className="prev fa fa-fw fa-chevron-right"
-                                onClick={(e) => { this.nextMonth() }}>
-                            </i>
-                        </td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        {weekdays}
-                    </tr>
-                    {trElems}
-                </tbody>
-            </table>
-        </div>
-
-    );
-}
 }
 
-const mapStateToProps = state => {
+function mapStateToProps(reduxState) {
     return {
-        selectedMonth: state.calendarReducer.selectedMonth,
-        selectedDay: state.calendarReducer.selectedDay,
-        selectedYear: state.calendarReducer.selectedYear,
-        killer:state.calendarReducer.killer
+        selectedMonth: reduxState.CR.selectedMonth,
+        selectedDay: reduxState.CR.selectedDay,
+        selectedYear: reduxState.CR.selectedYear,
+        killer: reduxState.CR.killer,
     };
-};
-
-export default connect(mapStateToProps, {
-    updateState
-})(Calendar);
+}
+export default connect(mapStateToProps, { updateState })(Calendar);
