@@ -6,7 +6,7 @@
 }
 
 .back_button {
-	margin: 2.5% 0% 0% 2.5%;
+	margin: 5px;
 	align-self: flex-start;
 }
 
@@ -15,23 +15,22 @@
 }
 
 .pet_age_page img {
-	width: 40%;
-	margin: 2% 0 0 0;
+	width: 150px;
+	margin: 5px;
 }
 
 .how_old {
 	font-family: 'Lilita One', cursive;
 	font-size: 1.4em;
-	color: #d2b338;
-	margin-top: 12%;
+	color: black;
+	margin-top: 10px;
 	text-align: center;
 }
 
 .pet_age_page input {
-	width: 47%;
-	height: 4.7vh;
-	margin: 0 0 1% 0;
-	margin-top: 5%;
+	width: 200px;
+	height: 40px;
+	margin-top: 20px;
 	padding-left: 1%;
 	border-radius: 5px;
 	border-color: transparent;
@@ -42,13 +41,16 @@
 
 .pet_age_page button {
 	align-self: center;
-	width: 50%;
-	height: 5vh;
-	margin-top: 5%;
+	width: 100px;
+	height: 35px;
+	margin-top: 20px;
 	border-radius: 5px;
 	font-family: 'Catamaran', sans-serif;
 	font-size: 1em;
 	background-color: #d2b338;
+	text-transform: uppercase;
+	color: white;
+	padding: 6px;
 }
 
 .pet_age_page button:hover {
@@ -59,23 +61,4 @@
 .progress_container {
 	align-self: center;
 	width: 80%;
-}
-
-.progress_bar {
-	width: 95%;
-	background-color: #e0e0e0;
-	padding: 3px;
-	border-radius: 3px;
-	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
-	margin-top: 50%;
-}
-
-.progress_bar_fill_75 {
-	width: 75%;
-	display: block;
-	height: 22px;
-	background-color: #659cef;
-	border-radius: 3px;
-	transition: width 2s ease-in-out;
-	-webkit-transition: width 2s;
 }

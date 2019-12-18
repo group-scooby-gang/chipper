@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './petRegisterName.css';
 import { updateState } from './../../../../../redux/petReducer';
 import { connect } from 'react-redux';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 class PetRegisterName extends Component {
 	handleChange = (e) => {
@@ -32,9 +33,7 @@ class PetRegisterName extends Component {
 				</button>
 
 				<div className='progress_container'>
-					<div class='progress_bar'>
-						<span class='progress_bar_fill_33'></span>
-					</div>
+					<ProgressBar animated now={40} className='progress_who' animated />
 				</div>
 			</div>
 		);

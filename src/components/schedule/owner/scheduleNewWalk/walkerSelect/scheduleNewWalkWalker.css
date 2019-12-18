@@ -1,78 +1,113 @@
 .selected_walker_page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .top_three_walkers_section {
-    border: 1px solid grey;
-    width: 75%;
-    padding: 2%;
-    box-shadow: rgba(0, 0, 0, 0.418) 0px 2px 5px 0px;
+	border: 1px solid grey;
+	width: 75%;
+	padding: 3%;
+	box-shadow: rgba(0, 0, 0, 0.418) 0px 2px 5px 0px;
 }
 
 .walker:hover {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .price_section {
-    display: flex;
-    width: 95%;
-    justify-content: space-around;
-    align-items: center;
+	display: flex;
+	width: 95%;
+	justify-content: space-around;
+	align-items: center;
 }
 
 .search_section {
-    border: 1px solid grey;
-    width: 75%;
-    margin: 2% 0 0 0;
-    padding: 2%;
-    display: flex;
-    flex-direction: column;
-    box-shadow: rgba(0, 0, 0, 0.418) 0px 2px 5px 0px;
+	border: 1px solid grey;
+	width: 75%;
+	margin: 2% 0 0 0;
+	padding: 2%;
+	display: flex;
+	flex-direction: column;
+	box-shadow: rgba(0, 0, 0, 0.418) 0px 2px 5px 0px;
 }
 
 .search_section div {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	padding: 3%;
 }
 
 .search_section div input {
-    height: 2.5vh;
+	height: 4vh;
+	width: 15vw;
+	background-color: #e8e8e8;
+	border-radius: 5px;
+	padding: 2%;
 }
 
 .search_section button {
-    width: 25%;
-    height: 3vh;
-    border-radius: 4px;
-    align-self: center;
+	width: 25%;
+	height: 5vh;
+	border-radius: 4px;
+	align-self: center;
+	margin: 2%;
+}
+
+.search_section h3 {
+	font-size: 1.2em;
+	margin: 2%;
 }
 
 .search_section button:hover {
-    cursor: pointer;
-    border: 1px solid rgba(0, 0, 0, 0.418);
-    color: rgba(0, 0, 0, 0.637);
+	cursor: pointer;
+	border: 1px solid rgba(0, 0, 0, 0.418);
+	color: rgba(0, 0, 0, 0.637);
 }
 
 .searched_walkers_results_section {
-    border: 1px solid grey;
-    width: 75%;
-    padding: 2%;
-    box-shadow: rgba(0, 0, 0, 0.418) 0px 2px 5px 0px;
-    margin: 0 0 2% 0;
-}
-
-.selected_walker_page button {
-    margin: 2% 0 1% 0;
-    width: 25%;
-    height: 3vh;
-    border-radius: 4px;
+	border: 1px solid grey;
+	width: 75%;
+	padding: 2%;
+	box-shadow: rgba(0.5, 0.5, 0.5, 0.5) 0px 2.5px 5px 0;
+	margin: 0 0 2% 0;
 }
 
 .selected_walker_page button:hover {
-    cursor: pointer;
-    border: 1px solid rgba(0, 0, 0, 0.418);
-    color: rgba(0, 0, 0, 0.637);
+	cursor: pointer;
+	border: 1px solid rgba(0, 0, 0, 0.418);
+	color: rgba(0, 0, 0, 0.637);
+}
+
+.selected_walker_page_next {
+	background-color: #d2b338;
+	height: 40px;
+	width: 100px;
+	padding: 6px;
+	margin-top: 15px;
+	border-radius: 5px;
+	font-size: 14px;
+	color: white;
+}
+
+.selected_walker_page_back {
+	background-color: #d2b338;
+	height: 40px;
+	width: 100px;
+	padding: 6px;
+	margin-top: 5px;
+	border-radius: 5px;
+	font-size: 14px;
+	color: white;
+}
+
+img {
+	border-radius: 50%;
+}
+
+.progress {
+	width: 80%;
+	margin-bottom: 5%;
 }

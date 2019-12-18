@@ -16,12 +16,11 @@ class OwnerDashoard extends Component {
 	};
 
 	render() {
-		// console.log(this.props.jobs && this.props.jobs);
-		let month = this.props.jobs[0] && this.props.jobs[0].month;
-		let date = this.props.jobs[0] && this.props.jobs[0].date;
-		let year = this.props.jobs[0] && this.props.jobs[0].year;
-		let time = this.props.jobs[0] && this.props.jobs[0].time;
-		let walkstatus = this.props.jobs[0] && this.props.jobs[0].walkstatus;
+		let month = this.props.jobs[0] ? this.props.jobs[0].month : null;
+		let date = this.props.jobs[0] ? this.props.jobs[0].date : null;
+		let year = this.props.jobs[0] ? this.props.jobs[0].year : null;
+		let time = this.props.jobs[0] ? this.props.jobs[0].time : null;
+		let walkstatus = this.props.jobs[0] ? this.props.jobs[0].walkstatus : null;
 
 		return (
 			<>
@@ -55,27 +54,6 @@ class OwnerDashoard extends Component {
 							</button>
 						</Link>
 					</div>
-					{/* <footer>
-						<Link to='/'>
-							<i
-								className='home_footer'
-								class='fas fa-home fa-2x'
-								title='home'></i>
-						</Link>
-						<h3>|</h3>
-						<Link to='/schedule'>
-							<i
-								className='calendar_footer'
-								class='far fa-calendar-alt fa-2x'></i>
-						</Link>
-						<h3>|</h3>
-						<i
-							className='logout_footer'
-							class='fas fa-sign-out-alt fa-2x'
-							onClick={() =>
-								this.props.logoutUser().then(() => this.props.history.push('/'))
-							}></i>
-					</footer> */}
 				</div>
 			</>
 		);
