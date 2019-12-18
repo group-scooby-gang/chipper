@@ -18,7 +18,6 @@ const initialState = {
     firstname: '',
     lastname: '',
     username: '',
-    experience: '',
     profileimg: '',
     walkerInfo: {}
 }
@@ -71,7 +70,7 @@ export const getWalkerInfo = () => {
     }
 }
 
-export const updateWalker = (username, firstname, lastname, email, profileimg, phone, address, city, state, zip, experience, fifteen, thirty, fortyfive, sixty) => {
+export const updateWalker = (username, firstname, lastname, email, profileimg, phone, address, city, state, zip, bio, fifteen, thirty, fortyfive, sixty) => {
     return {
         type: UPDATE_WALKER,
         payload: axios.put('/Chipper/Walker/Profile/Edit', {
@@ -85,7 +84,7 @@ export const updateWalker = (username, firstname, lastname, email, profileimg, p
             city: city,
             state: state,
             zip: zip,
-            experience: experience,
+            experience: bio,
             _15minprice: fifteen,
             _30minprice: thirty,
             _45minprice: fortyfive,

@@ -92,7 +92,7 @@ const editWalker = async (req, res) => {
 	const db = req.app.get('db');
 	const {username, firstname, lastname, email, profileimg, phone, address, city, state, zip, experience, _15minprice, _30minprice, _45minprice, _60minprice} = req.body;
 	const id = req.session.user.id;
-	await db.updateWalker(id, username, firstname, lastname, email, profileimg, phone, address, city, state, zip, experience, _15minprice, _30minprice, _45minprice, _45minprice, _60minprice);
+	await db.updateWalker(id, username, firstname, lastname, email, profileimg, phone, address, city, state, zip, experience, _15minprice, _30minprice, _45minprice, _60minprice);
 	res.status(200).json("Walker edited")
 }
 

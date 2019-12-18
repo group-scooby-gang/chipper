@@ -32,7 +32,7 @@ class WalkerSettings extends Component {
     }
 
     done = () => {
-        const {username, firstname, lastname, email, profileimg, phone, address, city, state, zip, experience, fifteen, thirty, fortyfive, sixty} = this.props
+        const {username, firstname, lastname, email, profileimg, phone, address, city, state, zip, bio, fifteen, thirty, fortyfive, sixty} = this.props
         this.props.updateWalker(
             username,
             firstname,
@@ -44,7 +44,7 @@ class WalkerSettings extends Component {
             city,
             state,
             zip,
-            experience,
+            bio,
             fifteen,
             thirty,
             fortyfive,
@@ -104,13 +104,13 @@ class WalkerSettings extends Component {
             state,
             profileimg,
             username,
-            experience,
+            bio,
             email,
-            _15minprice,
-            _30minprice,
-            _45minprice,
-            _60minprice
-        } = this.props.walkerInfo;
+            fifteen,
+            thirty,
+            fortyfive,
+            sixty
+        } = this.props;
         return (
             <div className="settings_page">
                 <button onClick={this.done}>Done</button>
@@ -198,7 +198,7 @@ class WalkerSettings extends Component {
                     {this.state.bioEditView === 'closed' ?
                         <>
                             <div className='bio_data'>
-                                <h3>Bio:</h3><p>{experience}</p>
+                                <h3>Bio:</h3><p>{bio}</p>
                             </div>
                             <button onClick={this.editBio}>Edit</button>
                         </>
@@ -219,16 +219,16 @@ class WalkerSettings extends Component {
                         <>
                             <div className='pab_data_container'>
                                 <div className='phone_data'>
-                                    <h3>15 min walk:</h3><p>{_15minprice}</p>
+                                    <h3>15 min walk:</h3><p>{fifteen}</p>
                                 </div>
                                 <div className='address_data'>
-                                    <h3>30 min walk:</h3><p>{_30minprice}</p>
+                                    <h3>30 min walk:</h3><p>{thirty}</p>
                                 </div>
                                 <div className='city_data'>
-                                    <h3>45 min walk:</h3><p>{_45minprice}</p>
+                                    <h3>45 min walk:</h3><p>{fortyfive}</p>
                                 </div>
                                 <div className='state_data'>
-                                    <h3>60 min walk:</h3><p>{_60minprice}</p>
+                                    <h3>60 min walk:</h3><p>{sixty}</p>
                                 </div>
                             </div>
                             <div className='data_update_button_container'>
@@ -271,7 +271,7 @@ const mapStateToProps = state => {
         firstname: state.walkerReducer.firstname,
         lastname: state.walkerReducer.lastname,
         username: state.walkerReducer.username,
-        experience: state.walkerReducer.experience,
+        bio: state.walkerReducer.bio,
         profileimg: state.walkerReducer.profileimg,
         phone: state.walkerReducer.phone,
         email: state.walkerReducer.email,
