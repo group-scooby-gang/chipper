@@ -208,7 +208,7 @@ class Calendar extends React.Component {
             )
         }  
         
-        render() {
+        
             // console.log('Jobs from parent:',this.props.jobsFromParent)
             // this.highlight(this.props.jobsFromParent)
         console.log('highlight:',this.highlight(this.props.jobsFromParent))
