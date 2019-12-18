@@ -1,47 +1,74 @@
 .who_page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .back_button {
-    margin: 2.5% 0% 2.5% 2.5%;
+	margin: 10px;
+}
+
+.owner_pet {
+	display: flex;
+	flex-direction: column;
 }
 
 .pet_section {
-    border: 1px solid grey;
-    background-color: grey;
-    width: 70%;
-    padding: 2%;
-    margin-bottom: 2%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	box-shadow: 3px 3px 3px rgb(194, 194, 194);
+	background-color: rgb(213, 212, 212);
+	width: 300px;
+	padding: 5px;
+	margin-bottom: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.who {
+	margin-bottom: 15px;
 }
 
 .pet_selectors {
-    display: flex;
-    justify-content: space-around;
-    width: 90%;
-    padding: 2%;
-    border: 1px solid #d2b338;
-    background-color: #d2b338;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 2.5px 5px 0px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 280px;
+	padding: 10px;
+	border: 1px solid #d2b338;
+	background-color: #d2b338;
+	box-shadow: rgb(148, 148, 148) 0px 2.5px 5px 2px;
+	margin: 13px 13px 13px 13px;
 }
 
 .owner_pet:hover {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .who_page button {
-    height: 5vh;
-    width: 50%;
-    border-radius: 2px;
+	text-transform: uppercase;
+	outline: 0;
+	background: #d2b338;
+	width: 100px;
+	padding: 15px;
+	color: #ffffff;
+	font-size: 14px;
+	-webkit-transition: all 0.3 ease;
+	transition: all 0.3 ease;
+	border-radius: 5px;
+	cursor: pointer;
 }
 
 .who_page button:hover {
-    cursor: pointer;
-    border: 1px solid rgba(117, 117, 117, 0.616);
-    color: rgba(0, 0, 0, 0.623);
+	background: #d2b338aa;
+	letter-spacing: 1px;
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+	box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
+	transition: all 0.4s ease 0s;
+	cursor: pointer;
+}
+
+.progress_who {
+	width: 80%;
 }

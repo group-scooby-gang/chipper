@@ -35,7 +35,6 @@ class Calendar extends React.Component {
         return this.state.dateContext.daysInMonth();
     }
     currentDate = () => {
-        console.log("currentDate: ", this.state.dateContext.get("date"));
         return this.state.dateContext.get("date");
     }
     currentDay = () => {
@@ -173,13 +172,18 @@ class Calendar extends React.Component {
         this.setState({
             selectedDay: day,
         }, () => {
-            console.log("SELECTED DAY: ", this.state.selectedDay);
-            console.log("SELECTED YEAR: ", this.year())
-            console.log("SELECTED MONTH: ", this.month())
         });
         this.props.onDayClick && this.props.onDayClick(e, day);
         this.highlight(this.props.jobsFromParent)
     }
+
+    scheduledClass = () => {
+        return "scheduled-day"
+    }
+
+    
+        // Map the weekdays i.e Sun, Mon, Tue etc as <td>
+
     
     highlight = (jobs, daysInMonth) => {
         var arrMonth = []
@@ -266,7 +270,6 @@ class Calendar extends React.Component {
                 </tr>
             );
         })
-        console.log(' the component has re-rendered')
         return (
             <div className="calendar-container" style={this.style}>
                 <table className="calendar">

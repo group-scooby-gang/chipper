@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './petRegisterBreed.css';
 import { updateState } from './../../../../../redux/petReducer';
 import { connect } from 'react-redux';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 class PetRegisterBreed extends Component {
 	goBack = () => {
@@ -40,9 +41,7 @@ class PetRegisterBreed extends Component {
 				</button>
 
 				<div className='progress_container'>
-					<div class='progress_bar'>
-						<span class='progress_bar_fill_50'></span>
-					</div>
+					<ProgressBar animated now={60} className='progress_who' animated />
 				</div>
 			</div>
 		);
