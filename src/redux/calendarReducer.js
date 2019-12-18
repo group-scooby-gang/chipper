@@ -1,7 +1,7 @@
 // import axios from 'axios';
 
 const initialState = {
-    killer: [],
+    jobsFilteredToCurrentYearAndMonth: [],
     month: null,
     date: null,
     year: null,
@@ -23,13 +23,11 @@ export default function calendarReducer(state = initialState, action ) {
     const { type, payload } = action;
     switch (type) {
         case UPDATE_STATE:
-            // console.log(payload.data)
             return {
                 ...state,
-                killer:payload.data
+                jobsFilteredToCurrentYearAndMonth:payload.data
             };
         default:
-            // console.log('calendar reducer:',initialState)
             return state;
     }
 }

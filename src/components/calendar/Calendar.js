@@ -24,9 +24,6 @@ class Calendar extends React.Component {
         weekdays = moment.weekdays(); //["Sunday", "Monday", "Tuesday", "Wednessday", "Thursday", "Friday", "Saturday"]
         weekdaysShort = moment.weekdaysShort(); // ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
         months = moment.months();
-        matches = []
-        parentYear = []
-        parentMonth = []
         
     year = () => {
         return this.state.dateContext.format("Y");
@@ -44,11 +41,13 @@ class Calendar extends React.Component {
     currentDay = () => {
         return this.state.dateContext.format("D");
     }
+
     firstDayOfMonth = () => {
         let dateContext = this.state.dateContext;
         let firstDay = moment(dateContext).startOf('month').format('d'); // Day of week 0...1..5...6
         return firstDay;
     }
+
     setMonth = (month) => {
         let monthNo = this.months.indexOf(month);
         let dateContext = Object.assign({}, this.state.dateContext);
@@ -57,6 +56,7 @@ class Calendar extends React.Component {
             dateContext: dateContext
         });
     }
+
     nextMonth = (e) => {
         let dateContext = Object.assign({}, this.state.dateContext);
         dateContext = moment(dateContext).add(1, "month");
@@ -64,8 +64,9 @@ class Calendar extends React.Component {
             dateContext: dateContext
         });
         this.props.onNextMonth && this.props.onNextMonth(e, dateContext);
-        this.notAshamedOfTheThingsIAm(this.props.bigCities)
+        this.highlight(this.props.jobsFromParent)
     }
+
     prevMonth = (e) => {
         let dateContext = Object.assign({}, this.state.dateContext);
         dateContext = moment(dateContext).subtract(1, "month");
@@ -73,13 +74,15 @@ class Calendar extends React.Component {
             dateContext: dateContext
         });
         this.props.onPrevMonth && this.props.onPrevMonth(e, dateContext);
-        this.notAshamedOfTheThingsIAm(this.props.bigCities)
+        this.highlight(this.props.jobsFromParent)
     }
+
     onSelectChange = (e, data) => {
         this.setMonth(data);
         this.props.onMonthChange && this.props.onMonthChange();
-        this.notAshamedOfTheThingsIAm(this.props.bigCities)
+        this.highlight(this.props.jobsFromParent)
     }
+
     SelectList = (props) => {
         let popup = props.data.map((data) => {
             return (
@@ -90,18 +93,21 @@ class Calendar extends React.Component {
                 </div>
             );
         });
+
         return (
             <div className="month-popup">
                 {popup}
             </div>
         );
     }
+
     onChangeMonth = (e, month) => {
         this.setState({
             showMonthPopup: !this.state.showMonthPopup
         });
-        this.notAshamedOfTheThingsIAm(this.props.bigCities)
+        this.highlight(this.props.jobsFromParent)
     }
+
     MonthNav = () => {
         return (
             <span className="label-month"
@@ -113,11 +119,13 @@ class Calendar extends React.Component {
             </span>
         );
     }
+
     showYearEditor = () => {
         this.setState({
             showYearNav: true
         });
     }
+
     setYear = (year) => {
         let dateContext = Object.assign({}, this.state.dateContext);
         dateContext = moment(dateContext).set("year", year);
@@ -129,6 +137,7 @@ class Calendar extends React.Component {
         this.setYear(e.target.value);
         this.props.onYearChange && this.props.onYearChange(e, e.target.value);
     }
+
     onKeyUpYear = (e) => {
         if (e.which === 13 || e.which === 27) {
             this.setYear(e.target.value);
@@ -137,6 +146,7 @@ class Calendar extends React.Component {
             })
         }
     }
+
     YearNav = () => {
         return (
             this.state.showYearNav ?
@@ -156,6 +166,7 @@ class Calendar extends React.Component {
                 </span>
         );
     }
+
     onDayClick = (e, day) => {
         e.preventDefault()
         this.setState({
@@ -166,36 +177,37 @@ class Calendar extends React.Component {
             console.log("SELECTED MONTH: ", this.month())
         });
         this.props.onDayClick && this.props.onDayClick(e, day);
-        this.notAshamedOfTheThingsIAm(this.props.bigCities)
+        this.highlight(this.props.jobsFromParent)
     }
-    notAshamedOfTheThingsIAm = (beLove, giveLove) => {
-        var toTheOcean = []
-        var toTheMountain = []
-        var giveLove = []
-        let iLookIntoTheFireAndTheFireIAm = (beLove) => {
-        let loveAll = (beLove) => {        
-            if (beLove.month === this.month() && beLove.year === +this.year()) {
-                toTheOcean.push(beLove.month)
-                toTheMountain.push(beLove.year)
-                giveLove.push(beLove.date)
+    
+    highlight = (jobs, daysInMonth) => {
+        var arrMonth = []
+        var arrYear = []
+        var arrDate = []
+        let parentSort = (jobs) => {
+        let childSort = (jobs) => {        
+            if (jobs.month === this.month() && jobs.year === +this.year()) {
+                arrMonth.push(jobs.month)
+                arrYear.push(jobs.year)
+                arrDate.push(jobs.date)
             }
             return false
         }
-        return (beLove.forEach(loveAll))
+        return (jobs.forEach(childSort))
         }
-        let compassion = iLookIntoTheFireAndTheFireIAm(beLove)
-        console.log('toTheOcean:',toTheOcean, 'toTheMountain:',toTheMountain,'giveLove:',giveLove )
-        let scheduledClass = (giveLove.includes(this.daysInMonth) && toTheMountain.includes(+this.year()) && toTheOcean.includes(this.month())? "day scheduled-day":"")
+        let jobFilteredToCurrentYearAndMonth = parentSort(jobs)
+        console.log('arrMonth:',arrMonth, 'arrYear:',arrYear,'arrDate:',arrDate )
+        let scheduledClass = (arrDate.includes(daysInMonth) && arrYear.includes(+this.year()) && arrMonth.includes(this.month())? "day scheduled-day":"")
         console.log('scheduledClass:', scheduledClass)
         return(
-          scheduledClass
-        )
-    }  
-    render() {
-        let theGreatestLawIsLove = []
-        // console.log('big Cities:',this.props.bigCities)
-        // this.notAshamedOfTheThingsIAm(this.props.bigCities)
-        console.log('notAshamedofTheThingsIAm:',this.notAshamedOfTheThingsIAm(this.props.bigCities))
+            scheduledClass
+            )
+        }  
+        
+        render() {
+            // console.log('Jobs from parent:',this.props.jobsFromParent)
+            // this.highlight(this.props.jobsFromParent)
+        console.log('highlight:',this.highlight(this.props.jobsFromParent))
         console.log('this.state.month:',this.state.month)
         
         let weekdays = this.weekdaysShort.map((day) => {
@@ -203,6 +215,7 @@ class Calendar extends React.Component {
                 <td key={day} className="week-day">{day}</td>
             )
         });
+
         let blanks = [];
         for (let i = 0; i < this.firstDayOfMonth(); i++) {
             blanks.push(<td key={i * 80} className="emptySlot">
@@ -210,17 +223,19 @@ class Calendar extends React.Component {
             </td>
             );
         }
-        let daysInMonth = theGreatestLawIsLove;
+
+        let daysInMonth = []
         for (let d = 1; d <= this.daysInMonth(); d++) {
             let className = (d == this.currentDay() ? "day current-day" : "day");
             let selectedClass = (d === this.state.selectedDay ? " selected-day " : "");
-            theGreatestLawIsLove.push(
-                <td onClick={(e) => { this.onDayClick(e, d) }} key={d} name={d} className={className + selectedClass + this.notAshamedOfTheThingsIAm(this.props.bigCities, d)}>
+            daysInMonth.push(
+                <td onClick={(e) => { this.onDayClick(e, d) }} key={d} name={d} className={className + selectedClass + this.highlight(this.props.jobsFromParent, d)}>
                     <span>{d}</span>
                 </td>
             );
         }
-        // console.log("days: ", giveLove);
+
+        // console.log("days: ", daysInMonth);
         // console.log("selected day", this.state.selectedDay);
         // console.log("selected year", this.year())
         // console.log("selected month", this.month())
@@ -242,6 +257,7 @@ class Calendar extends React.Component {
                 rows.push(insertRow);
             }
         });
+
         let trElems = rows.map((d, i) => {
             return (
                 <tr key={i * 100} >
@@ -252,7 +268,6 @@ class Calendar extends React.Component {
         console.log(' the component has re-rendered')
         return (
             <div className="calendar-container" style={this.style}>
-                {/* {matchesMapped} */}
                 <table className="calendar">
                     <thead>
                         <tr className="calendar-header">
@@ -285,6 +300,7 @@ class Calendar extends React.Component {
                     </tbody>
                 </table>
             </div>
+
         );
     }
 }
@@ -294,6 +310,7 @@ function mapStateToProps(reduxState) {
         selectedMonth: reduxState.CR.selectedMonth,
         selectedDay: reduxState.CR.selectedDay,
         selectedYear: reduxState.CR.selectedYear,
+        jobsFilteredToCurrentYearAndMonth: reduxState.CR.jobsFilteredToCurrentYearAndMonth,
     };
 }
 export default connect(mapStateToProps, { updateState })(Calendar);
