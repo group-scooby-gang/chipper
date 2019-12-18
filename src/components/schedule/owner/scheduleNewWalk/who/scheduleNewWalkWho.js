@@ -43,7 +43,7 @@ class NewWalkWho extends Component {
 				<div className='back_button' onClick={this.goBack}>
 					<i class='fas fa-angle-left'></i>
 				</div>
-				<h2>Who</h2>
+				<h2 className='who'>Who</h2>
 				<div className='pet_section'>
 					<div className='pet_selectors'>{mappedPets}</div>
 				</div>
