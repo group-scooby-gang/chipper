@@ -72,6 +72,7 @@ app.get("/Chipper/History/Walker", walker.walkerHistory)
 app.get("/Chipper/Walker/NextJobs", walker.getWalkerSchedule);
 app.get('/Chipper/Walker/Search', walker.searchWalker);
 app.get('/Chipper/Walker/:id', walker.getWalker);
+app.put("/Chipper/Walker/Profile/Edit", walker.editWalker)
 
 //jobs
 app.post("/Chipper/Jobs/Hire", job.addJob) //Where jobs are posted into db and put as false (aka pending)

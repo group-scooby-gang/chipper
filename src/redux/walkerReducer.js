@@ -9,6 +9,17 @@ const initialState = {
     sixty: 0,
     loading: false,
     schedule: [],
+    address: '',
+    city: '',
+    state: '',
+    zip: 0,
+    email: '',
+    phone: 0,
+    firstname: '',
+    lastname: '',
+    username: '',
+    experience: '',
+    profileimg: '',
     walkerInfo: {}
 }
 
@@ -17,6 +28,7 @@ const RESET_FIELDS = 'RESET_FIELDS';
 const REGISTER_WALKER = 'REGISTER_WALKER';
 const GET_SCHEDULE = 'GET_SCHEDULE';
 const GET_WALKER_INFO = 'GET_WALKER_INFO';
+const UPDATE_WALKER = 'UPDATE_WALKER';
 
 export const updateState = e => {
     return {
@@ -56,6 +68,29 @@ export const getWalkerInfo = () => {
     return {
         type: GET_WALKER_INFO,
         payload: axios.get('/Chipper/Profile/Walker')
+    }
+}
+
+export const updateWalker = (username, firstname, lastname, email, profileimg, phone, address, city, state, zip, experience, _15minprice, _30minprice, _45minprice, _60minprice) => {
+    return {
+        type: UPDATE_WALKER,
+        payload: axios.put('/Chipper/Walker/Profile/Edit', {
+            username: username,
+            firstname: firstname,
+            lastname: lastname,
+            email: email,
+            profileimg: profileimg,
+            phone: phone,
+            address: address,
+            city: city,
+            state: state,
+            zip: zip,
+            experience: experience,
+            _15minprice: _15minprice,
+            _30minprice: _30minprice,
+            _45minprice: _45minprice,
+            _60minprice: _60minprice
+        })
     }
 }
 
@@ -103,6 +138,17 @@ export default function walkerReducer(state = initialState, action) {
                 ...state,
                 loading: false,
                 walkerInfo: payload.data[0]
+            };
+        case `${UPDATE_WALKER}_PENDING`:
+            return {
+                ...state,
+                loading: true
+            };
+        case `${UPDATE_WALKER}_FULFILLED`:
+            return {
+                ...state,
+                loading: false,
+                payload: payload.data
             }
         default:
             return state;
