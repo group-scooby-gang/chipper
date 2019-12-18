@@ -29,10 +29,12 @@ const ViewSchedule = (props) => {
                                                         : "nan"
     }
 
-    let bigCities = [];
+    let alteredJobsForChild = [];
+    // console.log('alteredJobsForChild:', alteredJobsForChild)
+    // console.log('view schedule jobs:',jobs)
     for (let i = 0; i < jobs.length; i++) {
         jobs[i].month = convertMonth(jobs[i])
-        bigCities.push({ date: jobs[i].date, month: jobs[i].month, year: jobs[i].year });
+        alteredJobsForChild.push({ date: jobs[i].date, month: jobs[i].month, year: jobs[i].year });
     }
 
     // const jobsMapped = jobs.map((val) => {
@@ -72,7 +74,7 @@ const ViewSchedule = (props) => {
 
     return (
         <div>
-            <Calendar bigCities={bigCities} onDayClick={(e, day) => onDayClick(e, day)}/>
+            <Calendar jobsFromParent={alteredJobsForChild} onDayClick={(e, day) => onDayClick(e, day)}/>
             {/* {jobsMapped} */}
             <span>
             {selectMapped}

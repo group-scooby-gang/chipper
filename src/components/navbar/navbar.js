@@ -41,7 +41,7 @@ class navbar extends Component {
 	}
 
 	render() {
-		console.log(this.props.user);
+		// console.log(this.props.user);
 		return (
 			<>
 				{' '}
