@@ -3,9 +3,9 @@ import Calendar from '../../calendar/Calendar';
 import { logoutUser } from '../../../redux/userReducer';
 import { connect } from 'react-redux';
 import { viewSchedule } from '../../../redux/ownerReducer';
-import { getWalkerSchedule } from '../../../redux/walkerReducer';
-// import './OwnerDashboard.css';
+import { getWalkerSchedule, acceptPendingJob, declinePendingJob } from '../../../redux/walkerReducer';
 import axios from 'axios';
+import './viewSchedule.css';
 
 const ViewSchedule = (props) => {
     const [sched, setSched] = useState(false)
@@ -17,9 +17,9 @@ const ViewSchedule = (props) => {
         })
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         showPending()
-    },[])
+    }, [])
 
     function convertMonth(m) {
         // console.log(m.month)
@@ -63,23 +63,41 @@ const ViewSchedule = (props) => {
     const showPending = () => {
         console.log(jobs)
         console.log(walkerJobs)
-        let pending = (sched? (jobs.filter(job => job.jobaccepted === false))
+        let pending = (sched ? (jobs.filter(job => job.jobaccepted === false))
             : walkerJobs.filter(walkerJob => walkerJob.jobaccepted === false))
         setpendingRequest(pending)
     }
 
-    var pendingMapped = pendingRequest.map((walk)=> {
-        console.log(pendingRequest)
-        console.log('jobaccepted:',walk.jobaccepted,'firstName:', walk.jobaccepted)
-        return (<div>
-    <div>pendingRequest <button>Accept Request</button><button>Decline Request</button></div>
-    <div><img src={walk.img} alt="Dog image"/></div>
-        <div>firstName: {walk.name}</div>
-        <div>Breed:{walk.breed}</div>
-    <div>Dog age:{walk.age}</div>
-    <div>Date:{walk.date}</div>
-        <div>Year:{walk.year}</div>
-        </div>)
+    var acceptJob = async (walk) => {
+        await acceptPendingJob(walk)
+        await getWalkerSchedule()
+        await showPending()
+    }
+
+    var declineJob = async (walk) => {
+        await declinePendingJob(walk)
+        await getWalkerSchedule()
+        await showPending()
+    }
+
+    var pendingMapped = pendingRequest.map((walk) => {
+        return (
+            <div className='pending_status_mapped'>
+                <div className='image_name_status_section'>
+                    <img src={walk.img} alt="Dog image" />
+                    <div className='name_breed_age_section'>
+                        <h3>Name: {walk.name}</h3>
+                        <p>Breed: {walk.breed}</p>
+                        <p>Age: {walk.age}</p>
+                    </div>
+                </div>
+                <div>Date: {walk.date}</div>
+                <div>Year: {walk.year}</div>
+                <div className='accept_decline_button_section'>
+                    <button onClick={() => acceptJob(walk.job_id)}>Accept Request</button>
+                    <button onClick={() => declineJob(walk.job_id)}>Decline Request</button>
+                </div>
+            </div>)
     })
 
     const [apt, setApt] = useState([])
@@ -105,15 +123,13 @@ const ViewSchedule = (props) => {
                     <div>Year: {walk.year}</div>
                 </div> : null}
             {own ?
-                <div>
-                    <div>You are scheduled to walk {walk.name} on {walk.month}/{walk.date}/{walk.year} </div>
-                    <div>time: {walk.time}</div>
-                    <div>Dog breed: {walk.breed}</div>
-                    <div>Dog age: {walk.age}</div>
-                    <span>{walk.name}</span><img src={walk.img} />
+                <div className="selected_day_results">
+                    <img src={walk.img} />
+                    <div>You are scheduled to walk {walk.name}</div>
+                    <div>Date: {walk.month}/{walk.date}/{walk.year}</div>
+                    <div>Time: {walk.time}</div>
                     <div>Notes: {walk.notes}</div>
-                    <div>Price: {walk.price}</div>
-                    <div>status: {walk.jobaccepted?'you have accepted this request':'you have not yet accepted this walk request'}</div>
+                    <div>Status: {walk.jobaccepted ? 'you have accepted this request' : 'you have not yet accepted this walk request'}</div>
                 </div> : null}
             <div>{walk.jobaccepted}</div>
         </div>
@@ -121,12 +137,17 @@ const ViewSchedule = (props) => {
     })
 
     return (
-        <div>
-            <Calendar jobsFromParent={alteredJobsForChild} onDayClick={(e, day) => onDayClick(e, day)} />
-            {/* {jobsMapped} */}
-            <span>
-                {selectMapped}
-                {pendingMapped}
+        <div className='schedule_page'>
+            <Calendar className='calendar_component_container' jobsFromParent={alteredJobsForChild} onDayClick={(e, day) => onDayClick(e, day)} />
+            <span className='selected_days_and_pending_jobs_container'>
+                <div className='selected_walks_container'>
+                    <h1>Walks</h1>
+                    {selectMapped}
+                </div>
+                <div className='pending_mapped_container'>
+                    <h1>Pending Jobs</h1>
+                    {pendingMapped}
+                </div>
             </span>
         </div>
     )
@@ -137,6 +158,6 @@ const mapStateToProps = (state) => ({
     walkerJobs: state.walkerReducer.walkerJobs
 });
 
-export default connect(mapStateToProps, { viewSchedule, logoutUser, getWalkerSchedule })(
+export default connect(mapStateToProps, { viewSchedule, logoutUser, getWalkerSchedule, acceptPendingJob, declinePendingJob })(
     ViewSchedule,
 );
