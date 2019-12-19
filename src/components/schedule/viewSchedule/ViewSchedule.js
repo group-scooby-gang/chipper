@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { viewSchedule } from '../../../redux/ownerReducer';
 import { getWalkerSchedule, acceptPendingJob, declinePendingJob } from '../../../redux/walkerReducer';
 import axios from 'axios';
+import {acceptWalkMessage, declineWalkMessage} from '../../../redux/phoneReducer'
 import './viewSchedule.css';
 
 const ViewSchedule = (props) => {
@@ -47,7 +48,6 @@ const ViewSchedule = (props) => {
         walkerJobs[i].month = convertMonth(walkerJobs[i])
         alteredJobsForChild.push({ date: walkerJobs[i].date, month: walkerJobs[i].month, year: walkerJobs[i].year });
     }
-    console.log('walkerJobs:', walkerJobs)
     // const jobsMapped = jobs.map((val) => {
     //     return (
     //         <div>
@@ -61,8 +61,6 @@ const ViewSchedule = (props) => {
     // })
     const [pendingRequest, setpendingRequest] = useState([])
     const showPending = () => {
-        console.log(jobs)
-        console.log(walkerJobs)
         let pending = (sched ? (jobs.filter(job => job.jobaccepted === false))
             : walkerJobs.filter(walkerJob => walkerJob.jobaccepted === false))
         setpendingRequest(pending)
@@ -70,12 +68,16 @@ const ViewSchedule = (props) => {
 
     var acceptJob = async (walk) => {
         await acceptPendingJob(walk)
+        console.log(props.ownerPhone)
+        await this.props.acceptWalkMessage(props.ownerPhone[0].phone)
         await getWalkerSchedule()
         await showPending()
     }
 
     var declineJob = async (walk) => {
         await declinePendingJob(walk)
+        console.log(props.ownerPhone)
+        await this.props.declineWalkMessage(props.ownerPhone[0].phone)
         await getWalkerSchedule()
         await showPending()
     }
@@ -155,9 +157,10 @@ const ViewSchedule = (props) => {
 
 const mapStateToProps = (state) => ({
     jobs: state.ownerReducer.jobs,
-    walkerJobs: state.walkerReducer.walkerJobs
+    walkerJobs: state.walkerReducer.walkerJobs,
+    ownerPhone : state.phoneReducer.ownerPhone
 });
 
-export default connect(mapStateToProps, { viewSchedule, logoutUser, getWalkerSchedule, acceptPendingJob, declinePendingJob })(
-    ViewSchedule,
+export default connect(mapStateToProps, { viewSchedule, logoutUser, getWalkerSchedule, acceptPendingJob, declinePendingJob, acceptWalkMessage, declineWalkMessage })(
+    ViewSchedule
 );
