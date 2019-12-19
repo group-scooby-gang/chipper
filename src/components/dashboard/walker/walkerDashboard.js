@@ -33,6 +33,7 @@ class WalkerDashboard extends Component {
 
 	getNextWalk = async () => {
 		const { id } = this.props.user;
+		console.log(id)
 		await this.props.getWalkerSchedule(id);
 	};
 
@@ -53,7 +54,7 @@ class WalkerDashboard extends Component {
 	}
 
 	render() {
-		console.log(this.props.walkerJobs)
+		console.log(this.props.walkerJobs && this.props.walkerJobs)
 		const month = this.props.walkerJobs[0] ? this.props.walkerJobs[0].month : null;
 		const date = this.props.walkerJobs[0] ? this.props.walkerJobs[0].date : null;
 		const year = this.props.walkerJobs[0] ? this.props.walkerJobs[0].year : null;

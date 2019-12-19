@@ -54,9 +54,11 @@ const applicationDetails = async (req, res) => {
 };
 
 const getWalkerSchedule = async (req, res) => {
+	console.log(req.session.user)
 	const db = req.app.get('db');
 	const id = req.session.user.id;
 	const schedule = await db.WalkerSchedule(id);
+	console.log("Schedule hit")
 	res.status(200).json(schedule);
 };
 
@@ -66,6 +68,7 @@ const getWalkerProfile = async (req, res) => {
 	const profile = await db.WalkerProfile(id);
 	res.status(200).json(profile);
 };
+
 
 const walkerHistory = async (req, res) => {
 	const db = req.app.get('db');

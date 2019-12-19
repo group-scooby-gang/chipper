@@ -19,7 +19,8 @@ const initialState = {
     lastname: '',
     username: '',
     profileimg: '',
-    walkerInfo: {}
+    walkerInfo: {},
+    walkersJobs: []
 }
 
 const UPDATE_STATE = 'UPDATE_STATE';

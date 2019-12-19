@@ -37,7 +37,6 @@ const loginUser  = async (req, res) => {
     }
 
     const isMatching = bcrypt.compare(password, checkUser[0].password)
-    console.log('hello world')
     if(isMatching){
         req.session.user = {
             id: checkUser[0].user_id,
@@ -51,7 +50,6 @@ const loginUser  = async (req, res) => {
             isWalker: false
         }
         res.status(200).json(req.session.user)
-        console.log('req.session.user authcontroller 54:',req.session.user)
     } else {
         res.status(403).json("Invalid Login")
     }
@@ -67,7 +65,6 @@ const isWalker = async (req, res) => {
         req.session.user.isWalker = false
     }
 
-    console.log('isWalker', req.session.user);
     res.status(200).json(req.session.user);
 }
 

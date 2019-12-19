@@ -19,7 +19,7 @@ const walker = require('./controllers/walkerController');
 const job = require("./controllers/jobsController")
 const owner = require("./controllers/ownerController")
 
-app.use( express.static( `${__dirname}/../build` )
+app.use( express.static( `${__dirname}/../build` ))
 
 massive(process.env.CONNECTION_STRING)
 	.then((dbInstance) => {
@@ -73,7 +73,6 @@ app.put('/Chipper/Walker/Application/Approve/:application_id', walker.acceptWalk
 app.get("/Chipper/Walker/NextJobs", walker.getWalkerSchedule)
 app.get("/Chipper/Profile/Walker", walker.getWalkerProfile)
 app.get("/Chipper/History/Walker", walker.walkerHistory)
-app.get("/Chipper/Walker/NextJobs", walker.getWalkerSchedule);
 app.get('/Chipper/Walker/Search', walker.searchWalker);
 app.get('/Chipper/Walker/:id', walker.getWalker);
 app.put("/Chipper/Walker/Profile/Edit", walker.editWalker)
