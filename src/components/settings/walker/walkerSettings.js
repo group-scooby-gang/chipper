@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./walkerSettings.css";
 import { connect } from "react-redux";
 import { getWalkerInfo, updateState, updateWalker } from '../../../redux/walkerReducer';
-import {storage} from './../../../firebase-config';
+import {storage} from "../../../firebase-config.js"
 
 class WalkerSettings extends Component {
     state = {
