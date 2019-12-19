@@ -7,6 +7,10 @@
 	width: 100%;
 }
 
+.walkerProfileCard img {
+	border-radius: 50%;
+}
+
 .walkerProfileCard h1 {
 	width: 80%;
 	font-size: 1.6em;

@@ -8,7 +8,17 @@ const initialState = {
     fortyfive: 0,
     sixty: 0,
     loading: false,
-    walkerJobs: [],
+    schedule: [],
+    address: '',
+    city: '',
+    state: '',
+    zip: 0,
+    email: '',
+    phone: 0,
+    firstname: '',
+    lastname: '',
+    username: '',
+    profileimg: '',
     walkerInfo: {}
 }
 
@@ -17,6 +27,7 @@ const RESET_FIELDS = 'RESET_FIELDS';
 const REGISTER_WALKER = 'REGISTER_WALKER';
 const GET_SCHEDULE = 'GET_SCHEDULE';
 const GET_WALKER_INFO = 'GET_WALKER_INFO';
+const UPDATE_WALKER = 'UPDATE_WALKER';
 
 export const updateState = e => {
     return {
@@ -57,6 +68,29 @@ export const getWalkerInfo = () => {
     return {
         type: GET_WALKER_INFO,
         payload: axios.get('/Chipper/Profile/Walker')
+    }
+}
+
+export const updateWalker = (username, firstname, lastname, email, profileimg, phone, address, city, state, zip, bio, fifteen, thirty, fortyfive, sixty) => {
+    return {
+        type: UPDATE_WALKER,
+        payload: axios.put('/Chipper/Walker/Profile/Edit', {
+            username: username,
+            firstname: firstname,
+            lastname: lastname,
+            email: email,
+            profileimg: profileimg,
+            phone: phone,
+            address: address,
+            city: city,
+            state: state,
+            zip: zip,
+            experience: bio,
+            _15minprice: fifteen,
+            _30minprice: thirty,
+            _45minprice: fortyfive,
+            _60minprice: sixty
+        })
     }
 }
 
@@ -104,6 +138,17 @@ export default function walkerReducer(state = initialState, action) {
                 ...state,
                 loading: false,
                 walkerInfo: payload.data[0]
+            };
+        case `${UPDATE_WALKER}_PENDING`:
+            return {
+                ...state,
+                loading: true
+            };
+        case `${UPDATE_WALKER}_FULFILLED`:
+            return {
+                ...state,
+                loading: false,
+                payload: payload.data
             }
         default:
             return state;
