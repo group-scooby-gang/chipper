@@ -168,7 +168,7 @@ class Calendar extends React.Component {
     }
 
     onDayClick = (e, day) => {
-        e.preventDefault()
+        // e.preventDefault()
         this.setState({
             selectedDay: day,
         }, () => {
@@ -201,9 +201,9 @@ class Calendar extends React.Component {
         return (jobs.forEach(childSort))
         }
         let jobFilteredToCurrentYearAndMonth = parentSort(jobs)
-        console.log('arrMonth:',arrMonth, 'arrYear:',arrYear,'arrDate:',arrDate )
+        // console.log('arrMonth:',arrMonth, 'arrYear:',arrYear,'arrDate:',arrDate )
         let scheduledClass = (arrDate.includes(daysInMonth) && arrYear.includes(+this.year()) && arrMonth.includes(this.month())? "day scheduled-day":"")
-        console.log('scheduledClass:', scheduledClass)
+        // console.log('scheduledClass:', scheduledClass)
         return(
             scheduledClass
             )
@@ -212,8 +212,8 @@ class Calendar extends React.Component {
         render() {
             // console.log('Jobs from parent:',this.props.jobsFromParent)
             // this.highlight(this.props.jobsFromParent)
-        console.log('highlight:',this.highlight(this.props.jobsFromParent))
-        console.log('this.state.month:',this.state.month)
+        // console.log('highlight:',this.highlight(this.props.jobsFromParent))
+        // console.log('this.state.month:',this.state.month)
         
         let weekdays = this.weekdaysShort.map((day) => {
             return (

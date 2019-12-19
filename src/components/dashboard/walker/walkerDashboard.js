@@ -56,17 +56,17 @@ class WalkerDashboard extends Component {
 	}
 
 	render() {
-		console.log(this.props.jobs)
-		const month = this.props.jobs[0] ? this.props.jobs[0].month : null;
-		const date = this.props.jobs[0] ? this.props.jobs[0].date : null;
-		const year = this.props.jobs[0] ? this.props.jobs[0].year : null;
-		const time = this.props.jobs[0] ? this.props.jobs[0].time : null;
-		const name = this.props.jobs[0] ? this.props.jobs[0].name : null;
-		const breed = this.props.jobs[0] ? this.props.jobs[0].breed : null;
-		const age = this.props.jobs[0] ? this.props.jobs[0].age : null;
-		const notes = this.props.jobs[0] ? this.props.jobs[0].notes : null;
-		const price = this.props.jobs[0] ? this.props.jobs[0].price : null;
-		const img = this.props.jobs[0] ? this.props.jobs[0].img : null;
+		console.log(this.props.walkerJobs)
+		const month = this.props.walkerJobs[0] ? this.props.walkerJobs[0].month : null;
+		const date = this.props.walkerJobs[0] ? this.props.walkerJobs[0].date : null;
+		const year = this.props.walkerJobs[0] ? this.props.walkerJobs[0].year : null;
+		const time = this.props.walkerJobs[0] ? this.props.walkerJobs[0].time : null;
+		const name = this.props.walkerJobs[0] ? this.props.walkerJobs[0].name : null;
+		const breed = this.props.walkerJobs[0] ? this.props.walkerJobs[0].breed : null;
+		const age = this.props.walkerJobs[0] ? this.props.walkerJobs[0].age : null;
+		const notes = this.props.walkerJobs[0] ? this.props.walkerJobs[0].notes : null;
+		const price = this.props.walkerJobs[0] ? this.props.walkerJobs[0].price : null;
+		const img = this.props.walkerJobs[0] ? this.props.walkerJobs[0].img : null;
 		return (
 			<div className='walkerDashboard'>
 				<div className='next_walk_section'>
@@ -123,7 +123,7 @@ const mapStateToProps = (state) => {
 	return {
 		username: state.walkerReducer.username,
 		user: state.userReducer.user,
-		schedule: state.walkerReducer.schedule,
+		walkerJobs: state.walkerReducer.walkerJobs,
 		pets: state.walkerReducer.pets,
 		ownerPhone : state.phoneReducer.ownerPhone
 	};
