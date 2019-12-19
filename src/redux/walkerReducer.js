@@ -126,7 +126,7 @@ export default function walkerReducer(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                schedule: payload.data
+                walkerJobs: payload.data
             };
         case `${GET_WALKER_INFO}_PENDING`:
             return {
