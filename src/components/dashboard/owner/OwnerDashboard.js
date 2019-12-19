@@ -36,7 +36,7 @@ class OwnerDashoard extends Component {
 					</div>
 
 					<div className='buttons-container'>
-						<Link to='/owner/schedule'>
+						<Link to='/schedule'>
 							<button
 								className='buttons'
 								name='Schedule'
