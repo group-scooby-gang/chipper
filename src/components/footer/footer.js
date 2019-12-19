@@ -11,9 +11,9 @@ class Footer extends Component {
 		axios.get('/Chipper/Check/Walker')
 			.then(res => {
 				if (res.data.isWalker === false) {
-					this.props.history.push('/owner/schedule')
+					this.props.history.push('/schedule')
 				} else {
-					this.props.history.push('/walker/schedule')
+					this.props.history.push('/schedule')
 				}
 			})
 	}

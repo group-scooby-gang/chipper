@@ -23,12 +23,12 @@ class WalkerDashboard extends Component {
 
 	handleClickSchedule = () => {
 		this.setState({ dogsNeedWalking: 'closed' });
-		this.props.history.push('/walker/schedule')
+		this.props.history.push('/schedule')
 	};
 
 	handleClickPendingJobs = () => {
 		this.setState({ dogsNeedWalking: 'closed' });
-		this.props.history.push('/walker/schedule')
+		this.props.history.push('/schedule')
 	};
 
 	getNextWalk = async () => {
@@ -56,16 +56,17 @@ class WalkerDashboard extends Component {
 	}
 
 	render() {
-		const month = this.props.schedule[0] ? this.props.schedule[0].month : null;
-		const date = this.props.schedule[0] ? this.props.schedule[0].date : null;
-		const year = this.props.schedule[0] ? this.props.schedule[0].year : null;
-		const time = this.props.schedule[0] ? this.props.schedule[0].time : null;
-		const name = this.props.schedule[0] ? this.props.schedule[0].name : null;
-		const breed = this.props.schedule[0] ? this.props.schedule[0].breed : null;
-		const age = this.props.schedule[0] ? this.props.schedule[0].age : null;
-		const notes = this.props.schedule[0] ? this.props.schedule[0].notes : null;
-		const price = this.props.schedule[0] ? this.props.schedule[0].price : null;
-		const img = this.props.schedule[0] ? this.props.schedule[0].img : null;
+		console.log(this.props.walkerJobs)
+		const month = this.props.walkerJobs[0] ? this.props.walkerJobs[0].month : null;
+		const date = this.props.walkerJobs[0] ? this.props.walkerJobs[0].date : null;
+		const year = this.props.walkerJobs[0] ? this.props.walkerJobs[0].year : null;
+		const time = this.props.walkerJobs[0] ? this.props.walkerJobs[0].time : null;
+		const name = this.props.walkerJobs[0] ? this.props.walkerJobs[0].name : null;
+		const breed = this.props.walkerJobs[0] ? this.props.walkerJobs[0].breed : null;
+		const age = this.props.walkerJobs[0] ? this.props.walkerJobs[0].age : null;
+		const notes = this.props.walkerJobs[0] ? this.props.walkerJobs[0].notes : null;
+		const price = this.props.walkerJobs[0] ? this.props.walkerJobs[0].price : null;
+		const img = this.props.walkerJobs[0] ? this.props.walkerJobs[0].img : null;
 		return (
 			<div className='walkerDashboard'>
 				<div className='next_walk_section'>
@@ -122,7 +123,7 @@ const mapStateToProps = (state) => {
 	return {
 		username: state.walkerReducer.username,
 		user: state.userReducer.user,
-		schedule: state.walkerReducer.schedule,
+		walkerJobs: state.walkerReducer.walkerJobs,
 		pets: state.walkerReducer.pets,
 		ownerPhone : state.phoneReducer.ownerPhone
 	};
