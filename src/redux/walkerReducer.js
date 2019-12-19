@@ -8,7 +8,7 @@ const initialState = {
     fortyfive: 0,
     sixty: 0,
     loading: false,
-    schedule: [],
+    walkerJobs: [],
     address: '',
     city: '',
     state: '',
@@ -28,6 +28,8 @@ const REGISTER_WALKER = 'REGISTER_WALKER';
 const GET_SCHEDULE = 'GET_SCHEDULE';
 const GET_WALKER_INFO = 'GET_WALKER_INFO';
 const UPDATE_WALKER = 'UPDATE_WALKER';
+const ACCEPT_JOB = 'ACCEPT_JOB';
+const DECLINE_JOB = 'DECLINE_JOB';
 
 export const updateState = e => {
     return {
@@ -94,6 +96,21 @@ export const updateWalker = (username, firstname, lastname, email, profileimg, p
     }
 }
 
+export const acceptPendingJob = (id) => {
+    console.log(id)
+    return {
+        type: ACCEPT_JOB,
+        payload: axios.put(`/Chipper/Jobs/Accept/${id}`)
+    }
+}
+
+export const declinePendingJob = (id) => {
+    return {
+        type: DECLINE_JOB,
+        payload: axios.delete(`/Chipper/Jobs/Decline/${id}`)
+    }
+}
+
 export default function walkerReducer(state = initialState, action) {
     const {type, payload} = action;
     switch(type) {
@@ -145,6 +162,18 @@ export default function walkerReducer(state = initialState, action) {
                 loading: true
             };
         case `${UPDATE_WALKER}_FULFILLED`:
+            return {
+                ...state,
+                loading: false,
+                payload: payload.data
+            };
+        case `${ACCEPT_JOB}_FULFILLED`:
+            return {
+                ...state,
+                loading: false,
+                payload: payload.data
+            };
+        case `${DECLINE_JOB}_FULFILLED`:
             return {
                 ...state,
                 loading: false,

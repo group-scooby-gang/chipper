@@ -19,7 +19,7 @@ const walker = require('./controllers/walkerController');
 const job = require("./controllers/jobsController")
 const owner = require("./controllers/ownerController")
 
-app.use( express.static( `${__dirname}/../build` )
+app.use( express.static( `${__dirname}/../build` ))
 
 massive(process.env.CONNECTION_STRING)
 	.then((dbInstance) => {
@@ -160,10 +160,32 @@ app.post("/sms/owner/walkCompleted", (req, res) => {
 	client.messages.create({
 		from: TWILIO_PHONE_NUMBER,
 		to: req.body.number,
-		body: `Your walker has returned your dog !`
+		body: `Your walker has returned your dog!`
 	})
 	.then(() => {
 		console.log("Text sent to peasent")
+	})
+	.catch(error => {
+		console.log(error)
+	})
+})
+
+app.post("/sms/owner/acceptedWalk", (req, res) => {
+	client.messages.create({
+		from: TWILIO_PHONE_NUMBER,
+		to: req.body.number,
+		body: `Congrats, your new walk has been accepted!`
+	})
+	.catch(error => {
+		console.log(error)
+	})
+})
+
+app.post("/sms/owner/declinedWalk", (req, res) => {
+	client.messages.create({
+		from: TWILIO_PHONE_NUMBER,
+		to: req.body.number,
+		body: `Sorry, but unfortunately your walk has been declined.`
 	})
 	.catch(error => {
 		console.log(error)
