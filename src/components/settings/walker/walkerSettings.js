@@ -92,9 +92,6 @@ class WalkerSettings extends Component {
     }
 
     render() {
-        console.log(this.props.walkerInfo);
-        console.log(this.props.walkerInfo.firstname);
-        console.log(this.props.firstname)
         const {
             firstname,
             lastname,

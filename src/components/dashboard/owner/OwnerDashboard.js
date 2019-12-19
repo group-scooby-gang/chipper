@@ -12,7 +12,6 @@ class OwnerDashoard extends Component {
 	viewSchedule = async () => {
 		const { i } = this.props.jobs[0];
 		await this.props.schedule(i);
-		console.log(this.props.schedule);
 	};
 
 	render() {

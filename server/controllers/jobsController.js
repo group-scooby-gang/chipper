@@ -46,6 +46,7 @@ const completeWalk = async (req, res) => {
     const job_id = +req.params.job_id;
     await db.completeWalk(job_id)
     res.status(200).json("Walk Completed")
+    console.log("Job completed")
 }
 
 
