@@ -45,13 +45,10 @@ class WalkerDashboard extends Component {
 			await axios.put(`/Chipper/Jobs/Start/${this.props.schedule[0].job_id}`)
 			await this.props.sendStartMessage(this.props.ownerPhone[0].phone)
 			this.setState({status: this.props.schedule[0].walkstatus})
-			this.setState({status: "Complete Walk"})
-		} else if (this.state.status === "Complete Walk"){
-			console.log("1",this.props.schedule)
+		} else if (this.state.status === "Active"){
 			this.props.schedule.shift(0, 1)
-			console.log("2", this.props.schedule)
 			await this.props.sendCompleteMessage(this.props.ownerPhone[0].phone)
-			await axios.put(`/Chipper/Jobs/Complete/${this.props.schedule[0].job_id}`)
+			axios.put(`/Chipper/Jobs/Complete/${this.props.schedule[0].job_id}`)
 		}
 	}
 

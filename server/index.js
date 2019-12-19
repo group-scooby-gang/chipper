@@ -1,3 +1,4 @@
+const path = require('path');
 require('dotenv').config();
 const express = require('express');
 const app = express();
@@ -17,6 +18,8 @@ const pet = require('./controllers/petController');
 const walker = require('./controllers/walkerController');
 const job = require("./controllers/jobsController")
 const owner = require("./controllers/ownerController")
+
+app.use( express.static( `${__dirname}/../build` )
 
 massive(process.env.CONNECTION_STRING)
 	.then((dbInstance) => {
@@ -129,7 +132,7 @@ app.post("/sms/owner/onTheWay", (req, res) => {
 	client.messages.create({
 		from: TWILIO_PHONE_NUMBER,
 		to: req.body.number,
-		body: `Your walker is on their way to fuck up your dog!`
+		body: `Your walker is on their way to pick up your dog!`
 	})
 	.then(() => {
 		res.status(200).json("Sent")
@@ -143,7 +146,7 @@ app.post("/sms/owner/walkStarted", (req, res) => {
 	client.messages.create({
 		from: TWILIO_PHONE_NUMBER,
 		to: req.body.number,
-		body: "The Vickster is starting your scheduled walk! Hope you said bye to your pet!"
+		body: "Your walker is starting your scheduled walk! Hope you said bye to your pet!"
 	})
 	.then(() => {
 		res.status(200).json("Sent Bro")
@@ -157,7 +160,7 @@ app.post("/sms/owner/walkCompleted", (req, res) => {
 	client.messages.create({
 		from: TWILIO_PHONE_NUMBER,
 		to: req.body.number,
-		body: `Your walker has returned your dog lookin like a mutt Connor McGregor!`
+		body: `Your walker has returned your dog !`
 	})
 	.then(() => {
 		console.log("Text sent to peasent")
