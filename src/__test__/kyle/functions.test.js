@@ -1,35 +1,19 @@
-const ownerInfo = require('../../components/auth/register/ownerInfo/signUpOwnerInfo');
-const petInfo = require('../../components/auth/register/petRegistrationInfo/petRegisterReview/petRegisterReview');
-const walkerInfo = require('../../components/auth/register/walkerInfo/walkerInfo');
-const walkerReview = require('../../components/auth/register/walkerInfo/walkerReview/walkerReview');
+const walkerReducer = require('../../redux/walkerReducer');
 
-describe(`"ownerInfo" should return the correct input user value and should send a new owner registration to the server`, () => {
-    test(`"ownerInfo.handleChange" function should return the same value as the user input`, () => {
-        expect(ownerInfo.handleChange(e.target.value)).toBe(e.target.value);
+describe(`"walkerReducer" should be able to update the initial state of the reducer as well as preform different HTTP requests`, () => {
+    test(`"walkerReducer.updateState" function should update the state of the reducer`, () => {
+        expect(walkerReducer.updateState().type).toBe("UPDATE_STATE")
     })
-
-    test(`"ownerInfo.handleRegister" function should send a new registered owner to the server`, () => {
-        //not really sure how I would go about doing this type of test
-        expect(ownerInfo.handleRegister()).toBe();
+    test(`"walkerReducer.registerWalker" funciton should register a new walker to the database`, () => {
+        expect(walkerReducer.registerWalker().type).toBe("REGISTER_WALKER")
     })
-})
-
-describe(`"petInfo" should send a new pet registration to the server`, () => {
-    test(`"petInfo.handleRegisterPet" function should send a new registered pet to the server`, () => {
-        //not really sure how I would go about doing this type of test
-        expect(petInfo.handleRegisterPet()).toBe();
+    test(`"walkerReducer.getWalkerSchedule" function should return the schedule for that walker`, () => {
+        expect(walkerReducer.getWalkerSchedule().type).toBe("GET_SCHEDULE")
     })
-})
-
-describe(`"walkerInfo" should return the correct input user value`, () => {
-    test(`"walkerInfo.handleChange" function should return the same value as the user input`, () => {
-        expect(walkerInfo.handleChange(e.target.value)).toBe(e.target.value);
+    test(`"walkerReducer.getWalkerInfo" function should return information about the walker`, () => {
+        expect(walkerReducer.getWalkerInfo().type).toBe("GET_WALKER_INFO")
     })
-})
-
-describe(`"walkerReview" should send a new walker registration to the server`, () => {
-    test(`"walkerReview.registerButton" function should send a new registered walker to the server`, () => {
-        //not really sure how I would go about doing this type of test
-        expect(walkerReview.registerButton()).toBe();
+    test(`"walkerReducer.updateWalker" function should update information about the walker`, () => {
+        expect(walkerReducer.updateWalker().type).toBe("UPDATE_WALKER")
     })
 })
