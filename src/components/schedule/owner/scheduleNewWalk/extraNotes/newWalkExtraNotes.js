@@ -18,7 +18,6 @@ class ExtraNotes extends Component {
 	};
 
 	render() {
-		console.log(this.props.payment);
 		return (
 			<div className='extra_notes_page'>
 				<h1>Extra Notes</h1>
