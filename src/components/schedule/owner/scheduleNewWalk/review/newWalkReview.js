@@ -37,7 +37,7 @@ class WalkReview extends Component {
         await axios.post("/sms/walker/jobNotification", {
             number: this.props.walker_phone[0].phone
         })
-        this.props.history.push('/owner/schedule')
+        this.props.history.push('/schedule')
     }
 	back = () => {
 		this.props.history.goBack();
