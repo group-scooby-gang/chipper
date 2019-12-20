@@ -19,7 +19,8 @@ const initialState = {
     lastname: '',
     username: '',
     profileimg: '',
-    walkerInfo: {}
+    walkerInfo: {},
+    walkerJobs:{}
 }
 
 const UPDATE_STATE = 'UPDATE_STATE';
@@ -123,6 +124,7 @@ export default function walkerReducer(state = initialState, action) {
                 loading: true
             };
         case `${GET_SCHEDULE}_FULFILLED`:
+            console.log(payload.data)
             return {
                 ...state,
                 loading: false,

@@ -54,6 +54,7 @@ const applicationDetails = async (req, res) => {
 };
 
 const getWalkerSchedule = async (req, res) => {
+	console.log('getWalkerSchedule req.body:',req.body)
 	const db = req.app.get('db');
 	const id = req.session.user.id;
 	const schedule = await db.WalkerSchedule(id);
